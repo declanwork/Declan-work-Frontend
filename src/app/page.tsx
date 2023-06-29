@@ -2,6 +2,10 @@
 import Image from 'next/image';
 import Toggle from './components/headerToggle';
 import { FiMail } from 'react-icons/fi';
+import { AiFillStar } from 'react-icons/ai';
+import { LiaToolsSolid } from 'react-icons/lia';
+import { BsBriefcase } from 'react-icons/bs';
+import { BiSupport } from 'react-icons/bi';
 
 export default function Home() {
   return (
@@ -53,9 +57,151 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="bg-white h-[120vh]">
+      {/* Partners Section */}
+      <section className="bg-white h-[20vh]">
 
-      </div>
+      </section>
+      {/* New Div */}
+      <section className="pt-20 max-w-screen-lg mx-auto flex items-center justify-center gap-10">
+        <div className="w-1/2 bg-[#F2F7F2] h-[530px] flex justify-center items-center">
+          <div className="relative">
+          <Image src="/svg/clipgroup.svg" alt='svg' width={200} height={200} />
+          <Image src="/svg/thumbs.svg" alt='thumbs-up' width={300} height={300} className='absolute -bottom-10 -right-32'/>
+          </div>
+        </div>
+        <div>
+          <h2 className='font-medium text-4xl text-[#001E00]'>Up your work game, it’s free</h2>
+          <div className="">
+            <ul>
+              <li className='flex my-3'>
+                <div className="mr-2">
+                  <Image src="/svg/Frame.svg" alt="frame" width={25} height={25} />
+                </div>
+                <div className="">
+                  <h5 className='text-[#001E00] font-medium'>No cost to join</h5>
+                  <p className='text-[#001E00] text-sm'>Register and browse professionals, explore projects, or even book a consultation.</p>
+                </div>
+              </li>
+              <li className='flex mb-3'>
+                <div className="mr-2">
+                  <Image src="/svg/pin.svg" alt="frame" width={25} height={25} />
+                </div>
+                <div className="">
+                  <h5 className='text-[#001E00] font-medium'>Post a job and hire top talent</h5>
+                  <p className='text-[#001E00] text-sm'>Finding talent doesn’t have to be a chore. Post a job or we can search for you!</p>
+                </div>
+              </li>
+              <li className='flex mb-10'>
+                <div className="mr-2">
+                  <Image src="/svg/star.svg" alt="frame" width={25} height={25} />
+                </div>
+                <div className="">
+                  <h5 className='text-[#001E00] font-medium'>Work with the best—without breaking the bank</h5>
+                  <p className='text-[#001E00] text-sm'>Declan Work makes it affordable to up your work and take advantage of low transaction rates.</p>
+                </div>
+              </li>
+            </ul>
+            <button className='bg-[#00EF7C] border border-[#00EF7C] text-[#00360C] font-medium py-3 px-4 rounded-full mr-10'>Sign up for free</button>
+            <button className='border border-[#00360C] text-[#00360C] font-medium py-3 px-4 rounded-full'>Learn how to hire</button>
+          </div>
+        </div>
+      </section>
+
+      {/* Enterprise */}
+      <section className='max-w-2xl mx-auto'>
+        <Image src="/images/enterprise.jpeg" alt="Enterprise" width={700} height={400} />
+        <div className="mt-5">
+          <p className='text-[#001E00] font-medium'>Enterprise Suite</p>
+          <p className='text-5xl text-[#001E00] my-9'>This is how good companies find good company.</p>
+          <p>Access the top 1% of talent on Declan Work, and a full suite of hybrid workforce management tools. This is how innovation works now.</p>
+          <ul className='mt-5'>
+            <li className='flex items-center space-x-2'>
+              <LiaToolsSolid size={21} className='text-[#00EF7C]'/>
+              <p className='text-[#001E00]'>Access expert talent to fill your skill gaps</p>
+            </li>
+            <li className='flex items-center space-x-2'>
+              <BsBriefcase size={21} className='text-[#00EF7C]'/>
+              <p className='text-[#001E00]'>Control your workflow: hire, classify and pay your talent</p>
+            </li>
+            <li className='flex items-center space-x-2'>
+              <BiSupport size={21} className='text-[#00EF7C]'/>
+              <p className='text-[#001E00]'>Partner with Declan Work for end-to-end support</p>
+            </li>
+          </ul>
+          <button className='bg-[#00EF7C] border border-[#00EF7C] text-[#00360C] font-medium py-3 px-8 rounded-full my-5'>Learn More</button>
+        </div>
+      </section>
+      <section className="bg-[#ECEFEB] py-20">
+        <h1 className="text-5xl text-center font-medium mt-9 mb-20">Hire vetted engineering, product,<br/>and design talent</h1>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 max-w-screen-lg mx-auto mb-10">
+          {/* item */}
+          <div className="bg-white py-5 px-10 rounded">
+            <h1 className="text-2xl font-medium text-[#001E00]">Development & IT</h1>
+            <div className="flex items-center mt-5 relative -bottom-8">
+              <div className="flex items-center justify-center mr-8">
+                <AiFillStar className="text-[#14A800]" size={25}/>
+                <p className="text-[#5E6D55] text-xl">4.8/5</p>
+              </div>
+              <p className="text-[#5E6D55] text-xl">1853 Skills</p>
+            </div>
+          </div>
+          {/* item */}
+          <div className="bg-white py-5 px-10 rounded">
+            <h1 className="text-2xl font-medium text-[#001E00]">Writing & Translation</h1>
+            <div className="flex items-center mt-5">
+              <div className="flex items-center justify-center mr-8">
+                <AiFillStar className="text-[#14A800]" size={25}/>
+                <p className="text-[#5E6D55] text-xl">4.8/5</p>
+              </div>
+              <p className="text-[#5E6D55] text-xl">1853 Skills</p>
+            </div>
+          </div>
+          {/* item */}
+          <div className="bg-white py-5 px-10 rounded">
+            <h1 className="text-2xl font-medium text-[#001E00]">Design & Creative</h1>
+            <div className="flex items-center mt-5 relative -bottom-8">
+              <div className="flex items-center justify-center mr-8">
+                <AiFillStar className="text-[#14A800]" size={25}/>
+                <p className="text-[#5E6D55] text-xl">4.8/5</p>
+              </div>
+              <p className="text-[#5E6D55] text-xl">1853 Skills</p>
+            </div>
+          </div>
+          {/* item */}
+          <div className="bg-white py-5 px-10 rounded">
+            <h1 className="text-2xl font-medium text-[#001E00]">AI Services</h1>
+            <div className="flex items-center mt-5 relative -bottom-8">
+              <div className="flex items-center justify-center mr-8">
+                <AiFillStar className="text-[#14A800]" size={25}/>
+                <p className="text-[#5E6D55] text-xl">4.8/5</p>
+              </div>
+              <p className="text-[#5E6D55] text-xl">1853 Skills</p>
+            </div>
+          </div>
+          {/* item */}
+          <div className="bg-white py-5 px-10 rounded">
+            <h1 className="text-2xl font-medium text-[#001E00]">Finance & Accounting</h1>
+            <div className="flex items-center mt-5">
+              <div className="flex items-center justify-center mr-8">
+                <AiFillStar className="text-[#14A800]" size={25}/>
+                <p className="text-[#5E6D55] text-xl">4.8/5</p>
+              </div>
+              <p className="text-[#5E6D55] text-xl">1853 Skills</p>
+            </div>
+          </div>
+          {/* item */}
+          <div className="bg-white py-5 px-10 rounded">
+            <h1 className="text-2xl font-medium text-[#001E00]">Development & IT</h1>
+            <div className="flex items-center mt-5 relative -bottom-8">
+              <div className="flex items-center justify-center mr-8">
+                <AiFillStar className="text-[#14A800]" size={25}/>
+                <p className="text-[#5E6D55] text-xl">4.8/5</p>
+              </div>
+              <p className="text-[#5E6D55] text-xl">1853 Skills</p>
+            </div>
+          </div>
+        </div>
+      </section> 
     </main>
   );
 }
