@@ -18,7 +18,7 @@ export default function Home() {
       <div className="bg-[#00360C] font-poppin h-[120vh] flex flex-col overflow-hidden">
         <Navbar />
         <div className="">
-          <h1 className="mt-28 text-5xl text-center text-[#00EF7C] font-bold tracking-[0.4px] leading-[65px]">
+          <h1 className="mt-20 text-5xl text-center text-[#00EF7C] font-bold tracking-[0.4px] leading-[65px]">
             Hire Crypto & Web3 Talent:
             <br />
             Unlocking the Power of Blockchain Expertise
