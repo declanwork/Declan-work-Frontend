@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import SearchBar from './searchBar';
+import { PiCaretDownBold } from "react-icons/pi"
 
 const navigation = [
   { name: 'Find Talent', href: '#', current: false },

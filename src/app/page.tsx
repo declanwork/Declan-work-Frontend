@@ -11,10 +11,11 @@ import { FaTrademark } from "react-icons/fa";
 import { BsArrowRight } from "react-icons/bs";
 import Navbar from "./components/Navbar";
 import Footer from "./components/footer";
+import Skills from './components/skills';
 
 export default function Home() {
   return (
-    <main className="">
+    <main className="font-poppin">
       <div className="bg-[#00360C] font-poppin h-[120vh] flex flex-col overflow-hidden">
         <Navbar />
         <div className="">
@@ -89,7 +90,7 @@ export default function Home() {
           </div>
         </div>
         <div>
-          <h2 className="font-medium text-4xl text-[#001E00]">
+          <h2 className="font-bold capitalize text-4xl text-[#001E00]">
             Up your work game, it’s free
           </h2>
           <div className="">
@@ -171,7 +172,7 @@ export default function Home() {
           height={400}
         />
         <div className="mt-5">
-          <p className="text-[#001E00] font-medium">Enterprise Suite</p>
+          <p className="text-[#001E00] font-semibold text-lg">Enterprise Suite</p>
           <p className="text-5xl text-[#001E00] my-9">
             This is how good companies find good company.
           </p>
@@ -179,7 +180,7 @@ export default function Home() {
             Access the top 1% of talent on Declan Work, and a full suite of
             hybrid workforce management tools. This is how innovation works now.
           </p>
-          <ul className="mt-5">
+          <ul className="mt-5 space-y-2">
             <li className="flex items-center space-x-2">
               <LiaToolsSolid size={21} className="text-[#00EF7C]" />
               <p className="text-[#001E00]">
@@ -360,7 +361,7 @@ export default function Home() {
             Let us help you find the right talent
             </p>
             <button className="border rounded-[25px] text-[#001E00] font-medium flex items-center justify-center py-3 px-8 mx-auto">
-            Talent Scout
+              Talent Scout
               <sup>
                 <FaTrademark />
               </sup>
@@ -370,6 +371,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+      <Skills />
       <section className="py-20 bg-[#00360C]">
       <Footer />
       </section>
