@@ -4,6 +4,7 @@ import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import SearchBar from './searchBar';
 import { PiCaretDownBold } from "react-icons/pi"
+import Link from 'next/link';
 
 const navigation = [
   { name: 'Find Talent', href: '#', current: false },
@@ -76,12 +77,12 @@ export default function Navbar() {
                 >
                   Log In
                 </a>
-                <button
-                  type="button"
+                <Link
+                  href="/signUp"
                   className="rounded-full font-semibold text-sm bg-[#ADFFC8] p-2 text-[#00360C]  focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#ADFFC8]"
                 >
                   Sign Up
-                </button>
+                </Link>
               </div>
             </div>
           </div>

@@ -199,7 +199,7 @@ export default function footer() {
             <AiOutlineAndroid size={30} className="border rounded-full p-1" />
         </div>
       </div>
-      <div className="text-white max-w-[1100px] mx-auto flex flex-col md:flex-row items-center space-x-10 text-sm pt-5 space-y-5">
+      <div className="text-white max-w-[1100px] mx-auto flex flex-col md:flex-row items-center space-x-10 text-sm pt-5 space-y-5 md:space-y-0">
         <div className="">
             <p>&copy; 2015 - 2023 Declan Works&reg; Global Inc.</p>
         </div>

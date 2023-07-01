@@ -16,7 +16,7 @@ import Skills from './components/skills';
 export default function Home() {
   return (
     <main className="font-poppin">
-      <div className="bg-[#00360C] font-poppin h-[120vh] flex flex-col overflow-hidden">
+      <div className="bg-[#00360C] font-poppin h-[1000px] flex flex-col overflow-hidden">
         <Navbar />
         <div className="">
           <h1 className="mt-20 text-5xl text-center text-[#00EF7C] font-bold tracking-[0.4px] leading-[65px]">
