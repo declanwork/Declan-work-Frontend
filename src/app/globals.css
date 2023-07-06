@@ -7,5 +7,10 @@
 .wrapper{
     /* height:40%; */
     border: 1px solid grey;
-    border-radius: 10px;
+    border-radius: 5px;
+  }
+
+  .editor{
+    padding: 7px;
+    font-weight: 300;
   }

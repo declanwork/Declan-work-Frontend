@@ -18,7 +18,7 @@ export default function SignUp() {
             subtitle="2/3"
         />
         {/* Input Fields */}
-        <div className="my-5 bg-[#00EF7C] p-5 rounded-lg w-full">
+        <div className="my-5 bg-[#00EF7C] p-3 rounded-lg w-full">
             <p className="text-[#001E00] text-sm">
                 Filling out as many fields as possible increases your chances of finding the right candidate.
                 Use this form only if you are looking to hire.

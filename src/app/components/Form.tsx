@@ -1,3 +1,4 @@
+import { useState, useMemo } from "react";
 import { PhotoIcon, UserCircleIcon } from '@heroicons/react/24/solid'
 import Link from "next/link";
 import { Editor } from 'react-draft-wysiwyg';
@@ -5,11 +6,27 @@ import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 
 
 export default function Form() {
+  const [isChecked, setIsChecked] = useState(false);
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+    country: "",
+  });
+
+  function onChange(e: any) {
+    setFormData((prevState) => ({
+      ...prevState,
+      [e.target.id]: e.target.value,
+    }));
+  }
+
   return (
     <form>
       <div className="space-y-12">
         <div className="border-b border-gray-900/10 pb-12">
-        <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+        <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6 border-b border-gray-900/10 pb-10">
             <div className="sm:col-span-3">
               <label htmlFor="first-name" className="block text-sm font-medium leading-6 text-gray-900">
                 Type
@@ -132,6 +149,20 @@ export default function Form() {
                 toolbarClassName="toolbar"
               />
             </div>
+            <p className="text-sm text-gray-900 font-extralight w-full -mt-6 col-span-full">(min 150 max 5000 now 0)</p>
+            <div className="mt- col-span-full">
+              <label>
+                <input
+                  type="checkbox"
+                  checked={isChecked}
+                  onChange={() => setIsChecked((prev) => !prev)}
+                  className="px-4 py-2 bg-white text-xl text-gray-700 border border-[#D9D9D9]  rounded transition ease-in-out mr-3"
+                />
+                <span className="text-sm text-black">
+                  Send me helpful messages about jobs that match my portfolio
+                </span>
+              </label>
+          </div>
 
         </div>
 
