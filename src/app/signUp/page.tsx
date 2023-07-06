@@ -1,6 +1,7 @@
 "use client";
 import GoogleAuth from "../components/googleOAuth";
 import AppleAuth from "../components/appleOAuth";
+import Nav from "../components/Nav";
 import { useState, useMemo } from "react";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 import Select from "react-select";
@@ -30,9 +31,10 @@ export default function SignUp() {
   async function onSubmit() {}
 
   return (
-    <div className="py-20 px-3">
-      <div className="border border-[#001E005E] rounded-lg py-20 px-10 max-w-4xl mx-auto">
-        <h1 className="text-black text-3xl md:text-5xl">
+    <div className="">
+      <Nav />
+      <div className="border border-[#001E005E] rounded-lg py-20 px-14 max-w-2xl mx-auto">
+        <h1 className="text-black text-3xl md:text-4xl">
           Start your Career right here.
         </h1>
         <AppleAuth />
@@ -158,7 +160,7 @@ export default function SignUp() {
           <p className="mb-6">
             Already have an account?{" "}
             <Link
-              href="/SignIn"
+              href="/signIn"
               className="text-[#00EF7C] transition duration-200 ease-in-out"
             >
               Login

@@ -18,9 +18,9 @@ function classNames(...classes: string[]) {
   }
   
 
-export default function Navbar() {
+export default function NavbarJob() {
   return (
-    <Disclosure as="nav" className="bg-[#00360C]">
+    <Disclosure as="nav" className="bg-transparent">
       {({ open }) => (
         <>
           <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -45,41 +45,41 @@ export default function Navbar() {
                   /> */}
                   <Image
                     className="hidden h-8 w-auto lg:block"
-                    src="/images/declan.png"
+                    src="/images/navLogo.png"
                     alt="Your Company"
-                    width={158}
-                    height={48}
+                    width={178}
+                    height={68}
                   />
                 </div>
-                <div className="hidden sm:ml-6 sm:block">
-                  <div className="flex space-x-4">
+                <div className="hidden sm:ml-6 sm:block mx-auto bg-red-600">
+                    <div className="flex space-x-4">
                     {navigation.map((item) => (
-                      <a
+                        <a
                         key={item.name}
                         href={item.href}
                         className={classNames(
-                          item.current ? 'bg-gray-900 text-[#ADFFC8]' : 'text-[#ADFFC8] hover:bg-gray-700 hover:text-white',
-                          'rounded-md px-3 py-2 text-sm font-medium'
+                            item.current ? 'bg-gray-900 text-[#ADFFC8]' : 'text-[#ADFFC8] hover:bg-gray-700 hover:text-white',
+                            'rounded-md px-3 py-2 text-sm font-medium'
                         )}
                         aria-current={item.current ? 'page' : undefined}
-                      >
+                        >
                         {item.name}
-                      </a>
+                        </a>
                     ))}
-                  </div>
+                    </div>
                 </div>
               </div>
-              <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                <SearchBar />
+                
+              <div className="absolute space-x-3 inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 <Link
                   href="/signIn"
-                  className="text-[#ADFFC8] text-sm p-1 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                  className="text-[#001E00] text-sm p-1 font-medium focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
                 >
                   Log In
                 </Link>
                 <Link
                   href="/signUp"
-                  className="rounded-full font-semibold text-sm bg-[#ADFFC8] p-2 text-[#00360C]  focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#ADFFC8]"
+                  className="rounded-full text-sm font-semibold bg-[#00EF7C] p-2 px-5 text-[#00360C]  focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#ADFFC8]"
                 >
                   Sign Up
                 </Link>

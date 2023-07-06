@@ -1,6 +1,7 @@
 "use client";
 import GoogleAuth from "../components/googleOAuth";
 import AppleAuth from "../components/appleOAuth";
+import Nav from "../components/Nav";
 import { useState } from "react";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 import Link from "next/link";
@@ -23,9 +24,10 @@ export default function SignUp() {
   async function onSubmit() {}
 
   return (
-    <div className="py-20 px-3">
-      <div className="border border-[#001E005E] rounded-lg py-20 px-10 max-w-4xl mx-auto">
-        <h1 className="text-black text-3xl md:text-5xl">Welcome Back.</h1>
+    <div className="">
+      <Nav />
+      <div className="border border-[#001E005E] rounded-lg py-20 px-14 max-w-2xl mx-auto">
+        <h1 className="text-black text-3xl md:text-4xl">Welcome Back.</h1>
         <AppleAuth />
         <GoogleAuth />
         <div className="my-9 flex items-center before:border-t  before:flex-1 before:border-gray-300 after:border-t after:flex-1 after:border-gray-300">
@@ -66,7 +68,7 @@ export default function SignUp() {
 
           <button
             type="submit"
-            className="mt-10 flex items-center justify-center w-full bg-[#00EF7C] text-[#001E00] px-7 py-3 uppercase text-sm font-medium  hover:shadow-lg active:shadow-lg transition duration-150 ease-in-out rounded"
+            className="mt-10 flex items-center justify-center w-full bg-[#00EF7C] text-[#001E00] px-7 py-3 capitalize font-bold  hover:shadow-lg active:shadow-lg transition duration-150 ease-in-out rounded"
           >
             {" "}
             Log Into Account
