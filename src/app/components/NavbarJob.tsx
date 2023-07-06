@@ -7,9 +7,9 @@ import { PiCaretDownBold } from "react-icons/pi"
 import Link from 'next/link';
 
 const navigation = [
-  { name: 'Find Talent', href: '#', current: false },
-  { name: 'Find Work', href: '#', current: false },
-  { name: 'Why Declan Work', href: '#', current: false },
+  { name: 'Jobs', href: '#', current: false },
+  { name: 'Talents', href: '#', current: false },
+  { name: 'Message', href: '#', current: false },
 //   { name: 'Calendar', href: '#', current: false },
 ]
 
@@ -51,14 +51,14 @@ export default function NavbarJob() {
                     height={68}
                   />
                 </div>
-                <div className="hidden sm:ml-6 sm:block mx-auto bg-red-600">
+                <div className="hidden sm:ml-80 sm:block">
                     <div className="flex space-x-4">
                     {navigation.map((item) => (
                         <a
                         key={item.name}
                         href={item.href}
                         className={classNames(
-                            item.current ? 'bg-gray-900 text-[#ADFFC8]' : 'text-[#ADFFC8] hover:bg-gray-700 hover:text-white',
+                            item.current ? 'bg-gray-900 text-[#001E00]' : 'text-[#001E00]',
                             'rounded-md px-3 py-2 text-sm font-medium'
                         )}
                         aria-current={item.current ? 'page' : undefined}

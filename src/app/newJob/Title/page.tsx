@@ -8,26 +8,13 @@ import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 import Link from "next/link";
 
 export default function SignUp() {
-  const [showPassword, setShowPassWord] = useState(false);
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-  });
-  function onChange(e: any) {
-    setFormData((prevState) => ({
-      ...prevState,
-      [e.target.id]: e.target.value,
-    }));
-  }
-
-  const { email, password } = formData;
 
   async function onSubmit() {}
 
   return (
-    <div className="">
+    <div className="font-poppin">
       <NavbarJob />
-      <div className="px-14 max-w-2xl mx-auto">
+      <div className="px-14 max-w-2xl mx-auto py-16">
         <Header 
             title="Post new Job" 
             subtitle="1/3" 

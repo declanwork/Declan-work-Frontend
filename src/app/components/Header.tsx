@@ -2,8 +2,8 @@
 interface HeaderProps {
     title: string;
     subtitle: string;
-    nextTitle: string;
-    nextSubtitle: string;
+    nextTitle?: string;
+    nextSubtitle?: string;
   }
 
   const Header: React.FC<HeaderProps> = ({ title, subtitle, nextTitle, nextSubtitle }) => {
@@ -19,12 +19,12 @@ interface HeaderProps {
   };
   
 
-//   export const SubText: React.FC<HeaderProps> = ({ title, subtitle }) => {
-//     return (
-//       <div className="m-1">
-//         <h5 className="text-lg font-bold text-gray-300 mb-2">{title}</h5>
-//         <h6 className="text-base text-white">{subtitle}</h6>
-//       </div>
-//     );
-//   };
+  export const SubText: React.FC<HeaderProps> = ({ title, subtitle }) => {
+    return (
+      <div className="m-1">
+        <h5 className="text-4xl font-bold">{title}</h5>
+        <h6 className="text-sm mt-2">{subtitle}</h6>
+      </div>
+    );
+  };
 export default Header;
