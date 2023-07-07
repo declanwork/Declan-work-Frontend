@@ -9,8 +9,8 @@ import "react-quill/dist/quill.snow.css";
 import { AiOutlineSearch } from "react-icons/ai";
 import { FaUpload } from "react-icons/fa";
 import Link from "next/link";
-import Nav from "../components/Nav";
-import { SubText } from "../components/Header";
+import Nav from "../../components/Nav";
+import { SubText } from "../../components/Header";
 
 export default function Profile() {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -490,7 +490,7 @@ export default function Profile() {
             {/* PREV/NEXT BUTTONS */}
             <div className="mt-10 flex justify-between items-center">
               <Link href="" scroll={false} className="border border-[#001E00] text-[#001E00] font-medium py-3 px-8 rounded-full">Back</Link>
-              <Link href="/editProfile/payments" className="bg-[#00EF7C] text-[#001E00] py-3 px-8 rounded-full border border-[#00EF7C]">Next</Link>
+              <Link href="/editProfile/payments" className="bg-[#00EF7C] text-[#001E00] py-3 px-8 rounded-full border border-[#00EF7C] font-medium">Next</Link>
             </div>
           </div>
         </div>
