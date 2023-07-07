@@ -105,7 +105,7 @@ export default function SignUp() {
             id="country"
             value={country}
             onChange={onChange}
-            placeholder={<div className="text-[#a0a6b2]">Select category</div>}
+            placeholder={<div className="text-[#a0a6b2]">Select Country</div>}
             className="w-full bg-white text-xl text-gray-700  rounded transition ease-in-out placeholder:text-black"
           />
 
