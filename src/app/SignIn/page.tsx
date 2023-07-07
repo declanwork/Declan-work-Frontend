@@ -1,7 +1,7 @@
 "use client";
-import GoogleAuth from "../components/googleOAuth";
-import AppleAuth from "../components/appleOAuth";
-import Nav from "../components/Nav";
+import GoogleAuth from "../../components/googleOAuth";
+import AppleAuth from "../../components/appleOAuth";
+import Nav from "../../components/Nav";
 import { useState } from "react";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 import Link from "next/link";

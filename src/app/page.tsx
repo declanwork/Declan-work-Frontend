@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
-import Toggle from "./components/headerToggle";
-import Logo from "./components/logoCloud";
+import Toggle from "../components/headerToggle";
+import Logo from "../components/logoCloud";
 import { FiMail } from "react-icons/fi";
 import { AiFillStar } from "react-icons/ai";
 import { LiaToolsSolid } from "react-icons/lia";
@@ -9,9 +9,9 @@ import { BsBriefcase } from "react-icons/bs";
 import { BiSupport } from "react-icons/bi";
 import { FaTrademark } from "react-icons/fa";
 import { BsArrowRight } from "react-icons/bs";
-import Navbar from "./components/Navbar";
-import Footer from "./components/footer";
-import Skills from './components/skills';
+import Navbar from "../components/Navbar";
+import Footer from "../components/footer";
+import Skills from '../components/skills';
 
 export default function Home() {
   return (

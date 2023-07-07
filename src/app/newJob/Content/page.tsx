@@ -1,11 +1,19 @@
 "use client";
+<<<<<<< HEAD
 import NavbarJob from "../../components/NavbarJob";
 import { SubText } from "../../components/Header";
 import Form from "@/app/components/Form";
+=======
+import NavbarJob from "../../../components/NavbarJob";
+import { SubText } from "../../../components/Header";
+// import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
+// import Link from "next/link";
+import Form from "@/components/Form";
+>>>>>>> 9e6dd42fa826aebca0816362b81d5ce8e59a12ca
 
 export default function SignUp() {
 
-  async function onSubmit() {}
+  // async function onSubmit() {}
 
   return (
     <div className="font-poppin">

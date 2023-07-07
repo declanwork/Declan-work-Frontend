@@ -1,15 +1,20 @@
 "use client";
 import Image from "next/image";
 import { useState } from "react";
-import PhoneInput from "react-phone-number-input";
-import "react-phone-number-input/style.css";
-import ReactQuill from "react-quill";
-import "react-quill/dist/quill.snow.css";
+// import PhoneInput from "react-phone-number-input";
+// import "react-phone-number-input/style.css";
+// import ReactQuill from "react-quill";
+// import "react-quill/dist/quill.snow.css";
 import { AiOutlineSearch } from "react-icons/ai";
 import { FaUpload } from "react-icons/fa";
 import Link from "next/link";
+<<<<<<< HEAD:src/app/editProfile/page.tsx
 import Nav from "@/app/components/Nav";
 import { SubText } from "@/app/components/Header";
+=======
+import Nav from "../../../components/Nav";
+import { SubText } from "../../../components/Header";
+>>>>>>> 9e6dd42fa826aebca0816362b81d5ce8e59a12ca:src/app/editProfile/basicInfo/page.tsx
 
 export default function Profile() {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -267,9 +272,6 @@ export default function Profile() {
     "Zimbabwe"
   ];
   
-  // Example usage:
-  console.log(countries);
-  
 
   return (
     <>
@@ -327,10 +329,16 @@ export default function Profile() {
                 id="files"
                 name="myImage"
                 className="hidden"
+<<<<<<< HEAD:src/app/editProfile/page.tsx
                 // onChange={(event) => {
                 //   console.log(event.target.files[0]);
                 //   setSelectedImage(event.target.files[0]);
                 // }}
+=======
+                onChange={(event: any) => {
+                  setSelectedImage(event.target.files[0]);
+                }}
+>>>>>>> 9e6dd42fa826aebca0816362b81d5ce8e59a12ca:src/app/editProfile/basicInfo/page.tsx
               />
             </div>
           </div>
@@ -454,14 +462,14 @@ export default function Profile() {
                 <label htmlFor="phoneNumber" className="text-[#0D0D22]">
                   Phone Number
                 </label>
-                <PhoneInput
+                {/* <PhoneInput
                   placeholder="Enter phone number"
                   id="phoneNumber"
                   value={phoneNumber}
                   onChange={onChange}
                   defaultCountry="NG"
                   className="block w-full py-3 px-4 bg-transparent border border-[#D0D2D6] text-sm"
-                />
+                /> */}
               </div>
             </div>
             {/* Text Editor */}
@@ -469,13 +477,13 @@ export default function Profile() {
               <label htmlFor="bio" className="text-[#0D0D22]">
                 Bio
               </label>
-              <ReactQuill
+              {/* <ReactQuill
                 theme="snow"
                 id="bio"
                 value={bio}
                 onChange={handleProcedureContentChange}
                 className="h-[300px]"
-              />
+              /> */}
             </div>
             <div className="mt-20">
               <label htmlFor="portfolio">Upload your portfolio</label>
@@ -489,7 +497,7 @@ export default function Profile() {
             {/* PREV/NEXT BUTTONS */}
             <div className="mt-10 flex justify-between items-center">
               <Link href="" scroll={false} className="border border-[#001E00] text-[#001E00] font-medium py-3 px-8 rounded-full">Back</Link>
-              <Link href="/editProfile/payments" className="bg-[#00EF7C] text-[#001E00] py-3 px-8 rounded-full border border-[#00EF7C]">Next</Link>
+              <Link href="/editProfile/payments" className="bg-[#00EF7C] text-[#001E00] py-3 px-8 rounded-full border border-[#00EF7C] font-medium">Next</Link>
             </div>
           </div>
         </div>

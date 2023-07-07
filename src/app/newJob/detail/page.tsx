@@ -2,8 +2,8 @@
 import { BiSolidPencil } from 'react-icons/bi';
 import { PiCaretDownBold } from 'react-icons/pi';
 import Link from "next/link";
-import { SubText } from "@/app/components/Header";
-import NavbarJob from "@/app/components/NavbarJob";
+import { SubText } from "@/components/Header";
+import NavbarJob from "@/components/NavbarJob";
 
 
 
