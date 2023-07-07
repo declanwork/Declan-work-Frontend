@@ -1,6 +1,6 @@
 "use client";
-import { SubText } from "@/app/components/Header";
-import Nav from "@/app/components/Nav";
+import { SubText } from "@/components/Header";
+import Nav from "@/components/Nav";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";

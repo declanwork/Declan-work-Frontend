@@ -2,15 +2,15 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import PhoneInput from "react-phone-number-input";
-import "react-phone-number-input/style.css";
-import ReactQuill from "react-quill";
-import "react-quill/dist/quill.snow.css";
+// import PhoneInput from "react-phone-number-input";
+// import "react-phone-number-input/style.css";
+// import ReactQuill from "react-quill";
+// import "react-quill/dist/quill.snow.css";
 import { AiOutlineSearch } from "react-icons/ai";
 import { FaUpload } from "react-icons/fa";
 import Link from "next/link";
-import Nav from "../../components/Nav";
-import { SubText } from "../../components/Header";
+import Nav from "../../../components/Nav";
+import { SubText } from "../../../components/Header";
 
 export default function Profile() {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -268,9 +268,6 @@ export default function Profile() {
     "Zimbabwe"
   ];
   
-  // Example usage:
-  console.log(countries);
-  
 
   return (
     <>
@@ -328,8 +325,7 @@ export default function Profile() {
                 id="files"
                 name="myImage"
                 className="hidden"
-                onChange={(event) => {
-                  console.log(event.target.files[0]);
+                onChange={(event: any) => {
                   setSelectedImage(event.target.files[0]);
                 }}
               />
@@ -455,14 +451,14 @@ export default function Profile() {
                 <label htmlFor="phoneNumber" className="text-[#0D0D22]">
                   Phone Number
                 </label>
-                <PhoneInput
+                {/* <PhoneInput
                   placeholder="Enter phone number"
                   id="phoneNumber"
                   value={phoneNumber}
                   onChange={onChange}
                   defaultCountry="NG"
                   className="block w-full py-3 px-4 bg-transparent border border-[#D0D2D6] text-sm"
-                />
+                /> */}
               </div>
             </div>
             {/* Text Editor */}
@@ -470,13 +466,13 @@ export default function Profile() {
               <label htmlFor="bio" className="text-[#0D0D22]">
                 Bio
               </label>
-              <ReactQuill
+              {/* <ReactQuill
                 theme="snow"
                 id="bio"
                 value={bio}
                 onChange={handleProcedureContentChange}
                 className="h-[300px]"
-              />
+              /> */}
             </div>
             <div className="mt-20">
               <label htmlFor="portfolio">Upload your portfolio</label>

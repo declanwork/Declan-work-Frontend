@@ -1,8 +1,8 @@
 import { useState, useMemo } from "react";
 import Link from "next/link";
 // import { Editor } from 'react-draft-wysiwyg';
-import ReactQuill from "react-quill";
-import "react-quill/dist/quill.snow.css";
+// import ReactQuill from "react-quill";
+// import "react-quill/dist/quill.snow.css";
 
 
 export default function Form() {
@@ -163,13 +163,13 @@ export default function Form() {
                 <label htmlFor="description" className="block text-sm font-medium leading-6 text-gray-900">
                   Description
                 </label>
-                <ReactQuill
+                {/* <ReactQuill
                 theme="snow"
                 id="description"
                 value={description}
                 onChange={handleProcedureContentChange}
                 className="h-[300px]"
-              />
+              /> */}
               {/* <p className="text-sm text-black font-extralight w-full -mt-6 col-span-full">(min 150 max 5000 now 0)</p> */}
               </div>
               <div className="mt-5 col-span-full">
@@ -226,13 +226,13 @@ export default function Form() {
               <label htmlFor="about" className="block text-sm font-medium leading-6 text-gray-900">
                 About You
               </label>
-              <ReactQuill
+              {/* <ReactQuill
                 theme="snow"
                 id="about"
                 value={about}
                 onChange={handleProcedureContentChange}
                 className="h-[300px]"
-              />
+              /> */}
               {/* <div className="mt-5">
                 <p className="text-sm text-black font-extralight w-full">(min 150 max 5000 now 0)</p>
               </div> */}

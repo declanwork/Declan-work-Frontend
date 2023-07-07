@@ -2,8 +2,8 @@
 import { SetStateAction, useState } from 'react'
 import Image from 'next/image';
 import Link from "next/link";
-import Header from "@/app/components/Header";
-import NavbarJob from "@/app/components/NavbarJob";
+import Header from "@/components/Header";
+import NavbarJob from "@/components/NavbarJob";
 
 
 
