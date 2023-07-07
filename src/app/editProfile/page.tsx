@@ -12,6 +12,7 @@ import { AiOutlineSearch } from "react-icons/ai";
 import { FaUpload } from "react-icons/fa";
 import Link from "next/link";
 import Nav from "../components/Nav";
+import { SubText } from "../components/Header";
 
 export default function Profile() {
   const options = useMemo(() => countryList().getData(), []);
@@ -77,8 +78,7 @@ export default function Profile() {
     <>
     <Nav   />
       <div className="max-w-4xl mx-auto">
-        <h1 className="font-medium text-5xl mb-2">Let&apos;s Get Started.</h1>
-        <span className="font-medium">1/2</span>
+        <SubText title="Let's Get Started " subtitle="1/2" />
         <div className="bg-[#00EF7C] p-2 rounded-lg text-center mt-2">
           <p className="text-[#001E00] text-sm">
             Filling out as many fields as possible increases your chances of

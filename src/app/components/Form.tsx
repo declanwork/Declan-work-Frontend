@@ -1,19 +1,40 @@
 import { useState, useMemo } from "react";
-import { PhotoIcon, UserCircleIcon } from '@heroicons/react/24/solid'
 import Link from "next/link";
-import { Editor } from 'react-draft-wysiwyg';
-import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
+// import { Editor } from 'react-draft-wysiwyg';
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 
 
 export default function Form() {
   const [isChecked, setIsChecked] = useState(false);
   const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    password: "",
-    country: "",
+    // firstName: "",
+    // lastName: "",
+    // email: "",
+    // password: "",
+    description: "",
+    about: "",
   });
+
+  const {
+    // jobRole,
+    // jobCategory,
+    // city,
+    // country,
+    // address,
+    // postalCode,
+    // phoneNumber,
+    description,
+    about,
+  } = formData;
+
+  function handleProcedureContentChange(content: any, delta: any, source: any, editor: any){
+    setFormData((prevState) => ({
+      ...prevState,
+      description: content,
+      about: content,
+    }));
+  }
 
   function onChange(e: any) {
     setFormData((prevState) => ({
@@ -25,8 +46,7 @@ export default function Form() {
   return (
     <form>
       <div className="space-y-12">
-        <div className="border-b border-gray-900/10 pb-12">
-          <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6 border-b border-gray-900/10 pb-10">
+          <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6 border-b border-gray-900/10 pb-12">
               <div className="sm:col-span-3">
                 <label htmlFor="first-name" className="block text-sm font-medium leading-6 text-gray-900">
                   Type
@@ -143,14 +163,16 @@ export default function Form() {
                 <label htmlFor="description" className="block text-sm font-medium leading-6 text-gray-900">
                   Description
                 </label>
-                <Editor
-                  wrapperClassName="wrapper"
-                  editorClassName="editor"
-                  toolbarClassName="toolbar"
-                />
+                <ReactQuill
+                theme="snow"
+                id="description"
+                value={description}
+                onChange={handleProcedureContentChange}
+                className="h-[300px]"
+              />
+              {/* <p className="text-sm text-black font-extralight w-full -mt-6 col-span-full">(min 150 max 5000 now 0)</p> */}
               </div>
-              <p className="text-sm text-black font-extralight w-full -mt-6 col-span-full">(min 150 max 5000 now 0)</p>
-              <div className="mt- col-span-full">
+              <div className="mt-5 col-span-full">
                 <label>
                   <input
                     type="checkbox"
@@ -165,9 +187,7 @@ export default function Form() {
             </div>
 
           </div>
-        </div>
 
-        <div className="">
           <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6 pb-6">
 
             <div className="col-span-full">
@@ -206,24 +226,27 @@ export default function Form() {
               <label htmlFor="about" className="block text-sm font-medium leading-6 text-gray-900">
                 About You
               </label>
-              <Editor
-                wrapperClassName="wrapper"
-                editorClassName="editor"
-                toolbarClassName="toolbar"
+              <ReactQuill
+                theme="snow"
+                id="about"
+                value={about}
+                onChange={handleProcedureContentChange}
+                className="h-[300px]"
               />
+              {/* <div className="mt-5">
+                <p className="text-sm text-black font-extralight w-full">(min 150 max 5000 now 0)</p>
+              </div> */}
             </div>
-            <p className="text-sm text-black font-extralight w-full -mt-6 col-span-full">(min 150 max 5000 now 0)</p>
           </div>
-        </div>   
       </div>
 
-      <div className="mt-6 flex items-center justify-between gap-x-6">
-        <Link href="/newJob/Title" className="text-sm font-semibold px-4 py-2 rounded-2xl border border-[#001E00] leading-6 text-gray-900">
+      <div className="mt-9 flex items-center justify-between gap-x-6">
+        <Link href="/newJob/Title" className="text-sm font-semibold px-4 py-2 rounded-full border border-[#001E00] leading-6 text-gray-900">
           Back
         </Link>
         <Link
-          href="/newJob/PaymentInfo"
-          className="rounded-2xl bg-[#00EF7C] px-4 py-2 text-sm font-semibold shadow-sm"
+          href="/newJob/paymentInfo"
+          className="rounded-full bg-[#00EF7C] px-4 py-2 text-sm font-semibold shadow-sm"
         >
           Next Skill
         </Link>

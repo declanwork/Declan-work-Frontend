@@ -41,13 +41,16 @@ export default function Nav() {
                     src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
                     alt="Your Company"
                   /> */}
-                  <Image
-                    className="hidden h-8 w-auto lg:block"
-                    src="/images/navLogo.png"
-                    alt="Your Company"
-                    width={178}
-                    height={68}
-                  />
+                  <Link href="/">
+                    <Image
+                      className="hidden h-8 w-auto lg:block"
+                      src="/images/navLogo.png"
+                      alt="Your Company"
+                      width={178}
+                      height={68}
+                    />
+                  </Link>
+                  
                 </div>
                 
               </div>
