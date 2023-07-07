@@ -1,5 +1,4 @@
 "use client";
-
 import Image from "next/image";
 import { useState } from "react";
 import PhoneInput from "react-phone-number-input";
@@ -9,8 +8,8 @@ import "react-quill/dist/quill.snow.css";
 import { AiOutlineSearch } from "react-icons/ai";
 import { FaUpload } from "react-icons/fa";
 import Link from "next/link";
-import Nav from "../components/Nav";
-import { SubText } from "../components/Header";
+import Nav from "@/app/components/Nav";
+import { SubText } from "@/app/components/Header";
 
 export default function Profile() {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -328,10 +327,10 @@ export default function Profile() {
                 id="files"
                 name="myImage"
                 className="hidden"
-                onChange={(event) => {
-                  console.log(event.target.files[0]);
-                  setSelectedImage(event.target.files[0]);
-                }}
+                // onChange={(event) => {
+                //   console.log(event.target.files[0]);
+                //   setSelectedImage(event.target.files[0]);
+                // }}
               />
             </div>
           </div>
