@@ -8,13 +8,9 @@ import { useState } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
 import { FaUpload } from "react-icons/fa";
 import Link from "next/link";
-<<<<<<< HEAD:src/app/editProfile/page.tsx
-import Nav from "@/app/components/Nav";
-import { SubText } from "@/app/components/Header";
-=======
 import Nav from "../../../components/Nav";
 import { SubText } from "../../../components/Header";
->>>>>>> 9e6dd42fa826aebca0816362b81d5ce8e59a12ca:src/app/editProfile/basicInfo/page.tsx
+
 
 export default function Profile() {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -329,16 +325,10 @@ export default function Profile() {
                 id="files"
                 name="myImage"
                 className="hidden"
-<<<<<<< HEAD:src/app/editProfile/page.tsx
                 // onChange={(event) => {
                 //   console.log(event.target.files[0]);
                 //   setSelectedImage(event.target.files[0]);
                 // }}
-=======
-                onChange={(event: any) => {
-                  setSelectedImage(event.target.files[0]);
-                }}
->>>>>>> 9e6dd42fa826aebca0816362b81d5ce8e59a12ca:src/app/editProfile/basicInfo/page.tsx
               />
             </div>
           </div>
