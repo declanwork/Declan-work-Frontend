@@ -4,9 +4,6 @@ const navigation = [
     { name: 'Top skills in US', href: '#', current: false},
     { name: 'Project Catalog', href: '#', current: false},
   ]
-const skills = [
-    {}
-]
 
   function classNames(...classes: string[]) {
     return classes.filter(Boolean).join(' ');

@@ -126,11 +126,11 @@ export default function Payments() {
         </div>
 
         <div className="mt-9 flex items-center justify-between gap-x-6">
-        <Link href="/newJob/Title" className="text-sm font-semibold px-4 py-2 rounded-full border border-[#001E00] leading-6 text-gray-900">
+        <Link href="/newJob/Content" className="text-sm font-semibold px-4 py-2 rounded-full border border-[#001E00] leading-6 text-gray-900">
           Back
         </Link>
         <Link
-          href="/newJob/paymentInfo"
+          href="/newJob/detail"
           className="rounded-full bg-[#00EF7C] px-4 py-2 text-sm font-semibold shadow-sm"
         >
           Next Skill
