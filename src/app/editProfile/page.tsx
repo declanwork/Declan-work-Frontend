@@ -11,6 +11,7 @@ import "react-quill/dist/quill.snow.css";
 import { AiOutlineSearch } from "react-icons/ai";
 import { FaUpload } from "react-icons/fa";
 import Link from "next/link";
+import Nav from "../components/Nav";
 
 export default function Profile() {
   const options = useMemo(() => countryList().getData(), []);
@@ -74,7 +75,8 @@ export default function Profile() {
 
   return (
     <>
-      <div className="max-w-4xl mx-auto pt-40">
+    <Nav   />
+      <div className="max-w-4xl mx-auto">
         <h1 className="font-medium text-5xl mb-2">Let&apos;s Get Started.</h1>
         <span className="font-medium">1/2</span>
         <div className="bg-[#00EF7C] p-2 rounded-lg text-center mt-2">
