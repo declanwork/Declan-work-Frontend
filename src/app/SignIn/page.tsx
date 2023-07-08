@@ -24,7 +24,7 @@ export default function SignUp() {
   async function onSubmit() {}
 
   return (
-    <div className="">
+    <div className="pb-20">
       <Nav />
       <div className="border border-[#001E005E] rounded-lg py-20 px-14 max-w-2xl mx-auto">
         <h1 className="text-black text-3xl md:text-4xl">Welcome Back.</h1>
