@@ -3,8 +3,7 @@ import Nav from "@/components/Nav";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function EmailVerification() {
-  function resendEmail() {}
+export default function Congratulations() {
 
   return (
     <section className="pb-20 px-3">
@@ -13,7 +12,7 @@ export default function EmailVerification() {
         <div className="w-full h-[200px] flex justify-center items-center">
           <div className="relative">
             <Image
-              src="/svg/clipgroup.svg"
+              src="/svg/jobPost.svg"
               alt="svg"
               width={200}
               height={200}

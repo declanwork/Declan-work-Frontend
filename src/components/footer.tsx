@@ -3,7 +3,7 @@ import { CiFacebook } from "react-icons/ci";
 import { AiOutlineLinkedin, AiOutlineApple, AiOutlineAndroid } from "react-icons/ai";
 import { FiTwitter, FiYoutube, FiInstagram } from "react-icons/fi"
 
-export default function footer() {
+export default function Footer() {
   const forClient = [
     {
       text: "How to Hire",
