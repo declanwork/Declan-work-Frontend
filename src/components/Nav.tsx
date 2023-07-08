@@ -56,7 +56,7 @@ export default function Nav() {
               </div>
               <div className="absolute space-x-3 inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 <Link
-                  href="/SignIn"
+                  href="/signIn"
                   className="text-[#001E00] text-sm p-1 font-medium focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
                 >
                   Log In
