@@ -4,10 +4,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { FaPen } from "react-icons/fa";
-import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
+import { AiFillHeart, AiOutlineHeart, AiFillStar, AiOutlineSearch } from "react-icons/ai";
 import Footer from "../../components/footer";
 import { BsThreeDotsVertical } from "react-icons/bs";
-// jobsNav, setJobsNav
+
 export default function Dashboard() {
   const [jobsNav, setJobsNav] = useState("Job Profile");
   const [blogsNav, setBlogsNav] = useState("Blog Profile");
@@ -74,8 +74,8 @@ export default function Dashboard() {
       <NavbarJob />
       <div className="py-10 mx-auto max-w-[1150px]">
         <div className="bg-[#00360C] h-[250px] w-full rounded-lg relative text-center flex items-center">
-          <div className="w-[150px] border border-red-600 h-[100px] absolute top-10 left-28">
-            <div className="relative border border-blue-600">
+          <div className="w-[150px] h-[100px] absolute top-10 left-28">
+            <div className="relative">
               <Image
                 src="/svg/jobPost.svg"
                 alt="svg"
@@ -90,6 +90,16 @@ export default function Dashboard() {
                 className="absolute -bottom-10 -right-20"
               />
             </div>
+          </div>
+          <div className="flex flex-col justify-center items-center mx-auto space-y-8">
+          <div className="mx-auto ">
+            <h1 className="text-5xl font-medium text-white max-w-2xl">&ldquo;Your Skills, Your Rules, Freelancing Unleashed!&rdquo;</h1>
+          </div>
+          <div className=" text-center mx-auto border pl-5 rounded-full  relative flex space-x-3 items-center">
+            <AiOutlineSearch className="absolute left-3 text-white" size={20} />
+            <input type="text" placeholder="Search for Jobs" className="focus:ring-0 outline-none active:outline-none bg-transparent text-sm border-none text-white"/>
+            <button className="bg-[#00EF7C] radius-full text-sm text-black py-3 px-4 rounded-full">Search</button>
+          </div>
           </div>
         </div>
         <div className="mt-5 flex items-start gap-10">
@@ -173,11 +183,12 @@ export default function Dashboard() {
             {/* NAVIGATION DIV */}
             <div className="border-b-2 px-8">
               <h1 className="text-3xl font-medium">Explore Jobs</h1>
-              <div className="flex items-center space-x-10 py-4">
+              <div className="flex items-center space-x-10 pt-4">
                 <button
                   onClick={() => {
                     setJobsNav("Job Profile");
                   }}
+                  className={`${jobsNav === "Job Profile" ? "font-medium border-b-4 border-black pb-4 -mb-[3px] rounded" : "pb-4"}`}
                 >
                   Job Profile
                 </button>
@@ -185,6 +196,7 @@ export default function Dashboard() {
                   onClick={() => {
                     setJobsNav("General");
                   }}
+                  className={`${jobsNav === "General" ? "font-medium border-b-4 border-black pb-4 -mb-[3px] rounded" : "pb-4"}`}
                 >
                   General
                 </button>
@@ -192,6 +204,7 @@ export default function Dashboard() {
                   onClick={() => {
                     setJobsNav("Saved Job");
                   }}
+                  className={`${jobsNav === "Saved Job" ? "font-medium border-b-4 border-black pb-4 -mb-[3px] rounded" : "pb-4"}`}
                 >
                   Saved Job
                 </button>
@@ -288,11 +301,12 @@ export default function Dashboard() {
           <div className="border-b-2 px-20">
             <h1 className="text-3xl font-medium mb-2">Blog Posts</h1>
             {/* BUTTON SECTION START */}
-            <div className="flex items-center space-x-10 py-4">
+            <div className="flex items-center space-x-10 pt-4">
               <button
                 onClick={() => {
                   setBlogsNav("Blog Profile");
                 }}
+                className={`${blogsNav === "Blog Profile" ? "font-medium border-b-4 border-black pb-4 -mb-[3px] rounded" : "pb-4"}`}
               >
                 Blog Profile
               </button>
@@ -300,6 +314,7 @@ export default function Dashboard() {
                 onClick={() => {
                   setBlogsNav("General");
                 }}
+                className={`${blogsNav === "General" ? "font-medium border-b-4 border-black pb-4 -mb-[3px] rounded" : "pb-4"}`}
               >
                 General
               </button>
@@ -307,6 +322,7 @@ export default function Dashboard() {
                 onClick={() => {
                   setBlogsNav("Saved Blogs");
                 }}
+                className={`${blogsNav === "Saved Blogs" ? "font-medium border-b-4 border-black pb-4 -mb-[3px] rounded" : "pb-4"}`}
               >
                 Saved Blogs
               </button>
@@ -329,7 +345,7 @@ export default function Dashboard() {
                   index
                 ) => (
                   <div key={index} className="px-20 py-4 relative border-b">
-                    <div className="flex items-center absolute right-0 top-0">
+                    <div className="flex items-center absolute right-5 top-3">
                         {!checked ? (
                           <AiOutlineHeart
                             size={25}
@@ -383,6 +399,96 @@ export default function Dashboard() {
           )}
         </div>
       </div>
+      <section className="bg-[#ECEFEB] py-20 px-3 xl:px-0">
+        <div className="max-w-screen-lg mx-auto">
+        <h1 className="text-4xl font-medium">
+        Community Forum
+        </h1>
+        <p className="text-[#102638] font-medium text-2xl my-8">Join thousands of web3 talents and discusses issues bordering the Web 3 space and make
+ some useful contributions to your teammate</p>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 max-w-screen-lg mx-auto mb-10">
+          {/* item */}
+          <div className="bg-white py-5 px-10 rounded">
+            <h1 className="text-2xl font-medium text-[#001E00]">
+              Development & IT
+            </h1>
+            <div className="flex items-center mt-5 relative md:-bottom-8">
+              <div className="flex items-center justify-center mr-8">
+                <AiFillStar className="text-[#14A800]" size={25} />
+                <p className="text-[#5E6D55] text-xl">4.8/5</p>
+              </div>
+              <p className="text-[#5E6D55] text-xl">1853 Skills</p>
+            </div>
+          </div>
+          {/* item */}
+          <div className="bg-white py-5 px-10 rounded">
+            <h1 className="text-2xl font-medium text-[#001E00]">
+              Writing & Translation
+            </h1>
+            <div className="flex items-center mt-5">
+              <div className="flex items-center justify-center mr-8">
+                <AiFillStar className="text-[#14A800]" size={25} />
+                <p className="text-[#5E6D55] text-xl">4.8/5</p>
+              </div>
+              <p className="text-[#5E6D55] text-xl">1853 Skills</p>
+            </div>
+          </div>
+          {/* item */}
+          <div className="bg-white py-5 px-10 rounded">
+            <h1 className="text-2xl font-medium text-[#001E00]">
+              Design & Creative
+            </h1>
+            <div className="flex items-center mt-5 relative md:-bottom-8">
+              <div className="flex items-center justify-center mr-8">
+                <AiFillStar className="text-[#14A800]" size={25} />
+                <p className="text-[#5E6D55] text-xl">4.8/5</p>
+              </div>
+              <p className="text-[#5E6D55] text-xl">1853 Skills</p>
+            </div>
+          </div>
+          {/* item */}
+          <div className="bg-white py-5 px-10 rounded">
+            <h1 className="text-2xl font-medium text-[#001E00]">AI Services</h1>
+            <div className="flex items-center mt-5 relative md:-bottom-8">
+              <div className="flex items-center justify-center mr-8">
+                <AiFillStar className="text-[#14A800]" size={25} />
+                <p className="text-[#5E6D55] text-xl">4.8/5</p>
+              </div>
+              <p className="text-[#5E6D55] text-xl">1853 Skills</p>
+            </div>
+          </div>
+          {/* item */}
+          <div className="bg-white py-5 px-10 rounded">
+            <h1 className="text-2xl font-medium text-[#001E00]">
+              Finance & Accounting
+            </h1>
+            <div className="flex items-center mt-5">
+              <div className="flex items-center justify-center mr-8">
+                <AiFillStar className="text-[#14A800]" size={25} />
+                <p className="text-[#5E6D55] text-xl">4.8/5</p>
+              </div>
+              <p className="text-[#5E6D55] text-xl">1853 Skills</p>
+            </div>
+          </div>
+          {/* item */}
+          <div className="bg-white py-5 px-10 rounded">
+            <h1 className="text-2xl font-medium text-[#001E00]">
+              Development & IT
+            </h1>
+            <div className="flex items-center mt-5 relative md:-bottom-8">
+              <div className="flex items-center justify-center mr-8">
+                <AiFillStar className="text-[#14A800]" size={25} />
+                <p className="text-[#5E6D55] text-xl">4.8/5</p>
+              </div>
+              <p className="text-[#5E6D55] text-xl">1853 Skills</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className="py-20 bg-[#00360C]">
+      <Footer />
+      </section>
     </div>
   );
 }
