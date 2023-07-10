@@ -1,7 +1,7 @@
 "use client"
 import Image from "next/image";
 import Link from "next/link";
-import NavbarJob from "@/components/NavbarJob";
+import NavbarJob from "@/app/components/NavbarJob";
 
 
 export default function EmailVerification() {

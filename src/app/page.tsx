@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
-import Toggle from "../components/headerToggle";
-import Logo from "../components/logoCloud";
+import Toggle from "./components/headerToggle";
+import Logo from "./components/logoCloud";
 import { FiMail } from "react-icons/fi";
 import { AiFillStar } from "react-icons/ai";
 import { LiaToolsSolid } from "react-icons/lia";
@@ -9,9 +9,9 @@ import { BsBriefcase } from "react-icons/bs";
 import { BiSupport } from "react-icons/bi";
 import { FaTrademark } from "react-icons/fa";
 import { BsArrowRight } from "react-icons/bs";
-import Navbar from "../components/Navbar";
-import Footer from "../components/footer";
-import Skills from '../components/skills';
+import Navbar from "./components/Navbar";
+import Footer from "./components/footer";
+import Skills from "./components/skills";
 
 export default function Home() {
   return (
@@ -172,7 +172,9 @@ export default function Home() {
           height={400}
         />
         <div className="mt-5">
-          <p className="text-[#001E00] font-semibold text-lg">Enterprise Suite</p>
+          <p className="text-[#001E00] font-semibold text-lg">
+            Enterprise Suite
+          </p>
           <p className="text-5xl text-[#001E00] my-9">
             This is how good companies find good company.
           </p>
@@ -309,16 +311,16 @@ export default function Home() {
               />
             </div>
             <div className="max-w-xs mx-auto">
-            <p className="text-[#001E00] font-medium my-8 text-lg">
-              Post a job and hire a pro
-            </p>
-            <button className="relative -bottom-7 md:-bottom-0 border rounded-[25px] text-[#001E00] font-medium flex items-center justify-center py-3 px-8 mx-auto">
-              Talent Marketplace
-              <sup>
-                <FaTrademark />
-              </sup>
-              <BsArrowRight />
-            </button>
+              <p className="text-[#001E00] font-medium my-8 text-lg">
+                Post a job and hire a pro
+              </p>
+              <button className="relative -bottom-7 md:-bottom-0 border rounded-[25px] text-[#001E00] font-medium flex items-center justify-center py-3 px-8 mx-auto">
+                Talent Marketplace
+                <sup>
+                  <FaTrademark />
+                </sup>
+                <BsArrowRight />
+              </button>
             </div>
           </div>
           {/* item */}
@@ -333,16 +335,16 @@ export default function Home() {
               />
             </div>
             <div className="max-w-xs mx-auto">
-            <p className="text-[#001E00] font-medium my-8 text-lg">
-            Browse and buy projects
-            </p>
-            <button className="relative -bottom-7 md:-bottom-0 border rounded-[25px] text-[#001E00] font-medium flex items-center justify-center py-3 px-8 mx-auto">
-            Project Catalog
-              <sup>
-                <FaTrademark />
-              </sup>
-              <BsArrowRight />
-            </button>
+              <p className="text-[#001E00] font-medium my-8 text-lg">
+                Browse and buy projects
+              </p>
+              <button className="relative -bottom-7 md:-bottom-0 border rounded-[25px] text-[#001E00] font-medium flex items-center justify-center py-3 px-8 mx-auto">
+                Project Catalog
+                <sup>
+                  <FaTrademark />
+                </sup>
+                <BsArrowRight />
+              </button>
             </div>
           </div>
           {/* item */}
@@ -357,23 +359,23 @@ export default function Home() {
               />
             </div>
             <div className="max-w-xs mx-auto">
-            <p className="text-[#001E00] font-medium my-8 text-lg">
-            Let us help you find the right talent
-            </p>
-            <button className="border rounded-[25px] text-[#001E00] font-medium flex items-center justify-center py-3 px-8 mx-auto">
-              Talent Scout
-              <sup>
-                <FaTrademark />
-              </sup>
-              <BsArrowRight />
-            </button>
+              <p className="text-[#001E00] font-medium my-8 text-lg">
+                Let us help you find the right talent
+              </p>
+              <button className="border rounded-[25px] text-[#001E00] font-medium flex items-center justify-center py-3 px-8 mx-auto">
+                Talent Scout
+                <sup>
+                  <FaTrademark />
+                </sup>
+                <BsArrowRight />
+              </button>
             </div>
           </div>
         </div>
       </section>
       <Skills />
       <section className="py-20 bg-[#00360C]">
-      <Footer />
+        <Footer />
       </section>
     </main>
   );

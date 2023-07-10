@@ -1,9 +1,9 @@
 "use client";
-import NavbarJob from "../../../components/NavbarJob";
-import { SubText } from "../../../components/Header";
+import NavbarJob from "../../components/NavbarJob";
+import { SubText } from "../../components/Header";
 // import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 // import Link from "next/link";
-import Form from "@/components/Form";
+import Form from "@/app/components/Form";
 
 export default function SignUp() {
 

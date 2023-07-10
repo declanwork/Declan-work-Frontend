@@ -1,5 +1,5 @@
 "use client";
-import Nav from "@/components/Nav";
+import Nav from "@/app/components/Nav";
 import Image from "next/image";
 import Link from "next/link";
 

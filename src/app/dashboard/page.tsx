@@ -1,11 +1,11 @@
 "use client";
-import NavbarJob from "@/components/NavbarJob";
+import NavbarJob from "@/app/components/NavbarJob";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { FaPen } from "react-icons/fa";
 import { AiFillHeart, AiOutlineHeart, AiFillStar, AiOutlineSearch } from "react-icons/ai";
-import Footer from "../../components/footer";
+import Footer from "../components/footer";
 import { BsThreeDotsVertical } from "react-icons/bs";
 
 export default function Dashboard() {

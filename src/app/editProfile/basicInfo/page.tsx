@@ -8,9 +8,9 @@ import { useState } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
 import { FaUpload } from "react-icons/fa";
 import Link from "next/link";
-import Nav from "../../../components/Nav";
+import Nav from "../../components/Nav";
 import { countries, jobCategories, jobRoles } from "@/constants";
-import { SubText } from "../../../components/Header";
+import { SubText } from "../../components/Header";
 
 
 export default function Profile() {

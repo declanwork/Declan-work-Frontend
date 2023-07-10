@@ -12,7 +12,7 @@ const navigation = [
   export default function Skills() {
     return (
       <div className="sm:py-8 bg-[#ADFFC8]">
-        <div className="mx-auto max-w-7xl px-2 lg:px-2">
+        <div className="max-w-[1100px] mx-auto px-3 md:px-0">
           <div className="mx-auto mt-5 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 pt-10 sm:pt-6 lg:mx-0 lg:max-w-none lg:grid-cols-3">
           <div className="flex flex-col">
             {navigation.map((item) => (
