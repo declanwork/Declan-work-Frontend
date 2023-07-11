@@ -1,5 +1,6 @@
 "use client";
 import NavbarJob from "@/app/components/NavbarJob";
+import Footer from "@/app/components/footer";
 import Link from "next/link";
 import { useState } from "react";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
@@ -167,13 +168,27 @@ export default function JobPost() {
             )
           )}
         </div>
-        <div className="border py-8 my-20 rounded-lg w-[67.5%]">
-              <div className="px-8 py-2 border-b">
-              <h1 className="text-5xl text-[#415361] mb-2">Client&apos;s recent history (0)</h1>
-              <h1 className="text-5xl text-[#415361]">Jobs in progress</h1>
-              </div>
+        <div className="border py-8 mt-20 rounded-lg w-[67.5%]">
+          <div className="px-8 py-2 border-b">
+            <h1 className="text-5xl text-[#415361] mb-2">
+              Client&apos;s recent history (0)
+            </h1>
+            <h1 className="text-5xl text-[#415361]">Jobs in progress</h1>
+          </div>
+          
+        </div>
+        <div className="mb-20 mt-10 w-[67.5%] text-right">
+          <Link
+            href="JobPost/SubmitProposal"
+            className="bg-[#14A800] py-3 px-4 rounded-lg text-white"
+          >
+            Submit Proposal
+          </Link>
         </div>
       </div>
+      <section className="py-20 bg-[#00360C]">
+        <Footer />
+      </section>
     </div>
   );
 }
