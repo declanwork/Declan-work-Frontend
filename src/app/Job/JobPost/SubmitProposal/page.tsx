@@ -3,9 +3,10 @@ import NavbarJob from "@/app/components/NavbarJob";
 import { useState } from "react";
 import { FaUpload } from "react-icons/fa";
 import Footer from "@/app/components/footer";
+import { useRouter } from 'next/navigation'
 
 export default function SubmitProposal() {
-  const [isChecked, setIsChecked] = useState(false);
+  const router = useRouter();
   const [milestone, setMilestone] = useState(true);
   const [formData, setFormData] = useState({
     numberOfMilestones: "",
@@ -20,6 +21,9 @@ export default function SubmitProposal() {
       ...prevState,
       [e.target.id]: e.target.value,
     }));
+  }
+  function handleFormSubmit(){
+    router.push("/Job/JobPost/Congratulations")
   }
   return (
     <div>
@@ -135,7 +139,7 @@ export default function SubmitProposal() {
           </div>
           <div className="flex justify-between items-center mt-10">
             <button type="button" className="border py-3 px-4 rounded-lg text-[#001E00]">Cancel</button>
-            <button type="button" className="border py-3 px-4 rounded-lg text-[#001E00] bg-[#00EF7C] border-[#00EF7C]">Submit Proposal</button>
+            <button type="button" onClick={handleFormSubmit} className="border py-3 px-4 rounded-lg text-[#001E00] bg-[#00EF7C] border-[#00EF7C]">Submit Proposal</button>
           </div>
         </div>
       </div>
