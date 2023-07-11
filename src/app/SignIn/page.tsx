@@ -6,7 +6,7 @@ import { useState } from "react";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 import Link from "next/link";
 
-export default function SignUp() {
+export default function SignIn() {
   const [showPassword, setShowPassWord] = useState(false);
   const [formData, setFormData] = useState({
     email: "",

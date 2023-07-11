@@ -5,6 +5,7 @@ import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import SearchBar from './searchBar';
 import { PiCaretDownBold } from "react-icons/pi"
 import Link from 'next/link';
+import Authenticate from '../flow/authenticate'
 
 const navigation = [
   { name: 'Find Talent', href: '#', current: false },
@@ -86,7 +87,11 @@ export default function Navbar() {
               </div>
             </div>
           </div>
-
+          
+          <div>
+          <Authenticate />
+          </div>
+          
           <Disclosure.Panel className="sm:hidden">
             <div className="space-y-1 px-2 pb-3 pt-2">
               {navigation.map((item) => (
