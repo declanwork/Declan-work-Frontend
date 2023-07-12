@@ -12,8 +12,10 @@ import { BsArrowRight } from "react-icons/bs";
 import Navbar from "./components/Navbar";
 import Footer from "./components/footer";
 import Skills from "./components/skills";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
+  const router = useRouter();
   return (
     <main className="font-poppin">
       <div className="bg-[#00360C] font-poppin h-[1000px] flex flex-col overflow-hidden">
@@ -30,10 +32,10 @@ export default function Home() {
             directly on Crypto Jobs List.
           </p>
           <div className="text-center mt-9">
-            <button className="border border-[#00EF7C] bg-[#00EF7C] text-[#163300] font-semibold py-3 px-4 rounded-full mr-4">
+            <button onClick={() => router.push("/newJob/Title")} className="border border-[#00EF7C] bg-[#00EF7C] text-[#163300] font-semibold py-3 px-4 rounded-full mr-4">
               Hire Freelancers
             </button>
-            <button className="border border-[#00EF7C] text-[#00EF7C] font-semibold py-3 px-4 rounded-full">
+            <button onClick={() => router.push("/editProfile")} className="border border-[#00EF7C] text-[#00EF7C] font-semibold py-3 px-4 rounded-full">
               I&#39;m a Freelancer
             </button>
           </div>

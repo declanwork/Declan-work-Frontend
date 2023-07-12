@@ -8,7 +8,7 @@ import NavbarJob from "@/app/components/NavbarJob";
 
 
 export default function Payments() {
-  const [topping, setTopping] = useState("paypal")
+  const [topping, setTopping] = useState("flow")
 
   const onOptionChange = (e: { target: { value: SetStateAction<string>; }; }) => {
     setTopping(e.target.value)
@@ -47,46 +47,7 @@ export default function Payments() {
             </label>
           </div>
           
-          <div className="space-x-3 flex justify-center items-center">
-            <input
-              type="radio"
-              name="topping"
-              value="paypal"
-              id="paypal"
-              checked={topping === "paypal"}
-              onChange={onOptionChange}
-            />
-            <label htmlFor="paypal">
-              <Image
-                className="hidden h-8 w-auto lg:block"
-                src="/images/paypal.svg"
-                alt="paypal"
-                width={178}
-                height={68}
-              />
-            </label>
-          </div>
-
-          <div className="space-x-3 flex justify-center items-center">
-            <input
-              type="radio"
-              name="topping"
-              value="bank"
-              id="bank"
-              checked={topping === "bank"}
-              onChange={onOptionChange}
-            />
-            <label htmlFor="bank" className="flex justify-center items-center">
-              <Image
-                className="hidden h-8 w-auto lg:block"
-                src="/images/bank.svg"
-                alt="bank"
-                width={178}
-                height={68}
-              />
-              Bank Card
-            </label>
-          </div>
+          
 
         </div>
 

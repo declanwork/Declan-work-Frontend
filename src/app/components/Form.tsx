@@ -245,7 +245,7 @@ export default function Form() {
           Back
         </Link>
         <Link
-          href="/newJob/paymentInfo"
+          href="/newJob/PaymentInfo"
           className="rounded-full bg-[#00EF7C] px-4 py-2 text-sm font-semibold shadow-sm"
         >
           Next Skill
