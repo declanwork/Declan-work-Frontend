@@ -48,112 +48,96 @@ export default function Form() {
       <div className="space-y-12">
           <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6 border-b border-gray-900/10 pb-12">
               <div className="sm:col-span-3">
-                <label htmlFor="first-name" className="block text-sm font-medium leading-6 text-gray-900">
+                <label htmlFor="jobType" className="block text-sm font-medium leading-6 text-gray-900">
                   Type
                 </label>
                 <div className="mt-2">
-                  <input
-                    type="text"
-                    name="first-name"
-                    id="first-name"
-                    placeholder="One Time"
-                    autoComplete="given-name"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#00EF7C] sm:text-sm sm:leading-6"
-                  />
+                  <select id="jobType" className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#00EF7C] sm:text-sm sm:leading-6" >
+                    <option value="One-time">One-time</option>
+                    <option value="Full-time">Full-time</option>
+                  </select>
                 </div>
               </div>
 
               <div className="sm:col-span-3">
-                <label htmlFor="last-name" className="block text-sm font-medium leading-6 text-gray-900">
+                <label htmlFor="jobLocation" className="block text-sm font-medium leading-6 text-gray-900">
                   Location
                 </label>
                 <div className="mt-2">
-                  <input
-                    type="text"
-                    name="last-name"
-                    id="last-name"
-                    placeholder="Remote"
-                    autoComplete="family-name"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#00EF7C] sm:text-sm sm:leading-6"
-                  />
+                <select id="jobLocation" className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#00EF7C] sm:text-sm sm:leading-6" >
+                    <option value="Remote">Remote</option>
+                    <option value="On Site">On Site</option>
+                    <option value="Hybrid">Hybrid</option>
+                  </select>
                 </div>
               </div>
 
               <div className="sm:col-span-4">
-                <label htmlFor="last-name" className="block text-sm font-medium leading-6 text-gray-900">
+                <label htmlFor="jobValue" className="block text-sm font-medium leading-6 text-gray-900">
                   Value
                 </label>
                 <div className="mt-2">
                   <input
                     type="number"
-                    name="last-name"
-                    id="last-name"
+                    id="jobValue"
                     placeholder="USD"
-                    autoComplete="family-name"
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#00EF7C] sm:text-sm sm:leading-6"
                   />
                 </div>
               </div>
 
               <div className="sm:col-span-2">
-                <label htmlFor="last-name" className="block text-sm font-medium leading-6 text-gray-900">
+                <label htmlFor="priceType" className="block text-sm font-medium leading-6 text-gray-900">
                   Price Type
                 </label>
                 <div className="mt-2">
-                  <input
-                    type="number"
-                    name="last-name"
-                    id="last-name"
-                    placeholder="per project"
-                    autoComplete="family-name"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#00EF7C] sm:text-sm sm:leading-6"
-                  />
+                <select id="priceType" className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#00EF7C] sm:text-sm sm:leading-6" >
+                    <option value="Remote">Remote</option>
+                    <option value="On Site">On Site</option>
+                    <option value="Hybrid">Hybrid</option>
+                  </select>
                 </div>
               </div>
 
               <div className="col-span-full">
-                <label htmlFor="street-address" className="block text-sm font-medium leading-6 text-gray-900">
+                <label htmlFor="jobDuration" className="block text-sm font-medium leading-6 text-gray-900">
                   Duration
                 </label>
                 <div className="mt-2">
                   <input
                     type="number"
-                    name="street-address"
-                    id="street-address"
-                    placeholder="Job Duration"
-                    autoComplete="street-address"
+                    id="jobDuration"
+                    placeholder="Job Duration In Days"
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#00EF7C] sm:text-sm sm:leading-6"
                   />
                 </div>
               </div>
 
               <div className="col-span-full">
-                <label htmlFor="street-address" className="block text-sm font-medium leading-6 text-gray-900">
+                <label htmlFor="taskCategories" className="block text-sm font-medium leading-6 text-gray-900">
                   Task Categories
                 </label>
                 <div className="mt-2">
                   <input
                     type="text"
-                    name="task-categories"
-                    id="task-categories"
+                    id="taskCategories"
                     placeholder="Select skills"
-                    autoComplete="task-categories"
+                    autoComplete="taskCategories"
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#00EF7C] sm:text-sm sm:leading-6"
                   />
                 </div>
               </div>
 
               <div className="col-span-full">
-                <label htmlFor="street-address" className="block text-sm font-medium leading-6 text-gray-900">
+                <label htmlFor="requiredSkills" className="block text-sm font-medium leading-6 text-gray-900">
                   Required Skills
                 </label>
                 <div className="mt-2">
                   <input
                     type="text"
-                    name="required-skills"
-                    id="required-skills"
+                    id="requiredSkills"
                     placeholder="Select skills"
-                    autoComplete="required-skills"
+                    autoComplete="requiredSkills"
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#00EF7C] sm:text-sm sm:leading-6"
                   />
                 </div>
@@ -191,13 +175,12 @@ export default function Form() {
           <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6 pb-6">
 
             <div className="col-span-full">
-              <label htmlFor="street-address" className="block text-sm font-medium leading-6 text-gray-900">
+              <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
                 Your email address
               </label>
               <div className="mt-2">
                 <input
                   type="email"
-                  name="email"
                   id="email"
                   placeholder="Your email address"
                   autoComplete="email"
@@ -207,16 +190,14 @@ export default function Form() {
             </div>
 
             <div className="col-span-full">
-              <label htmlFor="street-address" className="block text-sm font-medium leading-6 text-gray-900">
+              <label htmlFor="companyName" className="block text-sm font-medium leading-6 text-gray-900">
                 Your/Company name
               </label>
               <div className="mt-2">
                 <input
-                  type="email"
-                  name="email"
-                  id="email"
+                  type="text"
+                  id="companyName"
                   placeholder="Your/Company name"
-                  autoComplete="email"
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>
@@ -240,17 +221,7 @@ export default function Form() {
           </div>
       </div>
 
-      <div className="mt-9 flex items-center justify-between gap-x-6">
-        <Link href="/newJob/Title" className="text-sm font-semibold px-4 py-2 rounded-full border border-[#001E00] leading-6 text-gray-900">
-          Back
-        </Link>
-        <Link
-          href="/newJob/PaymentInfo"
-          className="rounded-full bg-[#00EF7C] px-4 py-2 text-sm font-semibold shadow-sm"
-        >
-          Next Skill
-        </Link>
-      </div>
+      
     </form>
   )
 }

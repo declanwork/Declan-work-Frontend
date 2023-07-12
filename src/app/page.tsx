@@ -32,7 +32,7 @@ export default function Home() {
             directly on Crypto Jobs List.
           </p>
           <div className="text-center mt-9">
-            <button onClick={() => router.push("/newJob/Title")} className="border border-[#00EF7C] bg-[#00EF7C] text-[#163300] font-semibold py-3 px-4 rounded-full mr-4">
+            <button onClick={() => router.push("/newJob")} className="border border-[#00EF7C] bg-[#00EF7C] text-[#163300] font-semibold py-3 px-4 rounded-full mr-4">
               Hire Freelancers
             </button>
             <button onClick={() => router.push("/editProfile")} className="border border-[#00EF7C] text-[#00EF7C] font-semibold py-3 px-4 rounded-full">

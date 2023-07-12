@@ -151,14 +151,28 @@ export default function Profile() {
                 <h1 className="text-center text-xl font-medium">
                   Work History
                 </h1>
-                <div className="border border-[#00EF7C] bg-white p-2 rounded-full">
-                  <FaPen className="text-[#00EF7C]" size={20} />
-                </div>
+                
               </div>
               <div>
                 <p>
-                  No work yet.
+                No work yet. Once you start getting hired on Upwork, your work with clients will show up here browse jobs
                 </p>
+                <button type="button" className="text-[#14A800] mt-3">Browse Jobs</button>
+              </div>
+            </div>
+
+            <div className="border-b px-7 py-6">
+              <div className="flex justify-between items-center mb-7">
+                <h1 className="text-center text-xl font-medium">
+                  Work History
+                </h1>
+                
+              </div>
+              <div>
+                <p>
+                No work yet. Once you start getting hired on Upwork, your work with clients will show up here browse jobs
+                </p>
+                <button type="button" className="text-[#14A800] mt-3">Browse Jobs</button>
               </div>
             </div>
           </div>
