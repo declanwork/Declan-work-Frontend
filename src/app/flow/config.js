@@ -5,7 +5,7 @@ export const fclConfig =() => config({
   "app.detail.title": "Declan Work",
 
   // An image to use as the icon for our dApp when connecting to a wallet
-  "app.detail.icon": "https://placekitten.com/g/200/200",
+  "app.detail.icon": "https://blush-blushing-locust-268.mypinata.cloud/ipfs/QmNagSHpLjXBQnoKXi2RyrLg2jbo1fwgZT7FZqi6fXGanJ",
 
   // RPC URL for the Flow Testnet
   "accessNode.api": "https://rest-testnet.onflow.org",
@@ -17,7 +17,7 @@ export const fclConfig =() => config({
   // Alias for the Domains Contract
 
   // UPDATE THIS to be the address of YOUR contract account address
-  "0xDeclanWork": process.env.NEXT_PUBLIC_ADMIN_ADDRESS,
+  "0xDeclanWork": "0xf88f3b6f4c595384",
   // Testnet aliases for NonFungibleToken and FungibleToken contracts
   
 
