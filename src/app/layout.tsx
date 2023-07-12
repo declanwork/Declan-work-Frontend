@@ -1,6 +1,8 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
-import Head from "next/head"
+import Head from "next/head";
+import localFont from "next/font/local";
+const myFont = localFont({src: './neue-montreal-free-demo-pangram-pangram-030418/NeueMontreal-Regular.otf'})
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -31,7 +33,7 @@ export default function RootLayout({
         />
         <meta property="og:image" content="https://amber-pregnant-crane-656.mypinata.cloud/ipfs/QmNagSHpLjXBQnoKXi2RyrLg2jbo1fwgZT7FZqi6fXGanJ" />
       </Head>
-      <body className={inter.className}>{children}</body>
+      <body className={myFont.className}>{children}</body>
     </html>
   )
 }

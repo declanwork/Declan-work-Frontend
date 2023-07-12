@@ -157,14 +157,7 @@ export default function Profile() {
               </div>
               <div>
                 <p>
-                  Detailed oriented and dedicated certified product designer
-                  offering a proven track record of success in developing
-                  designs concepts and completing relevant experience related to
-                  projects spread across several fields like product designs
-                  user experience, and user interfaces designs graphics and
-                  branding with an average knowledge in market research. I&apos;m
-                  effective team player with a proactive approach to
-                  understanding briefs.
+                  No work yet.
                 </p>
               </div>
             </div>

@@ -17,8 +17,8 @@ import { useRouter } from "next/navigation";
 export default function Home() {
   const router = useRouter();
   return (
-    <main className="font-poppin">
-      <div className="bg-[#00360C] font-poppin h-[1000px] flex flex-col overflow-hidden">
+    <main className="">
+      <div className="bg-[#00360C] h-[1000px] flex flex-col overflow-hidden">
         <Navbar />
         <div className="">
           <h1 className="mt-20 text-5xl text-center text-[#00EF7C] font-bold tracking-[0.4px] leading-[65px]">

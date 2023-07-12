@@ -1,9 +1,16 @@
-@import url('https://fonts.cdnfonts.com/css/poppins');  
+  
+@font-face {
+  font-family: "neueMontreal";
+  src: url(/public/neue-montreal-free-demo-pangram-pangram-030418/NeueMontreal-Regular.otf);
+}
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+body{
+  font-family: 'neueMontreal';
+}
 .wrapper{
     /* height:40%; */
     border: 1px solid grey;
