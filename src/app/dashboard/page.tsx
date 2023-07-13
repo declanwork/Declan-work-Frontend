@@ -381,7 +381,7 @@ export default function Dashboard() {
                         <p className="text-sm font-medium mt-5">{blogPost}</p>
                       </div>
                       <div className="w-48 h-48 bg-black overflow-hidden my-5">
-                        {/* input image here */}
+                        {/* TODO:input image here */}
                       </div>
                     </div>
                     <div className="flex items-center space-x-4">
