@@ -16,6 +16,8 @@ export default function Form() {
     about: "",
   });
 
+  console.log("formdata", formData)
+
   const {
     // jobRole,
     // jobCategory,

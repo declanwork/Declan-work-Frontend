@@ -5,6 +5,7 @@ import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import SearchBar from './searchBar';
 import { PiCaretDownBold } from "react-icons/pi"
 import Link from 'next/link';
+import Authenticate from '../flow/authenticate'
 
 const navigation = [
   { name: 'Find Talent', href: '#', current: false },
@@ -70,8 +71,9 @@ export default function Navbar() {
                 </div>
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                <SearchBar />
-                <Link
+                {/* <SearchBar /> */}
+                <Authenticate />
+                {/* <Link
                   href="/sign-in"
                   className="text-[#ADFFC8] text-sm p-1 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
                 >
@@ -82,7 +84,7 @@ export default function Navbar() {
                   className="rounded-full font-semibold text-sm bg-[#ADFFC8] p-2 text-[#00360C]  focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#ADFFC8]"
                 >
                   Sign Up
-                </Link>
+                </Link> */}
               </div>
             </div>
           </div>
