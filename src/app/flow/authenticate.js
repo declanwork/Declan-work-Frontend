@@ -1,13 +1,19 @@
-import React, { useState, useEffect } from "react";
+"use client"
+
+import React, { useEffect, useContext } from "react";
 import { useRouter } from 'next/navigation';
 import * as fcl from "@blocto/fcl";
 import { fclConfig } from "../../app/flow/config";
+
+import { Context } from "../context";
 
 fclConfig();
 
 const CurrentUser = () => {
 
-  const [user, setUser] = useState({ loggedIn: null })
+  // const [user, setUser] = useState({ loggedIn: null })
+
+  const {user, setUser} = useContext(Context)
 
   const router = useRouter();
 

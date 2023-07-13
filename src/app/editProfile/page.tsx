@@ -9,6 +9,8 @@ import { AiOutlineSearch, AiFillDollarCircle } from "react-icons/ai";
 import { FaUpload } from "react-icons/fa";
 import Link from "next/link";
 import Nav from "../components/Nav";
+import * as fcl from "@onflow/fcl";
+import "../flow/config";
 import { countries, jobCategories, jobRoles } from "@/constants";
 import { SubText } from "../components/Header";
 
@@ -52,6 +54,8 @@ export default function Profile() {
       ...prevState,
       [e.target.id]: e.target.value,
     }));
+    
+    console.log("formData", formData)
   }
   useEffect(() => {
     window.scroll(0, 0);

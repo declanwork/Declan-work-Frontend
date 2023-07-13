@@ -1,9 +1,11 @@
+"use Client"
 import "./globals.css";
 import { Inter } from "next/font/google";
 import Head from "next/head";
 import localFont from "next/font/local";
 import { ToastContainer } from "./nextToast";
 import "react-toastify/dist/ReactToastify.css";
+import { ContextProvider } from "./context/index"
 const myFont = localFont({
   src: "./neue-montreal-free-demo-pangram-pangram-030418/NeueMontreal-Regular.otf",
 });
@@ -21,6 +23,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
+    <ContextProvider>
     <html lang="en">
       <Head>
         <meta property="og:url" content="your url" />
@@ -42,5 +45,6 @@ export default function RootLayout({
         <ToastContainer />
       </body>
     </html>
+    </ContextProvider>
   );
 }

@@ -5,16 +5,20 @@ import NavbarJob from "../components/NavbarJob";
 import Link from "next/link";
 import { BiSolidPencil } from 'react-icons/bi';
 import { PiCaretDownBold } from 'react-icons/pi';
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Form from "../components/Form";
-import { CreateGig } from "@/app/flow/transaction";
+import { CreateGig } from "@/app/flow/transactions";
 import Image from "next/image";
 import * as fcl from "@onflow/fcl";
 import "../flow/config";
 
+import { Context } from "../context";
+
+
 export default function NewJob() {
-  const [noOfFreelancers, setNoOfFreelancers] = useState(9); //queryblockchain
-  const [user, setUser] = useState("Nobody")
+  // const [noOfFreelancers, setNoOfFreelancers] = useState(9); //queryblockchain
+  const { user, setUser} = useContext(Context)
+  console.log(user)
   const router = useRouter();
   const [isChecked, setIsChecked] = useState(false);
   const [page, setPage] = useState("page-1");
@@ -78,7 +82,7 @@ export default function NewJob() {
       ...prevState,
       [e.target.id]: e.target.value,
     }));
-    
+    console.log(user)
     console.log("formData", formData)
   }
 
@@ -457,8 +461,8 @@ export default function NewJob() {
                   type="text"
                   name="walletName"
                   id="walletName"
-                  value={walletName}
-                  onChange={onChange}
+                  value={email}
+                  // onChange={onChange}
                   placeholder="Input Wallet Name"
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
@@ -477,8 +481,8 @@ export default function NewJob() {
                   type="text"
                   name="walletAddress"
                   id="walletAddress"
-                  value={walletAddress}
-                  onChange={onChange}
+                  value={user.addr}
+                  // onChange={onChange}
                   placeholder="Wallet Address"
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
