@@ -91,7 +91,7 @@ export default function NewJob() {
     <div>
       <NavbarJob />
       {page === "page-1" && (
-        <div className="md:px-14 px-10 max-w-2xl min-w-[300px] mx-auto py-16">
+        <div className="md:px-14 px-3 max-w-2xl min-w-[300px] mx-auto py-16">
           <Header
             title="Post new Job"
             subtitle="1/3"
@@ -124,14 +124,14 @@ export default function NewJob() {
               setPage("page-2");
               window.scroll(0, 0);
             }}
-            className="rounded-full float-right text-sm font-semibold bg-[#00EF7C] p-2 px-5 text-[#00360C]  focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#ADFFC8]"
+            className="rounded-full w-full md:w-auto float-right text-sm font-semibold bg-[#00EF7C] py-3 px-12 text-[#00360C]  focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#ADFFC8]"
           >
-            Next
+            Next Skill
           </button>
         </div>
       )}
       {page === "page-2" && (
-        <div className="px-14 max-w-3xl mx-auto py-16">
+        <div className="px-3 max-w-3xl mx-auto py-16">
           <SubText title="Post new Job" subtitle="2/3" />
           {/* Input Fields */}
           <div className="my-5 bg-[#00EF7C] p-3 rounded-lg w-full">
@@ -200,6 +200,7 @@ export default function NewJob() {
                       value={jobValue}
                       onChange={onChange}
                       placeholder="0.00 FLOW"
+                      step="0.01"
                       className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#00EF7C] sm:text-sm sm:leading-6"
                     />
                   </div>
@@ -388,14 +389,14 @@ export default function NewJob() {
             </div>
           </form>
           {/*  */}
-          <div className="mt-9 flex items-center justify-between gap-x-6">
+          <div className="mt-9 flex items-center space-y-5 md:space-y-0 justify-between flex-col md:flex-row gap-x-6">
             <button
               type="button"
               onClick={() => {
                 setPage("page-1");
                 window.scroll(0, 0);
               }}
-              className="text-sm font-semibold px-4 py-2 rounded-full border border-[#001E00] leading-6 text-gray-900"
+              className="text-sm font-semibold px-12 py-3 rounded-full border border-[#001E00] leading-6 text-gray-900 w-full md:w-auto"
             >
               Back
             </button>
@@ -405,7 +406,7 @@ export default function NewJob() {
                 setPage("page-3");
                 window.scroll(0, 0);
               }}
-              className="rounded-full bg-[#00EF7C] px-4 py-2 text-sm font-semibold shadow-sm"
+              className="rounded-full bg-[#00EF7C] px-12 py-3 text-sm font-semibold shadow-sm w-full md:w-auto"
             >
               Next
             </button>
@@ -413,7 +414,7 @@ export default function NewJob() {
         </div>
       )}
       {page === "page-3" && (
-        <div className="px-14 max-w-3xl mx-auto py-16">
+        <div className="px-3 max-w-3xl mx-auto py-16">
           <Header
             title="Post new Job"
             subtitle="3/3"
@@ -486,14 +487,14 @@ export default function NewJob() {
             </div>
           </div>
 
-          <div className="mt-9 flex items-center justify-between gap-x-6">
+          <div className="mt-9 flex items-center space-y-5 md:space-y-0 justify-between gap-x-6 flex-col md:flex-row">
             <button
               type="button"
               onClick={() => {
                 setPage("page-2");
                 window.scroll(0, 0);
               }}
-              className="text-sm font-semibold px-4 py-2 rounded-full border border-[#001E00] leading-6 text-gray-900"
+              className="text-sm font-semibold px-12 py-3 rounded-full border border-[#001E00] leading-6 text-gray-900 w-full md:w-auto"
             >
               Back
             </button>
@@ -503,7 +504,7 @@ export default function NewJob() {
                 setPage("page-4");
                 window.scroll(0, 0);
               }}
-              className="rounded-full bg-[#00EF7C] px-4 py-2 text-sm font-semibold shadow-sm"
+              className="rounded-full border bg-[#00EF7C] border-[#00EF7C] w-full md:w-auto px-12 py-3 text-sm font-semibold shadow-sm"
             >
               Confirm Job Details
             </button>
@@ -512,14 +513,14 @@ export default function NewJob() {
       )}
       {page === "page-4" && (
         <div className="px-10 max-w-3xl mx-auto py-16">
-        <div className="flex justify-between">
+        <div className="flex justify-between items-center">
             <SubText 
             title="Job Detail" 
             subtitle="3/3"
             />
             <Link
                 href="/newJob/detail/verify"
-                className="rounded-full bg-[#00EF7C] px-4 py-2 h-9 text-sm font-semibold shadow-sm"
+                className="rounded-full bg-[#00EF7C] px-4 flex items-center justify-center py-3 h-9 text-sm font-semibold shadow-sm"
             >
             Post This Job
             </Link>
@@ -547,8 +548,8 @@ export default function NewJob() {
 
             <div className="p-5 px-6 flex items-center justify-between">
                 <div className="w-[70%]">
-                    <h1 className="font-bold">Skills</h1>
-                    <div className="flex justify-between text-sm">
+                    <h1 className="font-bold mb-3">Skills</h1>
+                    <div className="flex justify-between text-sm flex-wrap gap-2 md:gap-0">
                         <span className="bg-[#00EF7C] rounded-full p-2">Web3 Design</span>
                         <span className="bg-[#00EF7C] rounded-full p-2">Web3 Development</span>
                         <span className="bg-[#00EF7C] rounded-full p-2">Product Design</span>
@@ -586,7 +587,7 @@ export default function NewJob() {
 
     
 
-        <div className="mt-9 flex items-center justify-between gap-x-6">
+        <div className="mt-9 flex items-center space-y-5 md:space-y-0 flex-col md:flex-row justify-between gap-x-6">
             {/* <Link href="/newJob/Title" className="text-sm font-semibold px-4 py-2 rounded-full border border-[#001E00] leading-6 text-gray-900">
             Back
             </Link> */}
@@ -596,13 +597,13 @@ export default function NewJob() {
                 setPage("page-3");
                 window.scroll(0, 0);
               }}
-              className="text-sm font-semibold px-4 py-2 rounded-full border border-[#001E00] leading-6 text-gray-900"
+              className="w-full md:w-auto text-sm font-semibold px-12 py-3 rounded-full border border-[#001E00] leading-6 text-gray-900"
             >
               Back
             </button>
-            <div className="flex items-center space-x-3">
+            <div className="flex items-center space-x-3 flex-col-reverse md:flex-row w-full md:w-auto">
                 <Link href="#">Save as draft</Link>
-                <button className="rounded-full bg-[#00EF7C] px-4 py-2 text-sm font-semibold shadow-sm"
+                <button className="rounded-full border-[#00EF7C] bg-[#00EF7C] px-12 py-3 text-sm font-semibold shadow-sm w-full md:w-auto"
                     onClick={() => {
                       handleGig();
                     }}>

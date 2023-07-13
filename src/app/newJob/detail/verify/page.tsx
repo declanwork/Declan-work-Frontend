@@ -29,7 +29,7 @@ export default function EmailVerification() {
           </div>
         </div>
         <div className="text-black text-center mt-20">
-          <h1 className="text-3xl font-bold mb-5">Congratulations! Please Verify your Email to submit your job post </h1>
+          <h1 className="text-2xl md:text-3xl font-bold mb-5">Congratulations! Please Verify your Email to submit your job post </h1>
         </div>
       </div>
     </section>

@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 // import ReactQuill from "react-quill";
 // import "react-quill/dist/quill.snow.css";
 import { AiOutlineSearch, AiFillDollarCircle } from "react-icons/ai";
-import { FaUpload } from "react-icons/fa";
+import { FaUpload, FaLinkedinIn } from "react-icons/fa";
 import Link from "next/link";
 import Nav from "../components/Nav";
 import { countries, jobCategories, jobRoles } from "@/constants";
@@ -14,8 +14,7 @@ import { SubText } from "../components/Header";
 
 export default function Profile() {
   const [selectedImage, setSelectedImage] = useState(null);
-  //const [first, setFirst] = useState(true);
-  const [next, setNext] = useState(false);
+  const [next, setNext] = useState("page-1");
   const [formData, setFormData] = useState({
     jobRole: "",
     jobCategory: "",
@@ -30,6 +29,7 @@ export default function Profile() {
     hourlyRate: "",
     serviceFee: "",
     amountPaid: "",
+    portfolioLink: "",
   });
   const {
     jobRole,
@@ -45,6 +45,7 @@ export default function Profile() {
     hourlyRate,
     serviceFee,
     amountPaid,
+    portfolioLink,
   } = formData;
 
   function onChange(e: any) {
@@ -57,22 +58,61 @@ export default function Profile() {
     window.scroll(0, 0);
   }, []);
 
-  function handleProcedureContentChange(
-    content: any,
-    delta: any,
-    source: any,
-    editor: any
-  ) {
-    setFormData((prevState) => ({
-      ...prevState,
-      bio: content,
-    }));
-  }
+  // function handleProcedureContentChange(
+  //   content: any,
+  //   delta: any,
+  //   source: any,
+  //   editor: any
+  // ) {
+  //   setFormData((prevState) => ({
+  //     ...prevState,
+  //     bio: content,
+  //   }));
+  // }
 
   return (
     <>
       <Nav />
-      {!next && (
+      {next === "page-1" && (
+        <div className="max-w-5xl mx-auto">
+          <h1 className="text-5xl font-medium text-black mb-5">
+            Land your dream job
+          </h1>
+          <h1 className="text-4xl font-medium text-black max-w-2xl mb-4">
+            What would you like to tell the world about yourself?
+          </h1>
+          <p className="font-medium text-black">
+            We need to know about your experience, your skills, portfolio and
+            certification.
+          </p>
+          <div className="mt-16 mb-5">
+            <label htmlFor="resume" className="">Portfolio Link
+              {/* <div className="flex items-center border rounded border-[#001E00] justify-start w-[30vw] p-3">
+                <div className="mx-auto flex items-center">
+                <FaUpload className="text-[#00EF7C] bg-black p-2 rounded-full" size={30} /> <span className="ml-2 font-medium">Upload Your Resume</span>
+                </div>
+              </div> */}
+            </label>
+            <input type="text" id="portfolioLink" value={portfolioLink} onChange={onChange} className="block"/>
+              {/* <input type="file" name="" id="resume" className="hidden mx-auto" /> */}
+          </div>
+          {/* <div className="mb-7">
+            <label htmlFor="resume" className="text-center">
+              <div className="flex items-center border rounded border-[#001E00] justify-start w-[30vw] p-3">
+                <div className="mx-auto flex items-center">
+                <FaLinkedinIn className="text-[#00EF7C]" size={20} /> <span className="ml-2 font-medium">Import From Linkedin</span>
+                </div>
+              </div>
+            </label>
+              <input type="file" name="" id="resume" className="hidden mx-auto" />
+          </div> */}
+          <button type="button" onClick={() => {
+            setNext("page-2");
+            window.scroll(0, 0);
+            }} className="py-4 px-[118px] rounded font-medium bg-[#00EF7C]">Fill Out Manually [15 Min]</button>
+        </div>
+      )}
+      {next === "page-2" && (
         <div className="max-w-4xl mx-auto">
           <SubText title="Let's Get Started " subtitle="1/2" />
           <div className="bg-[#00EF7C] p-2 rounded-lg text-center mt-2">
@@ -306,17 +346,19 @@ export default function Profile() {
               </div>
               {/* PREV/NEXT BUTTONS */}
               <div className="mt-10 flex justify-between items-center">
-                <Link
-                  href=""
-                  scroll={false}
+                <button
+                 type="button"
+                  onClick={() => {
+                    setNext("page-1")
+                  }}
                   className="border border-[#001E00] text-[#001E00] font-medium py-3 px-8 rounded-full"
                 >
                   Back
-                </Link>
+                </button>
                 <button
                   className="bg-[#00EF7C] text-[#001E00] py-3 px-8 rounded-full border border-[#00EF7C] font-medium"
                   onClick={() => {
-                    setNext(true);
+                    setNext("page-3");
                     window.scroll(0, 0);
                   }}
                 >
@@ -328,7 +370,7 @@ export default function Profile() {
         </div>
       )}
       {/* Payment options */}
-      {next && (
+      {next === "page-3" && (
         <div className="max-w-4xl mx-auto">
           <SubText title="Payments for service" subtitle="2/2" />
           <p className="mt-2">
@@ -497,13 +539,13 @@ export default function Profile() {
               <button
                 className="border border-[#001E00] text-[#001E00] font-medium py-3 px-8 rounded-full"
                 onClick={() => {
-                  setNext(false);
+                  setNext("page-2");
                   window.scroll(0, 0);
                 }}
               >
                 Back
               </button>
-              <button className="bg-[#00EF7C] text-[#001E00] py-3 px-8 rounded-full border border-[#00EF7C] font-medium">
+              <button  className="bg-[#00EF7C] text-[#001E00] py-3 px-8 rounded-full border border-[#00EF7C] font-medium">
                 Get Started
               </button>
             </div>

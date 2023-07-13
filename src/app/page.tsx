@@ -19,21 +19,19 @@ export default function Home() {
   const router = useRouter();
   return (
     <main className="">
-      <div className="bg-[#00360C] h-[1000px] flex flex-col overflow-hidden">
+      <div className="bg-[#00360C] h-[1040px] md:h-[1000px] flex flex-col overflow-hidden">
         <Navbar />
-        <div className="">
-          <h1 className="mt-20 text-5xl text-center text-[#00EF7C] font-bold tracking-[0.4px] leading-[65px]">
+        <div className="px-3">
+          <h1 className="mt-20 text-6xl text-center text-[#00EF7C] font-bold tracking-[0.4px] leading-[65px]">
             Hire Crypto & Web3 Talent:
             <br />
             Unlocking the Power of Blockchain Expertise
           </h1>
-          <p className="text-[#ADFFC8] text-center mt-9 tracking-[0.4px] leading-[22px]">
-            How to hire Cryptocurrency Talent? Glad you asked! Hire them
-            <br />
-            directly on Crypto Jobs List.
+          <p className="text-[#ADFFC8] text-center mt-9 max-w-md mx-auto tracking-[0.4px] leading-[22px]">
+            How to hire Cryptocurrency Talent? Glad you asked! Hire them directly on Crypto Jobs List.
           </p>
-          <div className="text-center mt-9">
-            <button onClick={() => router.push("/newJob")} className="border border-[#00EF7C] bg-[#00EF7C] text-[#163300] font-semibold py-3 px-4 rounded-full mr-4">
+          <div className="text-center mt-9 flex flex-col md:block space-y-5 mb-5">
+            <button onClick={() => router.push("/newJob")} className="border border-[#00EF7C] bg-[#00EF7C] text-[#163300] font-semibold py-3 px-4 rounded-full sm:mr-4">
               Hire Freelancers
             </button>
             <button onClick={() => router.push("/editProfile")} className="border border-[#00EF7C] text-[#00EF7C] font-semibold py-3 px-4 rounded-full">
@@ -41,18 +39,18 @@ export default function Home() {
             </button>
           </div>
         </div>
-        <div className="flex items-center justify-center">
+        <div className="flex items-center justify-center mx-auto">
           <div className="">
             <Image
               src="/images/hero.jpeg"
               alt="Hero"
-              className="ml-64 mt-[70px] rounded-xl shadow-2xl"
+              className="ml-10 md:ml-64 rounded-xl shadow-2xl"
               width={480}
               height={200}
             />
           </div>
-          <div className="-translate-x-[7.5rem]">
-            <div className="text-[#00360C] bottom-5 w-48 left-40 relative h-12 p-1 rounded-3xl flex bg-[#00EF7C] justify-between shadow-2xl">
+          <div className="-translate-x-[1.7rem] md:-translate-x-[7.5rem]">
+            <div className="text-[#00360C] bottom-5 w-48 left-40 relative h-12 p-1 rounded-3xl md:flex bg-[#00EF7C] justify-between shadow-2xl hidden">
               <div className="w-10 h-10 rounded-full bg-[#00360C] flex justify-center items-center text-[#00EF7C]">
                 <FiMail />
               </div>
@@ -62,7 +60,7 @@ export default function Home() {
             <Image
               src="/images/hero2.jpeg"
               alt="Hero-2"
-              className="rounded-xl z-10 shadow-7xl"
+              className="rounded-xl shadow-7xl"
               width={500}
               height={200}
             />
@@ -74,7 +72,7 @@ export default function Home() {
         <Logo />
       </div>
       {/* New Div */}
-      <section className="max-w-screen-lg mx-auto flex flex-col md:flex-row items-center justify-center gap-10 px-3 lg:px-0">
+      <section className="max-w-screen-lg mx-auto flex flex-col md:flex-row items-center justify-center gap-10 px-3 mb-10 lg:px-0">
         <div className="md:w-1/2 w-full bg-[#F2F7F2] h-[530px] flex justify-center items-center">
           <div className="relative">
             <Image
@@ -156,25 +154,27 @@ export default function Home() {
                 </div>
               </li>
             </ul>
-            <button className="bg-[#00EF7C] border border-[#00EF7C] text-[#00360C] font-medium py-3 px-4 rounded-full mr-10">
+            <div className="flex flex-col space-y-5 md:flex-row md:space-x-5 md:items-center md:space-y-0">
+            <button className="bg-[#00EF7C] border border-[#00EF7C] text-[#00360C] font-medium py-3 px-4 rounded-full">
               Sign up for free
             </button>
             <button className="border border-[#00360C] text-[#00360C] font-medium py-3 px-4 rounded-full">
               Learn how to hire
             </button>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Enterprise */}
-      <section className="max-w-2xl mx-auto">
+      <section className="max-w-2xl mx-auto px-3 md:px-0">
         <Image
           src="/images/enterprise.jpeg"
           alt="Enterprise"
           width={700}
           height={400}
         />
-        <div className="mt-5">
+        <div className="mt-5 mb-10">
           <p className="text-[#001E00] font-semibold text-lg">
             Enterprise Suite
           </p>
@@ -205,17 +205,15 @@ export default function Home() {
               </p>
             </li>
           </ul>
-          <button className="bg-[#00EF7C] border border-[#00EF7C] text-[#00360C] font-medium py-3 px-8 rounded-full my-5">
+          <button className="bg-[#00EF7C] border border-[#00EF7C] text-[#00360C] font-medium py-3 px-8 rounded-full my-5 w-full md:w-auto">
             Learn More
           </button>
         </div>
       </section>
 
       <section className="bg-[#ECEFEB] py-20 px-3 xl:px-0">
-        <h1 className="text-5xl text-center font-medium mt-9 mb-20">
-          Hire vetted engineering, product,
-          <br />
-          and design talent
+        <h1 className="text-5xl text-center font-medium mt-9 mb-20 max-w-2xl mx-auto">
+          Hire vetted engineering, product, and design talent
         </h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 max-w-screen-lg mx-auto mb-10">
           {/* item */}
@@ -223,7 +221,7 @@ export default function Home() {
             <h1 className="text-2xl font-medium text-[#001E00]">
               Development & IT
             </h1>
-            <div className="flex items-center mt-5 relative md:-bottom-8">
+            <div className="flex items-center mt-5 relative">
               <div className="flex items-center justify-center mr-8">
                 <AiFillStar className="text-[#14A800]" size={25} />
                 <p className="text-[#5E6D55] text-xl">4.8/5</p>
@@ -249,7 +247,7 @@ export default function Home() {
             <h1 className="text-2xl font-medium text-[#001E00]">
               Design & Creative
             </h1>
-            <div className="flex items-center mt-5 relative md:-bottom-8">
+            <div className="flex items-center mt-5 relative">
               <div className="flex items-center justify-center mr-8">
                 <AiFillStar className="text-[#14A800]" size={25} />
                 <p className="text-[#5E6D55] text-xl">4.8/5</p>
@@ -260,7 +258,7 @@ export default function Home() {
           {/* item */}
           <div className="bg-white py-5 px-10 rounded">
             <h1 className="text-2xl font-medium text-[#001E00]">AI Services</h1>
-            <div className="flex items-center mt-5 relative md:-bottom-8">
+            <div className="flex items-center mt-5 relative ">
               <div className="flex items-center justify-center mr-8">
                 <AiFillStar className="text-[#14A800]" size={25} />
                 <p className="text-[#5E6D55] text-xl">4.8/5</p>
@@ -286,7 +284,7 @@ export default function Home() {
             <h1 className="text-2xl font-medium text-[#001E00]">
               Development & IT
             </h1>
-            <div className="flex items-center mt-5 relative md:-bottom-8">
+            <div className="flex items-center mt-5 relative sm:-bottom-8 md:bottom-0">
               <div className="flex items-center justify-center mr-8">
                 <AiFillStar className="text-[#14A800]" size={25} />
                 <p className="text-[#5E6D55] text-xl">4.8/5</p>
@@ -314,10 +312,10 @@ export default function Home() {
               />
             </div>
             <div className="max-w-xs mx-auto">
-              <p className="text-[#001E00] font-medium my-8 text-lg">
+              <p className="text-[#001E00] font-medium my-5 text-lg">
                 Post a job and hire a pro
               </p>
-              <button className="relative -bottom-7 md:-bottom-0 border rounded-[25px] text-[#001E00] font-medium flex items-center justify-center py-3 px-8 mx-auto">
+              <button className="relative  md:-bottom-0 border rounded-[25px] text-[#001E00] font-medium flex items-center justify-center py-3 px-8 mx-auto">
                 Talent Marketplace
                 <sup>
                   <FaTrademark />
@@ -338,10 +336,10 @@ export default function Home() {
               />
             </div>
             <div className="max-w-xs mx-auto">
-              <p className="text-[#001E00] font-medium my-8 text-lg">
+              <p className="text-[#001E00] font-medium my-5 text-lg">
                 Browse and buy projects
               </p>
-              <button className="relative -bottom-7 md:-bottom-0 border rounded-[25px] text-[#001E00] font-medium flex items-center justify-center py-3 px-8 mx-auto">
+              <button className="relative border rounded-[25px] text-[#001E00] font-medium flex items-center justify-center py-3 px-8 mx-auto">
                 Project Catalog
                 <sup>
                   <FaTrademark />
@@ -362,7 +360,7 @@ export default function Home() {
               />
             </div>
             <div className="max-w-xs mx-auto">
-              <p className="text-[#001E00] font-medium my-8 text-lg">
+              <p className="text-[#001E00] font-medium my-5 text-lg">
                 Let us help you find the right talent
               </p>
               <button className="border rounded-[25px] text-[#001E00] font-medium flex items-center justify-center py-3 px-8 mx-auto">
