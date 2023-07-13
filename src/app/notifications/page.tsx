@@ -65,14 +65,13 @@ export default function Notifications() {
               <p className="text-[#415361] font-medium text-xl">{message}</p>
               <p className="text-[#415361B2] font-medium text-xl">{date}</p>
             </div>
-           
           </div>
         ))}
-         <div className="text-right mb-3 max-w-screen-lg mx-auto px-5">
-              <button type="button" className="text-[#00EF7C]">
-                Clear all...
-              </button>
-            </div>
+        <div className="text-right mb-3 max-w-screen-lg mx-auto px-5">
+          <button type="button" className="text-[#00EF7C]">
+            Clear all...
+          </button>
+        </div>
       </div>
       <section className="py-20 bg-[#00360C]">
         <Footer />

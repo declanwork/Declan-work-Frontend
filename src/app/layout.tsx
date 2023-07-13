@@ -2,7 +2,7 @@ import './globals.css'
 import { Inter } from 'next/font/google'
 import Head from "next/head";
 import localFont from "next/font/local";
-const myFont = localFont({src: './neue-montreal-free-demo-pangram-pangram-030418/NeueMontreal-Regular.otf'})
+const myFont = localFont({src: './neue-montreal-free-demo-pangram-pangram-030418/NeueMontreal-Regular.otf'});
 
 const inter = Inter({ subsets: ['latin'] })
 
