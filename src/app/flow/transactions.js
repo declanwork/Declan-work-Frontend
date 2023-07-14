@@ -51,42 +51,56 @@ export async function CreateGig(owner, ownerEmail, title, description, gigTimeli
   });
 }
 
-export async function createFreelancerAccount(name, portfolioURL, skills, categories, verified, stars) {
+export async function createFreelancerAccount(name,address,portfolioURL, skills, categories,  verified, stars, email, country, jobCount) {
   return fcl.mutate({
     cadence: `
-      import DeclanWork from 0xDeclanWork
 
-      transaction(
-        name: String,
+      import Declan from 0xDeclan
+
+      transaction(name: String,
+        address: Address,
         portfolioURL: String,
         skills: [String],
         categories: [String],
         verified: Bool,
-        stars: [String]) {
+        stars: UInt32,
+        email: String,
+        country: String,
+        jobCount: UInt32) {
         prepare(account: AuthAccount) {
-          let gig = DeclanWork.createGig(
+          let gig = DeclanWork.createFreelancerAccount(
             name: name,
+            address: address,
             portfolioURL: portfolioURL,
             skills: skills,
             categories: categories,
-            verified: verified,
-            stars: stars,
+            verified: false,
+            stars: 0,
+            email: email,
+            country: country,
+            jobCount: 0,
           )
 
-          // log("Gig created with ID:", gig.id)
+          log("Gig created with ID:", gig.id)
 
           // Emit GigCreated event
-          // emit DeclanWork.GigCreated(gigId: gig.id)
+          emit DeclanWork.GigCreated(gigId: gig.id)
         }
       }
     `,
     args: (arg, t) => [
       arg(name, t.String),
+      arg(address, t.Address),
       arg(portfolioURL, t.String),
-      // arg(skills, t.[String]),
-      // arg(categories, t.[String]),
+      arg(skills, t.String),
+      arg(categories, t.String),
       arg(verified, t.Bool),
-      // arg(,stars, t.[String])
+      arg(stars, t.UInt32),
+      arg(email, t.String),
+      arg(country, t.String),
+      arg(jobCount, t.UInt32),
+      ,
+        
     ],
     proposer: fcl.currentUser,
     payer: fcl.currentUser,

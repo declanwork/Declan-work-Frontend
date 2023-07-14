@@ -1,25 +1,36 @@
 "use client";
 import Image from "next/image";
-import { useEffect, useState } from "react";
-// import PhoneInput from "react-phone-number-input";
-// import "react-phone-number-input/style.css";
+import { useEffect, useState, useContext } from "react";
+import { createFreelancerAccount } from "@/app/flow/transactions";
+import PhoneInput from "react-phone-number-input";
+import Link from "next/link";
+import "react-phone-number-input/style.css";
 // import ReactQuill from "react-quill";
 // import "react-quill/dist/quill.snow.css";
 import { AiOutlineSearch, AiFillDollarCircle } from "react-icons/ai";
-import { FaUpload } from "react-icons/fa";
-import Link from "next/link";
-// import Nav from "../components/Nav";
+import { FaUpload, FaLinkedinIn } from "react-icons/fa";
+import { useRouter } from "next/navigation";
 import NavbarJob from "../components/NavbarJob";
-import * as fcl from "@onflow/fcl";
-import "../flow/config";
 import { countries, jobCategories, jobRoles } from "@/constants";
 import { SubText } from "../components/Header";
+import * as fcl from "@onflow/fcl";
+import "../flow/config";
+
+import { Context } from "../context";
+
+
+import { toast } from 'react-toastify';
 
 export default function Profile() {
+  const { user} = useContext(Context)
+  console.log(user)
+  const [transactionStatus, setTransactionStatus] = useState(0)
+  const router = useRouter();
   const [selectedImage, setSelectedImage] = useState(null);
-  //const [first, setFirst] = useState(true);
-  const [next, setNext] = useState(false);
+  const [next, setNext] = useState("page-1");
   const [formData, setFormData] = useState({
+    name: "",
+    email: "",
     jobRole: "",
     jobCategory: "",
     country: "",
@@ -33,8 +44,11 @@ export default function Profile() {
     hourlyRate: "",
     serviceFee: "",
     amountPaid: "",
+    portfolioLink: "",
   });
   const {
+    name,
+    email,
     jobRole,
     jobCategory,
     city,
@@ -48,6 +62,7 @@ export default function Profile() {
     hourlyRate,
     serviceFee,
     amountPaid,
+    portfolioLink,
   } = formData;
 
   function onChange(e: any) {
@@ -55,30 +70,127 @@ export default function Profile() {
       ...prevState,
       [e.target.id]: e.target.value,
     }));
-    
+    console.log(user)
     console.log("formData", formData)
   }
+
+  const createFreelancer = async () => {
+    try {
+      const txId = await createFreelancerAccount(formData.name,formData.walletAddress,formData.portfolioLink, formData.jobRole, formData.jobCategory,  false, 0, formData.email, formData.country, 0);
+      toast('User authenticated', { hideProgressBar: true, autoClose: 2000, type: 'success' });
+  
+      fcl.tx(txId).subscribe(res => setTransactionStatus(res.status));
+      try {
+        if (transactionStatus === 0) {
+          toast('Transaction status loading', { hideProgressBar: true, autoClose: 2000, type: 'info' });
+        } else if (transactionStatus === 1) {
+          toast('Transaction pending - Awaiting Finalization', { hideProgressBar: true, autoClose: 2000, type: 'info' });
+        } else if (transactionStatus === 2) {
+          toast('Transaction finalized - Awaiting Execution', { hideProgressBar: true, autoClose: 2000, type: 'info' });
+        } else if (transactionStatus === 3) {
+          toast('Transaction executed - Awaiting Sealing', { hideProgressBar: true, autoClose: 2000, type: 'success' });
+        } else if (transactionStatus === 4) {
+          toast('Transaction Sealed - Transaction Complete!', { hideProgressBar: true, autoClose: 2000, type: 'success' });
+          setNext("page-4");
+          window.scroll(0, 0);
+        } else if (transactionStatus === 5) {
+          toast('Transaction Expired', { hideProgressBar: true, autoClose: 2000, type: 'error' });
+        } else {
+          toast('Transaction status unknown', { hideProgressBar: true, autoClose: 2000, type: 'info' });
+        }
+        
+        await fcl.tx(txId).onceSealed();
+        setNext("page-4");
+        window.scroll(0, 0);
+      } catch (error) {
+        toast('Failed to create freelancer profile', { hideProgressBar: true, autoClose: 2000, type: 'error' });
+        console.error(error);
+
+      }
+    } catch (error) {
+      toast('Failed to create freelancer profile', { hideProgressBar: true, autoClose: 2000, type: 'error' });
+      console.error(error);
+    }
+  };
+  
+  // function onSubmit(){
+  //   // Function for submitting form fields
+  //   router.push("/editProfile/congratulations")
+  // }
+
   useEffect(() => {
     window.scroll(0, 0);
   }, []);
 
-  function handleProcedureContentChange(
-    content: any,
-    delta: any,
-    source: any,
-    editor: any
-  ) {
-    setFormData((prevState) => ({
-      ...prevState,
-      bio: content,
-    }));
-  }
+  // function handleProcedureContentChange(
+  //   content: any,
+  //   delta: any,
+  //   source: any,
+  //   editor: any
+  // ) {
+  //   setFormData((prevState) => ({
+  //     ...prevState,
+  //     bio: content,
+  //   }));
+  // }
 
   return (
     <>
       <NavbarJob />
-      {!next && (
-        <div className="max-w-4xl mx-auto">
+      {next === "page-1" && (
+        <div className="max-w-5xl min-w-[300px] md:ml-20 mt-1 md:mt-10 mx-auto px-5 md:px-10 py-12">
+          <h1 className="text-5xl font-medium text-black mb-5">
+            Land your dream job
+          </h1>
+          <h1 className="text-4xl font-medium text-black max-w-2xl mb-4">
+            What would you like to tell the world about yourself?
+          </h1>
+          <p className="font-medium text-black">
+            We need to know about your experience, your skills, portfolio and
+            certification.
+          </p>
+          <div className="mt-16 mb-5">
+            <label htmlFor="resume" className="">
+              Portfolio Link (Hosted CV/resume on Google Drive preferrably)
+              {/* <div className="flex items-center border rounded border-[#001E00] justify-start w-[30vw] p-3">
+                <div className="mx-auto flex items-center">
+                <FaUpload className="text-[#00EF7C] bg-black p-2 rounded-full" size={30} /> <span className="ml-2 font-medium">Upload Your Resume</span>
+                </div>
+              </div> */}
+            </label>
+            <input
+              type="text"
+              id="portfolioLink"
+              value={portfolioLink}
+              onChange={onChange}
+              className="block w-[90%] mt-3 md:w-[31.5vw]"
+            />
+            {/* <input type="file" name="" id="resume" className="hidden mx-auto" /> */}
+          </div>
+          {/* <div className="mb-7">
+            <label htmlFor="resume" className="text-center">
+              <div className="flex items-center border rounded border-[#001E00] justify-start w-[30vw] p-3">
+                <div className="mx-auto flex items-center">
+                <FaLinkedinIn className="text-[#00EF7C]" size={20} /> <span className="ml-2 font-medium">Import From Linkedin</span>
+                </div>
+              </div>
+            </label>
+              <input type="file" name="" id="resume" className="hidden mx-auto" />
+          </div> */}
+          <button
+            type="button"
+            onClick={() => {
+              setNext("page-2");
+              window.scroll(0, 0);
+            }}
+            className="py-4 w-[90%] md:w-[31.5vw] px-[118px] rounded font-medium bg-[#00EF7C]"
+          >
+            Submit
+          </button>
+        </div>
+      )}
+      {next === "page-2" && (
+        <div className="max-w-4xl mx-auto px-3 md:px-3">
           <SubText title="Let's Get Started " subtitle="1/2" />
           <div className="bg-[#00EF7C] p-2 rounded-lg text-center mt-2">
             <p className="text-[#001E00] text-sm">
@@ -87,9 +199,9 @@ export default function Profile() {
               get employed.
             </p>
           </div>
-          <div className="grid grid-cols-2 mt-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 mt-10">
             {/* Profile Picture Section */}
-            <div className="border-r w-60 text-center">
+            <div className="md:border-r w-full lg:w-60 text-center">
               {!selectedImage ? (
                 <div>
                   <div className="mx-auto w-56 h-56 rounded-full bg-black flex overflow-hidden">
@@ -119,7 +231,7 @@ export default function Profile() {
               )}
               <br />
               <br />
-              <div className="text-center">
+              <div className="text-center mb-10">
                 <label
                   htmlFor="files"
                   className="py-3 border border-[#00EF7C] text-[#00EF7C] px-8 rounded-lg"
@@ -131,17 +243,48 @@ export default function Profile() {
                   id="files"
                   name="myImage"
                   className="hidden"
-                  // onChange={(event) => {
-                  //   console.log(event.target.files[0]);
-                  //   setSelectedImage(event.target.files[0]);
-                  // }}
+                  onChange={(event: any) => {
+                    console.log(event.target.files[0]);
+                    setSelectedImage(event.target.files[0]);
+                  }}
                 />
               </div>
             </div>
             {/* Personal Info section */}
-            <div className="-ml-48 pb-40">
+            <div className="lg:-ml-48 pb-10">
+              {/* Row 0 */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-5">
+                <div className="">
+                  <label htmlFor="name" className="text-[#0D0D22]">
+                    Name
+                  </label>
+                  <div className="relative">
+                    <input
+                      type="text"
+                      id="name"
+                      value={name}
+                      onChange={onChange}
+                      placeholder="Full name or Nickname"
+                      className="block w-full py-3 pr-4 pl-9 bg-transparent border border-[#D0D2D6] text-sm"
+                    />
+                  </div>
+                </div>
+                <div className="">
+                  <label htmlFor="email" className="text-[#0D0D22]">
+                    Email
+                  </label>
+                  <input
+                    type="text"
+                    id="email"
+                    value={email}
+                    onChange={onChange}
+                    placeholder="Email address"
+                    className="block w-full py-3 px-4 bg-transparent border border-[#D0D2D6] text-sm"
+                  />
+                </div>
+              </div>
               {/* Row 1 */}
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                 <div>
                   <label htmlFor="jobRole" className="text-[#0D0D22]">
                     Job Title
@@ -189,7 +332,7 @@ export default function Profile() {
                 </div>
               </div>
               {/* Row 2 */}
-              <div className="grid grid-cols-2 gap-3 mt-5">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-5">
                 <div className="">
                   <label htmlFor="country" className="text-[#0D0D22]">
                     Country
@@ -217,7 +360,7 @@ export default function Profile() {
                 </div>
                 <div className="">
                   <label htmlFor="city" className="text-[#0D0D22]">
-                    City
+                    City (Optional)
                   </label>
                   <div className="relative">
                     <AiOutlineSearch
@@ -235,10 +378,10 @@ export default function Profile() {
                 </div>
               </div>
               {/* Row 3 */}
-              <div className="grid grid-cols-2 gap-3 mt-5">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-5">
                 <div className="">
                   <label htmlFor="address" className="text-[#0D0D22]">
-                    Street Address
+                    Street Address (Optional)
                   </label>
                   <div className="relative">
                     <AiOutlineSearch
@@ -257,7 +400,7 @@ export default function Profile() {
                 </div>
                 <div className="">
                   <label htmlFor="postalCode" className="text-[#0D0D22]">
-                    Zip Postal Code
+                    Zip Postal Code (Optional)
                   </label>
                   <input
                     type="text"
@@ -268,27 +411,37 @@ export default function Profile() {
                   />
                 </div>
               </div>
-              {/* Row 4 */}
-              <div className="grid grid-cols-2 gap-3 mt-5">
+              {/* Row 4 - fix phone number fetching */}
+              {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-5">
                 <div className="">
                   <label htmlFor="phoneNumber" className="text-[#0D0D22]">
                     Phone Number
                   </label>
-                  {/* <PhoneInput
-                  placeholder="Enter phone number"
-                  id="phoneNumber"
-                  value={phoneNumber}
-                  onChange={onChange}
-                  defaultCountry="NG"
-                  className="block w-full py-3 px-4 bg-transparent border border-[#D0D2D6] text-sm"
-                /> */}
+                  <PhoneInput
+                    placeholder="Enter phone number"
+                    id="phoneNumber"
+                    value={phoneNumber}
+                    onChange={onChange}
+                    defaultCountry="NG"
+                    className="block w-full py-3 px-4 bg-transparent border border-[#D0D2D6] text-sm"
+                  />
                 </div>
-              </div>
+              </div> */}
               {/* Text Editor */}
               <div className="mt-10">
                 <label htmlFor="bio" className="text-[#0D0D22]">
                   Bio
                 </label>
+                <textarea
+                  name="Bio"
+                  id="bio"
+                  value={bio}
+                  onChange={onChange}
+                  rows={6}
+                  placeholder=" Tell us why we should hire you and not the next guy."
+                  // cols={30}
+                  className="px-4 min-h-[auto] w-full py-4 bg-white text-lg text-gray-700 border border-[#D9D9D9] rounded transition ease-in-out resize-none"
+                />
                 {/* <ReactQuill
                 theme="snow"
                 id="bio"
@@ -297,31 +450,35 @@ export default function Profile() {
                 className="h-[300px]"
               /> */}
               </div>
-              <div className="mt-20">
+              
+              {/* <div className="mt-20">
                 <label htmlFor="portfolio">Upload your portfolio</label>
                 <input type="file" name="" id="portfolio" className="hidden" />
                 <label htmlFor="portfolio">
-                  <div className="flex items-center border border-[#CCD1D5] justify-start w-[25vw] text-sm p-3">
+                  <div className="flex items-center border border-[#CCD1D5] justify-start md:w-[25vw] w-full text-sm p-3">
                     <FaUpload />{" "}
                     <span className="ml-2">
                       Use a PDF, Doc, Docx, Rtf, and Txt
                     </span>
                   </div>
                 </label>
-              </div>
+              </div> */}
               {/* PREV/NEXT BUTTONS */}
-              <div className="mt-10 flex justify-between items-center">
-                <Link
-                  href=""
-                  scroll={false}
-                  className="border border-[#001E00] text-[#001E00] font-medium py-3 px-8 rounded-full"
+              <div className="mt-10 space-y-5 md:space-y-0 flex justify-between items-center flex-col md:flex-row">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setNext("page-1");
+                  }}
+                  className="border w-full md:w-auto border-[#001E00] text-[#001E00] font-medium py-3 px-8 rounded-full"
                 >
                   Back
-                </Link>
+                </button>
                 <button
-                  className="bg-[#00EF7C] text-[#001E00] py-3 px-8 rounded-full border border-[#00EF7C] font-medium"
+                  type="button"
+                  className="bg-[#00EF7C] w-full md:w-auto text-[#001E00] py-3 px-8 rounded-full border border-[#00EF7C] font-medium"
                   onClick={() => {
-                    setNext(true);
+                    setNext("page-3");
                     window.scroll(0, 0);
                   }}
                 >
@@ -333,8 +490,8 @@ export default function Profile() {
         </div>
       )}
       {/* Payment options */}
-      {next && (
-        <div className="max-w-4xl mx-auto">
+      {next === "page-3" && (
+        <div className="max-w-4xl mx-auto px-3 lg:px-0">
           <SubText title="Payments for service" subtitle="2/2" />
           <p className="mt-2">
             Client would see this rate on your profile and in search result once
@@ -343,7 +500,7 @@ export default function Profile() {
           </p>
           <div>
             <div className="border-b py-10">
-              <div className="flex justify-between items-start">
+              <div className="flex justify-between items-start flex-col md:flex-row space-y-5 md:space-y-0">
                 <div className="">
                   <label
                     htmlFor="hourlyRate"
@@ -365,15 +522,15 @@ export default function Profile() {
                     id="hourlyRate"
                     value={hourlyRate}
                     onChange={onChange}
-                    className="pl-10 w-[10vw]"
-                    step="0.1"
+                    className="pl-10 md:w-[20vw] lg:w-[10vw]"
+                    step="0.01"
                   />
                   <span className="ml-2">/hr</span>
                 </div>
               </div>
             </div>
             <div className="border-b py-10">
-              <div className="flex justify-between items-start">
+              <div className="flex justify-between items-start flex-col md:flex-row space-y-5 md:space-y-0">
                 <div className="">
                   <label
                     htmlFor="serviceFee"
@@ -395,7 +552,7 @@ export default function Profile() {
                     id="serviceFee"
                     value={serviceFee}
                     onChange={onChange}
-                    className="pl-10 w-[10vw]"
+                    className="pl-10 md:w-[20vw] lg:w-[10vw]"
                     step="0.1"
                   />
                   <span className="ml-2">/hr</span>
@@ -403,7 +560,7 @@ export default function Profile() {
               </div>
             </div>
             <div className="border-b py-10">
-              <div className="flex justify-between items-start">
+              <div className="flex justify-between items-start flex-col md:flex-row space-y-5 md:space-y-0">
                 <div className="">
                   <label
                     htmlFor="amountPaid"
@@ -426,7 +583,7 @@ export default function Profile() {
                     id="amountPaid"
                     value={amountPaid}
                     onChange={onChange}
-                    className="pl-10 w-[10vw]"
+                    className="pl-10 md:w-[20vw] lg:w-[10vw]"
                     step="0.1"
                   />
                   <span className="ml-2">/hr</span>
@@ -479,7 +636,7 @@ export default function Profile() {
                 <input
                   type="text"
                   id="walletName"
-                  value={walletName}
+                  value={formData.email}
                   onChange={onChange}
                   placeholder="Input Wallet name"
                   className="block w-full py-3 px-4 bg-transparent border border-[#D0D2D6] text-sm"
@@ -490,7 +647,7 @@ export default function Profile() {
                 <input
                   type="text"
                   id="walletAddress"
-                  value={walletAddress}
+                  value={user.addr}
                   onChange={onChange}
                   placeholder="Wallet Address"
                   className="block w-full py-3 px-4 bg-transparent border border-[#D0D2D6] text-sm"
@@ -498,22 +655,77 @@ export default function Profile() {
               </div>
             </div>
             {/* PREV/NEXT BUTTONS */}
-            <div className="mt-28 flex justify-between items-center">
+            <div className="mt-28 flex justify-between items-center flex-col md:flex-row space-y-5 md:space-y-0">
               <button
-                className="border border-[#001E00] text-[#001E00] font-medium py-3 px-8 rounded-full"
+                type="button"
+                className="border w-full md:w-auto border-[#001E00] text-[#001E00] font-medium py-3 px-8 rounded-full"
                 onClick={() => {
-                  setNext(false);
+                  setNext("page-2");
                   window.scroll(0, 0);
                 }}
               >
                 Back
               </button>
-              <button className="bg-[#00EF7C] text-[#001E00] py-3 px-8 rounded-full border border-[#00EF7C] font-medium">
-                Get Started
+              <button
+                type="button"
+                onClick={createFreelancer}
+                className="bg-[#00EF7C] w-full md:w-auto text-[#001E00] py-3 px-8 rounded-full border border-[#00EF7C] font-medium"
+              >
+                Submit Profile
               </button>
             </div>
           </div>
         </div>
+      )}
+      {next === "page-4" && (
+        <div className="rounded-lg py-20 px-10 max-w-4xl mx-auto">
+        <div className="w-full h-[200px] flex justify-center items-center">
+          <div className="relative">
+            <Image
+              src="/svg/jobPost.svg"
+              alt="svg"
+              width={200}
+              height={200}
+            />
+            <Image
+              src="/svg/thumbs.svg"
+              alt="thumbs-up"
+              width={300}
+              height={300}
+              className="absolute -bottom-10 -right-32"
+            />
+          </div>
+        </div>
+        <div className="text-black text-center mt-20">
+          <h1 className="text-2xl md:text-4xl font-bold mb-5">
+            Amazing effort, {formData.name}!
+          </h1>
+          <h1 className="text-xl md:text-4xl font-bold mb-5">
+            Your profile is being reviewed.
+          </h1>
+          <p className="mb-5">
+            Congratulations, with thousands of jobs to pick from, it is time for
+            you to make your first pick and start your bidding on roles that
+            best fit your portfolio
+          </p>
+          {/* PREV/NEXT BUTTONS */}
+          <div className="mt-10 flex justify-between items-center flex-col md:flex-row space-y-5 md:space-y-0 max-w-2xl mx-auto">
+            <Link
+              href="/profile"
+              scroll={false}
+              className="border w-full md:w-auto border-[#00EF7C] text-[#001E00] font-medium py-3 px-20 rounded-full"
+            >
+              View My Profile
+            </Link>
+            <Link
+              href="/Job"
+              className="bg-[#00EF7C] w-full md:w-auto text-[#001E00] py-3 px-20 rounded-full border border-[#00EF7C] font-medium"
+            >
+              Browse Jobs
+            </Link>
+          </div>
+        </div>
+      </div>
       )}
     </>
   );
