@@ -1,13 +1,15 @@
 "use client";
 import Image from "next/image";
 import NavbarJob from "../components/NavbarJob";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { FaPen } from "react-icons/fa";
 import Footer from "@/app/components/footer";
+import { Context } from "../context";
 
 export default function Profile() {
   const [image, setImage] = useState("/random url");
   const [status, setStatus] = useState("available");
+  const { freelancer } = useContext(Context)
   const [display, setDisplay] = useState([
     {
       name: "Obi Somto. E",
@@ -79,9 +81,9 @@ export default function Profile() {
                     </div>
                   </div>
                   <div>
-                    <p className="text-[#415361] text-2xl">{name}</p>
-                    <p className="text-black text-xl">
-                      {city}, {country}
+                    <p className="text-[#415361] text-2xl mt-1">{freelancer.name}</p>
+                    <p className="text-black text-xl text-center my-2">
+                      {freelancer.city}, {freelancer.country}
                     </p>
                   </div>
                 </div>
@@ -165,14 +167,14 @@ export default function Profile() {
                   <div className="border-b px-7 pb-6">
                     <div className="flex justify-between items-center mb-7">
                       <h1 className="md:text-center text-xl font-medium">
-                        {careerTitle}
+                        {freelancer.jobRole}, {freelancer.jobCategory}
                       </h1>
                       <div className="border border-[#00EF7C] bg-white p-2 rounded-full">
                         <FaPen className="text-[#00EF7C]" size={20} />
                       </div>
                     </div>
                     <div>
-                      <p>{bio}</p>
+                      <p>{freelancer.bio}</p>
                     </div>
                   </div>
 
@@ -184,7 +186,7 @@ export default function Profile() {
                     </div>
                     <div>
                       <p>
-                        No work yet. Once you start getting hired on Upwork,
+                        No work yet. Once you start getting hired on DeclanWork,
                         your work with clients will show up here browse jobs
                       </p>
                       <button type="button" className="text-[#14A800] mt-3">
@@ -232,14 +234,14 @@ export default function Profile() {
                     </div>
                     <div className="flex flex-wrap gap-5 md:gap-0 md:space-x-5 mt-2">
                       <div className="bg-[#415361] py-2 px-4 rounded-lg">
-                        <p className="text-sm text-white">Web Design</p>
+                        <p className="text-sm text-white">{freelancer.jobCategory}</p>
                       </div>
                       <div className="bg-[#415361] py-2 px-4 rounded-lg">
-                        <p className="text-sm text-white">Graphic Design</p>
+                        <p className="text-sm text-white">{freelancer.jobRole}</p>
                       </div>
-                      <div className="bg-[#415361] py-2 px-4 rounded-lg">
+                      {/* <div className="bg-[#415361] py-2 px-4 rounded-lg">
                         <p className="text-sm text-white">Adobe Illustrator</p>
-                      </div>
+                      </div> */}
                     </div>
                   </div>
                 </div>

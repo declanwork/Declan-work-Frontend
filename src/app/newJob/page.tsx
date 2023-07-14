@@ -19,7 +19,7 @@ import { toast } from 'react-toastify';
 
 
 export default function NewJob() {
-  const { user} = useContext(Context)
+  const { user, feedGig} = useContext(Context)
   console.log(user)
   const [transactionStatus, setTransactionStatus] = useState(0)
   const router = useRouter();
@@ -74,10 +74,12 @@ export default function NewJob() {
   // }
 
   const handleGig = async () => {
+
       const txId = await CreateGig(user.addr, formData.email, formData.jobTitle, formData.description, formData.jobDuration, formData.jobValue);
       toast('User authenticated', { hideProgressBar: true, autoClose: 2000, type: 'success' });
   
       fcl.tx(txId).subscribe(res => setTransactionStatus(res.status));
+
       try {
         if (transactionStatus === 0) {
           toast('Transaction status loading', { hideProgressBar: true, autoClose: 2000, type: 'info' });
@@ -89,6 +91,7 @@ export default function NewJob() {
           toast('Transaction executed - Awaiting Sealing', { hideProgressBar: true, autoClose: 2000, type: 'success' });
         } else if (transactionStatus === 4) {
           toast('Transaction Sealed - Transaction Complete!', { hideProgressBar: true, autoClose: 2000, type: 'success' });
+          feedGig(formData);
           router.push('/newJob/detail/verify');
         } else if (transactionStatus === 5) {
           toast('Transaction Expired', { hideProgressBar: true, autoClose: 2000, type: 'error' });
@@ -96,8 +99,10 @@ export default function NewJob() {
           toast('Transaction status unknown', { hideProgressBar: true, autoClose: 2000, type: 'info' });
         }
         
-        await fcl.tx(txId).onceSealed();
+        fcl.tx(txId).onceSealed();
+        feedGig(formData);
         router.push('/newJob/detail/verify');
+        
       } catch (error) {
         toast('Failed to create gig', { hideProgressBar: true, autoClose: 2000, type: 'error' });
         console.error(error);
@@ -160,7 +165,7 @@ export default function NewJob() {
             }}
             className="rounded-full w-full md:w-auto float-right text-sm font-semibold bg-[#00EF7C] py-3 px-12 text-[#00360C]  focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#ADFFC8]"
           >
-            Next Skill
+            Next 
           </button>
         </div>
       )}

@@ -2,15 +2,18 @@
 import NavbarJob from "@/app/components/NavbarJob";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useContext, Key, JSXElementConstructor, Key, PromiseLikeOfReactNode, ReactElement, ReactNode } from "react";
 import { FaPen } from "react-icons/fa";
 import { AiFillHeart, AiOutlineHeart, AiFillStar, AiOutlineSearch } from "react-icons/ai";
 import Footer from "../components/footer";
 import { BsThreeDotsVertical } from "react-icons/bs";
 
+import { Context } from "../context";
+
 export default function Dashboard() {
   const [jobsNav, setJobsNav] = useState("Job Profile");
   const [blogsNav, setBlogsNav] = useState("Blog Profile");
+  const { freelancer, gig } = useContext(Context)
   const [display, setDisplay] = useState([
     {
       heading: "Interactive app ui/ux design in Figma",
@@ -116,30 +119,30 @@ export default function Dashboard() {
               />
             </div>
             <p className="text-black font-medium text-xl text-center">
-              Obi Somto. E
+              {freelancer.name}
             </p>
             {/* Job Title */}
             <p className="text-black font-medium text-xl text-center">
-              UI/UX Designer
+              {freelancer.jobRole}, {freelancer.jobCategory}
             </p>
             {/* ACTIVE */}
             <div className="p-3 border border-[#415361] rounded-lg my-5">
               <h1 className="text-2xl font-medium">Active</h1>
               <div className="flex justify-between items-center my-2">
                 <p className="text-sm">Submitted Proposals</p>
-                <p>[3]</p>
+                <p>[0]</p>
               </div>
               <div className="flex justify-between items-center mb-2">
                 <p className="text-sm">Invitations for Interview</p>
-                <p>[2]</p>
+                <p>[0]</p>
               </div>
               <div className="flex justify-between items-center mb-2">
                 <p className="text-sm">Offers</p>
-                <p>[1]</p>
+                <p>[0]</p>
               </div>
               <div className="flex justify-between items-center">
                 <p className="text-sm">Active Proposals</p>
-                <p>[1]</p>
+                <p>[0]</p>
               </div>
             </div>
             {/* PROPOSALS */}
@@ -148,7 +151,7 @@ export default function Dashboard() {
               <Link href="/proposals" className="underline">
                 My proposals
               </Link>
-              <p className="mt-2">3 Submitted Proposal</p>
+              <p className="mt-2">0 Submitted Proposal</p>
             </div>
             {/* AVAILABILITY */}
             <div className="p-3 border border-[#415361] rounded-lg">
@@ -211,21 +214,21 @@ export default function Dashboard() {
               </div>
             </div>
             {/* DASHBOARD ITEMS*/}
-            {jobsNav === "Job Profile" && display.length > 0 && (
+            {jobsNav === "Job Profile" && gig.length > 0 && (
               <div>
-                {display.map(
+                {gig.map(
                   (
                     {
-                      heading,
-                      levelRequired,
-                      budget,
+                      jobTitle,
+                      companyName,
+                      jobValue,
                       timePosted,
                       description,
                       skillsRequired,
                       paymentMethod,
                       location,
-                    },
-                    index
+                    }: any,
+                    index: Key | null | undefined
                   ) => (
                     <div
                       key={index}
@@ -245,13 +248,13 @@ export default function Dashboard() {
                         )}
                         <BsThreeDotsVertical size={20} />
                       </div>
-                      <h1 className="text-[#415361] text-5xl">{heading}</h1>
+                      <h1 className="text-[#415361] text-5xl">{jobTitle}</h1>
                       <div className="my-4 flex items-center space-x-4">
                         <p className="text-sm text-[#777777]">
-                          Level Required: {levelRequired}
+                          Posted by: {companyName}
                         </p>
                         <p className="text-sm text-[#777777]">
-                          Est. budget: {budget}
+                          Est. budget: {jobValue}
                         </p>
                         <p className="text-sm text-[#777777]">
                           Posted {timePosted} ago
@@ -262,7 +265,7 @@ export default function Dashboard() {
                         <p className="text-sm text-[#777777]">
                           Skills Required:
                         </p>
-                        {skillsRequired.map((skills) => (
+                        {skillsRequired.map((skills: boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | PromiseLikeOfReactNode | Key | null | undefined) => (
                           <div
                             key={skills}
                             className="bg-[#9AA3AA80] py-2 px-4 rounded-full"
@@ -280,9 +283,11 @@ export default function Dashboard() {
                             Location: {location}
                           </p>
                         </div>
-                        <button className="bg-[#00EF7C] py-3 px-4 rounded-full text-sm text-[#00360C]">
+                        <Link href="/Job/JobPost" className="underline">
+                        <button className="bg-[#00EF7C] py-3 px-4 rounded-full text-sm text-[#00360c9d]">
                           Apply
                         </button>
+                        </Link>
                       </div>
                     </div>
                   )
@@ -413,7 +418,7 @@ export default function Dashboard() {
             <h1 className="text-2xl font-medium text-[#001E00]">
               Development & IT
             </h1>
-            <div className="flex items-center mt-5 relative md:-bottom-8">
+            <div className="flex items-center mt-5  md:-bottom-8">
               <div className="flex items-center justify-center mr-8">
                 <AiFillStar className="text-[#14A800]" size={25} />
                 <p className="text-[#5E6D55] text-xl">4.8/5</p>
@@ -439,7 +444,7 @@ export default function Dashboard() {
             <h1 className="text-2xl font-medium text-[#001E00]">
               Design & Creative
             </h1>
-            <div className="flex items-center mt-5 relative md:-bottom-8">
+            <div className="flex items-center mt-5  md:-bottom-8">
               <div className="flex items-center justify-center mr-8">
                 <AiFillStar className="text-[#14A800]" size={25} />
                 <p className="text-[#5E6D55] text-xl">4.8/5</p>
@@ -450,7 +455,7 @@ export default function Dashboard() {
           {/* item */}
           <div className="bg-white py-5 px-10 rounded">
             <h1 className="text-2xl font-medium text-[#001E00]">AI Services</h1>
-            <div className="flex items-center mt-5 relative md:-bottom-8">
+            <div className="flex items-center mt-5  md:-bottom-8">
               <div className="flex items-center justify-center mr-8">
                 <AiFillStar className="text-[#14A800]" size={25} />
                 <p className="text-[#5E6D55] text-xl">4.8/5</p>
@@ -476,7 +481,7 @@ export default function Dashboard() {
             <h1 className="text-2xl font-medium text-[#001E00]">
               Development & IT
             </h1>
-            <div className="flex items-center mt-5 relative md:-bottom-8">
+            <div className="flex items-center mt-5  md:-bottom-8">
               <div className="flex items-center justify-center mr-8">
                 <AiFillStar className="text-[#14A800]" size={25} />
                 <p className="text-[#5E6D55] text-xl">4.8/5</p>

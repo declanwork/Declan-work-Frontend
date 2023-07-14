@@ -22,7 +22,7 @@ import { Context } from "../context";
 import { toast } from 'react-toastify';
 
 export default function Profile() {
-  const { user} = useContext(Context)
+  const { user, setFreelancer} = useContext(Context)
   console.log(user)
   const [transactionStatus, setTransactionStatus] = useState(0)
   const router = useRouter();
@@ -75,11 +75,13 @@ export default function Profile() {
   }
 
   const createFreelancer = async () => {
-    try {
+    
       const txId = await createFreelancerAccount(formData.name,formData.walletAddress,formData.portfolioLink, formData.jobRole, formData.jobCategory,  false, 0, formData.email, formData.country, 0);
       toast('User authenticated', { hideProgressBar: true, autoClose: 2000, type: 'success' });
   
       fcl.tx(txId).subscribe(res => setTransactionStatus(res.status));
+
+      
       try {
         if (transactionStatus === 0) {
           toast('Transaction status loading', { hideProgressBar: true, autoClose: 2000, type: 'info' });
@@ -91,6 +93,8 @@ export default function Profile() {
           toast('Transaction executed - Awaiting Sealing', { hideProgressBar: true, autoClose: 2000, type: 'success' });
         } else if (transactionStatus === 4) {
           toast('Transaction Sealed - Transaction Complete!', { hideProgressBar: true, autoClose: 2000, type: 'success' });
+
+          setFreelancer(formData);
           setNext("page-4");
           window.scroll(0, 0);
         } else if (transactionStatus === 5) {
@@ -99,18 +103,17 @@ export default function Profile() {
           toast('Transaction status unknown', { hideProgressBar: true, autoClose: 2000, type: 'info' });
         }
         
-        await fcl.tx(txId).onceSealed();
+        fcl.tx(txId).onceSealed();
+        setFreelancer(formData);
         setNext("page-4");
         window.scroll(0, 0);
+        
       } catch (error) {
         toast('Failed to create freelancer profile', { hideProgressBar: true, autoClose: 2000, type: 'error' });
         console.error(error);
 
       }
-    } catch (error) {
-      toast('Failed to create freelancer profile', { hideProgressBar: true, autoClose: 2000, type: 'error' });
-      console.error(error);
-    }
+     
   };
   
   // function onSubmit(){
@@ -718,7 +721,7 @@ export default function Profile() {
               View My Profile
             </Link>
             <Link
-              href="/Job"
+              href="/dashboard"
               className="bg-[#00EF7C] w-full md:w-auto text-[#001E00] py-3 px-20 rounded-full border border-[#00EF7C] font-medium"
             >
               Browse Jobs
