@@ -77,9 +77,9 @@ export default function Dashboard() {
   return (
     <div>
       <NavbarJob />
-      <div className="py-10 mx-auto max-w-[1150px] px-3 md:px-0">
+      <div className="py-10 mx-auto max-w-[1150px] px-3 xl:px-0">
         <div className="bg-[#00360C] h-[250px] w-full rounded-lg relative text-center flex items-center">
-          <div className="w-[150px] h-[100px] hidden absolute top-10 left-28">
+          <div className="w-[150px] h-[100px] hidden lg:block absolute top-10 left-28">
             <div className="relative">
               <Image
                 src="/svg/jobPost.svg"
@@ -448,11 +448,11 @@ export default function Dashboard() {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 max-w-screen-lg mx-auto mb-10">
           {/* item */}
-          <div className="bg-white py-5 px-10 rounded">
+          <div className="bg-white py-5 px-10 rounded h-[150px] relative">
             <h1 className="text-2xl font-medium text-[#001E00]">
               Development & IT
             </h1>
-            <div className="flex items-center mt-5 relative md:-bottom-8">
+            <div className="flex items-center mt-5 absolute bottom-5">
               <div className="flex items-center justify-center mr-8">
                 <AiFillStar className="text-[#14A800]" size={25} />
                 <p className="text-[#5E6D55] text-xl">4.8/5</p>
@@ -461,11 +461,11 @@ export default function Dashboard() {
             </div>
           </div>
           {/* item */}
-          <div className="bg-white py-5 px-10 rounded">
+          <div className="bg-white py-5 px-10 rounded h-[150px] relative">
             <h1 className="text-2xl font-medium text-[#001E00]">
               Writing & Translation
             </h1>
-            <div className="flex items-center mt-5">
+            <div className="flex items-center mt-5 absolute bottom-5">
               <div className="flex items-center justify-center mr-8">
                 <AiFillStar className="text-[#14A800]" size={25} />
                 <p className="text-[#5E6D55] text-xl">4.8/5</p>
@@ -474,11 +474,11 @@ export default function Dashboard() {
             </div>
           </div>
           {/* item */}
-          <div className="bg-white py-5 px-10 rounded">
+          <div className="bg-white py-5 px-10 rounded h-[150px] relative">
             <h1 className="text-2xl font-medium text-[#001E00]">
               Design & Creative
             </h1>
-            <div className="flex items-center mt-5 relative md:-bottom-8">
+            <div className="flex items-center mt-5 absolute bottom-5">
               <div className="flex items-center justify-center mr-8">
                 <AiFillStar className="text-[#14A800]" size={25} />
                 <p className="text-[#5E6D55] text-xl">4.8/5</p>
@@ -487,9 +487,9 @@ export default function Dashboard() {
             </div>
           </div>
           {/* item */}
-          <div className="bg-white py-5 px-10 rounded">
+          <div className="bg-white py-5 px-10 rounded h-[150px] relative">
             <h1 className="text-2xl font-medium text-[#001E00]">AI Services</h1>
-            <div className="flex items-center mt-5 relative md:-bottom-8">
+            <div className="flex items-center mt-5 absolute bottom-5">
               <div className="flex items-center justify-center mr-8">
                 <AiFillStar className="text-[#14A800]" size={25} />
                 <p className="text-[#5E6D55] text-xl">4.8/5</p>
@@ -498,11 +498,11 @@ export default function Dashboard() {
             </div>
           </div>
           {/* item */}
-          <div className="bg-white py-5 px-10 rounded">
+          <div className="bg-white py-5 px-10 rounded h-[150px] relative">
             <h1 className="text-2xl font-medium text-[#001E00]">
               Finance & Accounting
             </h1>
-            <div className="flex items-center mt-5">
+            <div className="flex items-center mt-5 absolute bottom-5">
               <div className="flex items-center justify-center mr-8">
                 <AiFillStar className="text-[#14A800]" size={25} />
                 <p className="text-[#5E6D55] text-xl">4.8/5</p>
@@ -511,11 +511,11 @@ export default function Dashboard() {
             </div>
           </div>
           {/* item */}
-          <div className="bg-white py-5 px-10 rounded">
+          <div className="bg-white py-5 px-10 rounded h-[150px] relative">
             <h1 className="text-2xl font-medium text-[#001E00]">
               Development & IT
             </h1>
-            <div className="flex items-center mt-5 relative md:-bottom-8">
+            <div className="flex items-center mt-5 bsolute bottom-5">
               <div className="flex items-center justify-center mr-8">
                 <AiFillStar className="text-[#14A800]" size={25} />
                 <p className="text-[#5E6D55] text-xl">4.8/5</p>

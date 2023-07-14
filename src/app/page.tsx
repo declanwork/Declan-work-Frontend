@@ -375,7 +375,7 @@ export default function Home() {
         </div>
       </section>
       <Skills />
-      <section className="py-20 bg-[#00360C]">
+      <section className="py-20 bg-[#00360C] text-white">
         <Footer />
       </section>
     </main>

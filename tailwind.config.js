@@ -6,13 +6,13 @@ module.exports = {
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
-    colors:{
-      lightGreen: "#00EF7C",
-      darkGreen: "#001e00"
-    },
     extend: {
       fontFamily:{
         poppin: ['Poppins', 'sans-serif'],
+      },
+      colors:{
+        lightGreen: "#00EF7C",
+        darkGreen: "#001e00",
       },
       boxShadow:{
         '3xl': '7.77035px 7.77035px 11.6555px rgba(0, 0, 0, 0.15)',
