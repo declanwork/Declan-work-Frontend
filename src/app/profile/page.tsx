@@ -45,7 +45,8 @@ export default function Profile() {
           },
           index
         ) => (
-          <div key={index} className="">
+          <div key={index}>
+            <div className="px-3">
             <div className="max-w-screen-lg mx-auto text-white bg-[#14A800] h-[180px] flex justify-center items-center rounded-lg px-8 gap-2">
               <h1 className="w-[80%] mx-auto text-2xl">
                 Filling out your personal information section will allow us to
@@ -61,8 +62,8 @@ export default function Profile() {
               </div>
             </div>
             <div className="max-w-screen-lg mx-auto border rounded-lg mt-10 pt-10">
-              <div className="border-b px-12 pb-10 flex items-center justify-between">
-                <div className="flex items-center space-x-7">
+              <div className="border-b px-12 pb-10 flex items-start md:items-center md:flex-row justify-between flex-col space-y-5 md:space-y-0">
+                <div className="flex items-center space-x-7 flex-col md:flex-row space-y-5 md:space-y-0">
                   <div className="relative">
                     <div className="w-40 h-40 bg-black rounded-full overflow-hidden">
                       <Image
@@ -109,8 +110,8 @@ export default function Profile() {
                   </button>
                 </div>
               </div>
-              <div className="flex items-start pl-12 gap-5">
-                <div className="w-[30%] pt-12">
+              <div className="flex items-start flex-col md:flex-row gap-5">
+                <div className="md:w-[30%] w-full px-5 py-5">
                   {/* Item One */}
                   <div className="mb-10">
                     <div className="flex justify-between items-center mb-1">
@@ -160,10 +161,10 @@ export default function Profile() {
                     <p>{yearOfStudy}</p>
                   </div>
                 </div>
-                <div className="w-[70%] border-l h-full pt-12">
+                <div className="md:w-[70%] w-full md:border-l h-full pt-12">
                   <div className="border-b px-7 pb-6">
                     <div className="flex justify-between items-center mb-7">
-                      <h1 className="text-center text-xl font-medium">
+                      <h1 className="md:text-center text-xl font-medium">
                         {careerTitle}
                       </h1>
                       <div className="border border-[#00EF7C] bg-white p-2 rounded-full">
@@ -229,7 +230,7 @@ export default function Profile() {
                         <FaPen className="text-[#00EF7C]" size={20} />
                       </div>
                     </div>
-                    <div className="flex space-x-5 mt-2">
+                    <div className="flex flex-wrap gap-5 md:gap-0 md:space-x-5 mt-2">
                       <div className="bg-[#415361] py-2 px-4 rounded-lg">
                         <p className="text-sm text-white">Web Design</p>
                       </div>
@@ -245,7 +246,7 @@ export default function Profile() {
               </div>
             </div>
             <div className="my-10 border rounded-lg py-10 max-w-screen-lg mx-auto">
-              <div className="border-b px-12 pb-10">
+              <div className="border-b px-8 pb-10">
                 <h1 className="text-2xl font-medium">
                   Certifications And Experience
                 </h1>
@@ -268,7 +269,7 @@ export default function Profile() {
                   </button>
                 </div>
               </div>
-              <div className="flex justify-between items-center px-12 py-10">
+              <div className="flex justify-between items-center px-8 py-10">
                 <h1 className="text-center text-2xl font-medium">
                   Employment History
                 </h1>
@@ -276,10 +277,11 @@ export default function Profile() {
                   <FaPen className="text-[#00EF7C]" size={20} />
                 </div>
               </div>
-              <div className="px-12">
+              <div className="px-8">
                 <p className="text-xl">Product Manager | disgn pluse</p>
                 <p className="text-xl">June 2022 - Present</p>
               </div>
+            </div>
             </div>
             <section className="py-20 bg-[#00360C]">
               <Footer />

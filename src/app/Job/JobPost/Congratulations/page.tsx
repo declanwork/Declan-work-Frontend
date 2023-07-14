@@ -7,8 +7,8 @@ export default function Congratulations() {
   return (
     <section className="pb-20 px-3">
         <NavbarJob />
-      <div className=" rounded-lg py-20 px-10 max-w-4xl mx-auto">
-        <div className="w-full h-[200px] flex justify-center items-center">
+      <div className=" rounded-lg py-20 max-w-4xl mx-auto">
+        <div className="w-[80%] md:w-full h-[200px] flex justify-center items-center">
           <div className="relative">
             <Image
               src="/svg/jobPost.svg"
@@ -38,17 +38,17 @@ export default function Congratulations() {
             best fit your portfolio
           </p>
           {/* PREV/NEXT BUTTONS */}
-          <div className="mt-10 flex justify-between items-center max-w-2xl mx-auto">
+          <div className="mt-10 flex justify-between flex-col md:flex-row items-center max-w-2xl mx-auto space-y-5 md:space-y-0">
             <Link
               href=""
               scroll={false}
-              className="border border-[#00EF7C] text-[#001E00] font-medium py-3 px-20 rounded-full"
+              className="border w-full md:w-auto border-[#00EF7C] text-[#001E00] font-medium py-3 px-20 rounded-full"
             >
               View My Profile
             </Link>
             <Link
               href="/editProfile/payments"
-              className="bg-[#00EF7C] text-[#001E00] py-3 px-20 rounded-full border border-[#00EF7C] font-medium"
+              className="bg-[#00EF7C] w-full md:w-auto text-[#001E00] py-3 px-20 rounded-full border border-[#00EF7C] font-medium"
             >
               Browse Jobs
             </Link>

@@ -1,8 +1,8 @@
 "use client";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-// import PhoneInput from "react-phone-number-input";
-// import "react-phone-number-input/style.css";
+import PhoneInput from "react-phone-number-input";
+import "react-phone-number-input/style.css";
 // import ReactQuill from "react-quill";
 // import "react-quill/dist/quill.snow.css";
 import { AiOutlineSearch, AiFillDollarCircle } from "react-icons/ai";
@@ -12,13 +12,15 @@ import Link from "next/link";
 import NavbarJob from "../components/NavbarJob";
 import * as fcl from "@onflow/fcl";
 import "../flow/config";
+import { useRouter } from "next/navigation";
+import Nav from "../components/Nav";
 import { countries, jobCategories, jobRoles } from "@/constants";
 import { SubText } from "../components/Header";
 
 export default function Profile() {
+  const router = useRouter();
   const [selectedImage, setSelectedImage] = useState(null);
-  //const [first, setFirst] = useState(true);
-  const [next, setNext] = useState(false);
+  const [next, setNext] = useState("page-1");
   const [formData, setFormData] = useState({
     jobRole: "",
     jobCategory: "",
@@ -33,6 +35,7 @@ export default function Profile() {
     hourlyRate: "",
     serviceFee: "",
     amountPaid: "",
+    portfolioLink: "",
   });
   const {
     jobRole,
@@ -48,6 +51,7 @@ export default function Profile() {
     hourlyRate,
     serviceFee,
     amountPaid,
+    portfolioLink,
   } = formData;
 
   function onChange(e: any) {
@@ -58,27 +62,83 @@ export default function Profile() {
     
     console.log("formData", formData)
   }
+  function onSubmit(){
+    // Function for submitting form fields
+    router.push("/editProfile/congratulations")
+  }
   useEffect(() => {
     window.scroll(0, 0);
   }, []);
 
-  function handleProcedureContentChange(
-    content: any,
-    delta: any,
-    source: any,
-    editor: any
-  ) {
-    setFormData((prevState) => ({
-      ...prevState,
-      bio: content,
-    }));
-  }
+  // function handleProcedureContentChange(
+  //   content: any,
+  //   delta: any,
+  //   source: any,
+  //   editor: any
+  // ) {
+  //   setFormData((prevState) => ({
+  //     ...prevState,
+  //     bio: content,
+  //   }));
+  // }
 
   return (
     <>
       <NavbarJob />
-      {!next && (
-        <div className="max-w-4xl mx-auto">
+      {next === "page-1" && (
+        <div className="max-w-5xl mx-auto px-3 pb-10">
+          <h1 className="text-5xl font-medium text-black mb-5">
+            Land your dream job
+          </h1>
+          <h1 className="text-4xl font-medium text-black max-w-2xl mb-4">
+            What would you like to tell the world about yourself?
+          </h1>
+          <p className="font-medium text-black">
+            We need to know about your experience, your skills, portfolio and
+            certification.
+          </p>
+          <div className="mt-16 mb-5">
+            <label htmlFor="resume" className="">
+              Portfolio Link
+              {/* <div className="flex items-center border rounded border-[#001E00] justify-start w-[30vw] p-3">
+                <div className="mx-auto flex items-center">
+                <FaUpload className="text-[#00EF7C] bg-black p-2 rounded-full" size={30} /> <span className="ml-2 font-medium">Upload Your Resume</span>
+                </div>
+              </div> */}
+            </label>
+            <input
+              type="text"
+              id="portfolioLink"
+              value={portfolioLink}
+              onChange={onChange}
+              className="block w-full md:w-[31.5vw]"
+            />
+            {/* <input type="file" name="" id="resume" className="hidden mx-auto" /> */}
+          </div>
+          {/* <div className="mb-7">
+            <label htmlFor="resume" className="text-center">
+              <div className="flex items-center border rounded border-[#001E00] justify-start w-[30vw] p-3">
+                <div className="mx-auto flex items-center">
+                <FaLinkedinIn className="text-[#00EF7C]" size={20} /> <span className="ml-2 font-medium">Import From Linkedin</span>
+                </div>
+              </div>
+            </label>
+              <input type="file" name="" id="resume" className="hidden mx-auto" />
+          </div> */}
+          <button
+            type="button"
+            onClick={() => {
+              setNext("page-2");
+              window.scroll(0, 0);
+            }}
+            className="py-4 w-full md:w-auto px-[118px] rounded font-medium bg-[#00EF7C]"
+          >
+            Fill Out Manually [15 Min]
+          </button>
+        </div>
+      )}
+      {next === "page-2" && (
+        <div className="max-w-4xl mx-auto px-3 md:px-3">
           <SubText title="Let's Get Started " subtitle="1/2" />
           <div className="bg-[#00EF7C] p-2 rounded-lg text-center mt-2">
             <p className="text-[#001E00] text-sm">
@@ -87,9 +147,9 @@ export default function Profile() {
               get employed.
             </p>
           </div>
-          <div className="grid grid-cols-2 mt-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 mt-10">
             {/* Profile Picture Section */}
-            <div className="border-r w-60 text-center">
+            <div className="md:border-r w-full lg:w-60 text-center">
               {!selectedImage ? (
                 <div>
                   <div className="mx-auto w-56 h-56 rounded-full bg-black flex overflow-hidden">
@@ -119,7 +179,7 @@ export default function Profile() {
               )}
               <br />
               <br />
-              <div className="text-center">
+              <div className="text-center mb-10">
                 <label
                   htmlFor="files"
                   className="py-3 border border-[#00EF7C] text-[#00EF7C] px-8 rounded-lg"
@@ -131,17 +191,17 @@ export default function Profile() {
                   id="files"
                   name="myImage"
                   className="hidden"
-                  // onChange={(event) => {
-                  //   console.log(event.target.files[0]);
-                  //   setSelectedImage(event.target.files[0]);
-                  // }}
+                  onChange={(event: any) => {
+                    console.log(event.target.files[0]);
+                    setSelectedImage(event.target.files[0]);
+                  }}
                 />
               </div>
             </div>
             {/* Personal Info section */}
-            <div className="-ml-48 pb-40">
+            <div className="lg:-ml-48 pb-10">
               {/* Row 1 */}
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                 <div>
                   <label htmlFor="jobRole" className="text-[#0D0D22]">
                     Job Title
@@ -189,7 +249,7 @@ export default function Profile() {
                 </div>
               </div>
               {/* Row 2 */}
-              <div className="grid grid-cols-2 gap-3 mt-5">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-5">
                 <div className="">
                   <label htmlFor="country" className="text-[#0D0D22]">
                     Country
@@ -235,7 +295,7 @@ export default function Profile() {
                 </div>
               </div>
               {/* Row 3 */}
-              <div className="grid grid-cols-2 gap-3 mt-5">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-5">
                 <div className="">
                   <label htmlFor="address" className="text-[#0D0D22]">
                     Street Address
@@ -269,19 +329,19 @@ export default function Profile() {
                 </div>
               </div>
               {/* Row 4 */}
-              <div className="grid grid-cols-2 gap-3 mt-5">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-5">
                 <div className="">
                   <label htmlFor="phoneNumber" className="text-[#0D0D22]">
                     Phone Number
                   </label>
-                  {/* <PhoneInput
-                  placeholder="Enter phone number"
-                  id="phoneNumber"
-                  value={phoneNumber}
-                  onChange={onChange}
-                  defaultCountry="NG"
-                  className="block w-full py-3 px-4 bg-transparent border border-[#D0D2D6] text-sm"
-                /> */}
+                  <PhoneInput
+                    placeholder="Enter phone number"
+                    id="phoneNumber"
+                    value={phoneNumber}
+                    onChange={onChange}
+                    defaultCountry="NG"
+                    className="block w-full py-3 px-4 bg-transparent border border-[#D0D2D6] text-sm"
+                  />
                 </div>
               </div>
               {/* Text Editor */}
@@ -301,7 +361,7 @@ export default function Profile() {
                 <label htmlFor="portfolio">Upload your portfolio</label>
                 <input type="file" name="" id="portfolio" className="hidden" />
                 <label htmlFor="portfolio">
-                  <div className="flex items-center border border-[#CCD1D5] justify-start w-[25vw] text-sm p-3">
+                  <div className="flex items-center border border-[#CCD1D5] justify-start md:w-[25vw] w-full text-sm p-3">
                     <FaUpload />{" "}
                     <span className="ml-2">
                       Use a PDF, Doc, Docx, Rtf, and Txt
@@ -310,18 +370,21 @@ export default function Profile() {
                 </label>
               </div>
               {/* PREV/NEXT BUTTONS */}
-              <div className="mt-10 flex justify-between items-center">
-                <Link
-                  href=""
-                  scroll={false}
-                  className="border border-[#001E00] text-[#001E00] font-medium py-3 px-8 rounded-full"
+              <div className="mt-10 space-y-5 md:space-y-0 flex justify-between items-center flex-col md:flex-row">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setNext("page-1");
+                  }}
+                  className="border w-full md:w-auto border-[#001E00] text-[#001E00] font-medium py-3 px-8 rounded-full"
                 >
                   Back
-                </Link>
+                </button>
                 <button
-                  className="bg-[#00EF7C] text-[#001E00] py-3 px-8 rounded-full border border-[#00EF7C] font-medium"
+                  type="button"
+                  className="bg-[#00EF7C] w-full md:w-auto text-[#001E00] py-3 px-8 rounded-full border border-[#00EF7C] font-medium"
                   onClick={() => {
-                    setNext(true);
+                    setNext("page-3");
                     window.scroll(0, 0);
                   }}
                 >
@@ -333,8 +396,8 @@ export default function Profile() {
         </div>
       )}
       {/* Payment options */}
-      {next && (
-        <div className="max-w-4xl mx-auto">
+      {next === "page-3" && (
+        <div className="max-w-4xl mx-auto px-3 lg:px-0">
           <SubText title="Payments for service" subtitle="2/2" />
           <p className="mt-2">
             Client would see this rate on your profile and in search result once
@@ -343,7 +406,7 @@ export default function Profile() {
           </p>
           <div>
             <div className="border-b py-10">
-              <div className="flex justify-between items-start">
+              <div className="flex justify-between items-start flex-col md:flex-row space-y-5 md:space-y-0">
                 <div className="">
                   <label
                     htmlFor="hourlyRate"
@@ -365,15 +428,15 @@ export default function Profile() {
                     id="hourlyRate"
                     value={hourlyRate}
                     onChange={onChange}
-                    className="pl-10 w-[10vw]"
-                    step="0.1"
+                    className="pl-10 md:w-[20vw] lg:w-[10vw]"
+                    step="0.01"
                   />
                   <span className="ml-2">/hr</span>
                 </div>
               </div>
             </div>
             <div className="border-b py-10">
-              <div className="flex justify-between items-start">
+              <div className="flex justify-between items-start flex-col md:flex-row space-y-5 md:space-y-0">
                 <div className="">
                   <label
                     htmlFor="serviceFee"
@@ -395,7 +458,7 @@ export default function Profile() {
                     id="serviceFee"
                     value={serviceFee}
                     onChange={onChange}
-                    className="pl-10 w-[10vw]"
+                    className="pl-10 md:w-[20vw] lg:w-[10vw]"
                     step="0.1"
                   />
                   <span className="ml-2">/hr</span>
@@ -403,7 +466,7 @@ export default function Profile() {
               </div>
             </div>
             <div className="border-b py-10">
-              <div className="flex justify-between items-start">
+              <div className="flex justify-between items-start flex-col md:flex-row space-y-5 md:space-y-0">
                 <div className="">
                   <label
                     htmlFor="amountPaid"
@@ -426,7 +489,7 @@ export default function Profile() {
                     id="amountPaid"
                     value={amountPaid}
                     onChange={onChange}
-                    className="pl-10 w-[10vw]"
+                    className="pl-10 md:w-[20vw] lg:w-[10vw]"
                     step="0.1"
                   />
                   <span className="ml-2">/hr</span>
@@ -498,17 +561,22 @@ export default function Profile() {
               </div>
             </div>
             {/* PREV/NEXT BUTTONS */}
-            <div className="mt-28 flex justify-between items-center">
+            <div className="mt-28 flex justify-between items-center flex-col md:flex-row space-y-5 md:space-y-0">
               <button
-                className="border border-[#001E00] text-[#001E00] font-medium py-3 px-8 rounded-full"
+                type="button"
+                className="border w-full md:w-auto border-[#001E00] text-[#001E00] font-medium py-3 px-8 rounded-full"
                 onClick={() => {
-                  setNext(false);
+                  setNext("page-2");
                   window.scroll(0, 0);
                 }}
               >
                 Back
               </button>
-              <button className="bg-[#00EF7C] text-[#001E00] py-3 px-8 rounded-full border border-[#00EF7C] font-medium">
+              <button
+                type="button"
+                onClick={onSubmit}
+                className="bg-[#00EF7C] w-full md:w-auto text-[#001E00] py-3 px-8 rounded-full border border-[#00EF7C] font-medium"
+              >
                 Get Started
               </button>
             </div>
