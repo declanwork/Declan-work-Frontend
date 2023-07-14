@@ -4,24 +4,29 @@ import { fclConfig } from "./config";
 
 fclConfig();
 
-export async function CreateGig(title, description, budget, deadline, gigTimeline, featureGig, status, completed, escrow) {
+export async function CreateGig(owner, ownerEmail, title, description, gigTimeline, budget) {
   return fcl.mutate({
     cadence: `
-      import DeclanWork from 0xDeclanWork
 
-      transaction(buyer: Address, seller: Address, title: String, description: String, budget: UFix64, deadline: Int16, gigTimeline: String, featureGig: Bool, status: String, completed: Bool, escrow: UFix64) {
+      import Declan from 0xDeclan
+
+      transaction(owner:Address, ownerEmail: String, title: String, description: String, gigTimeline: UInt64, budget: UInt64) {
         prepare(account: AuthAccount) {
           let gig = DeclanWork.createGig(
+            owner: owner,
+            ownerEmail: ownerEmail,
+            freelancer: owner,
             title: title,
             description: description,
-            budget: budget,
-            deadline: deadline,
             gigTimeline: gigTimeline,
-            featureGig: featureGig,
-            // freelancer: freelancer,
-            status: status,
-            completed: completed,
-            escrow: escrow
+            deadline: 0,
+            budget: budget,
+            featureGig: false,
+            bidders: {},
+            status: "open",
+            escrower: owner,
+            escrowAmount: 0,
+            warningCount: 0,
           )
 
           log("Gig created with ID:", gig.id)
@@ -32,16 +37,12 @@ export async function CreateGig(title, description, budget, deadline, gigTimelin
       }
     `,
     args: (arg, t) => [
+      arg(owner, t.Address),
+      arg(ownerEmail, t.String),
       arg(title, t.String),
       arg(description, t.String),
-      arg(budget, t.UFix64),
-      arg(deadline, t.Int16),
-      arg(gigTimeline, t.String),
-      arg(featureGig, t.Bool),
-      // arg(freelancer, t.Optional(t.Reference("DeclanWork.Freelancer"))),
-      arg(status, t.String),
-      arg(completed, t.Bool),
-      arg(escrow, t.UFix64),
+      arg(gigTimeline, t.UInt64),
+      arg(budget, t.UInt64),
     ],
     proposer: fcl.currentUser,
     payer: fcl.currentUser,

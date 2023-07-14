@@ -15,7 +15,6 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/footer";
 import Skills from "./components/skills";
 import { useRouter } from "next/navigation";
-// import { toast } from 'react-toastify';
 
 export default function Home() {
   const router = useRouter();

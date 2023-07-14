@@ -7,11 +7,11 @@ import { fclConfig } from "../../app/flow/config";
 
 import { Context } from "../context";
 
+import { toast } from 'react-toastify';
+
 fclConfig();
 
 const CurrentUser = () => {
-
-  // const [user, setUser] = useState({ loggedIn: null })
 
   const {user, setUser} = useContext(Context)
 
@@ -25,6 +25,7 @@ const CurrentUser = () => {
     fcl.currentUser.subscribe((stuff) => {
       setUser(stuff);
       console.log(stuff);
+      toast('User authenticated', { hideProgressBar: true, autoClose: 2000, type: 'success' })
     });
   }, []);
 
@@ -33,7 +34,6 @@ const CurrentUser = () => {
       await fcl.unauthenticate();
     } else {
       await fcl.authenticate();
-      router.push("./dashboard");
     }
   };
 
