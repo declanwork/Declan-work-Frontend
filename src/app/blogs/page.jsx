@@ -36,12 +36,13 @@ export default function Blogs() {
   return (
     <div>
       <NavbarJob />
+      <div className="px-3 xl:px-0">
       <div className="max-w-screen-lg mx-auto text-white bg-[#14A800] h-[180px] flex justify-center items-center rounded-lg px-8 gap-2">
-        <h1 className="w-[80%] mx-auto text-2xl">
+        <h1 className="md:w-[80%] w-full mx-auto text-2xl">
           Join thousands of web3 talents and read on issues bordering the Web 3
           space and make some useful contributions to the space
         </h1>
-        <div className="flex-1">
+        <div className="flex-1 hidden lg:block">
           <Image
             src="/images/browser-window.png"
             alt="svg"
@@ -51,7 +52,7 @@ export default function Blogs() {
         </div>
       </div>
       <div className="mt-8">
-        <ul className="flex items-center justify-center space-x-3">
+        <ul className="flex items-center justify-center flex-wrap gap-3">
           <li className="border py-3 px-4 rounded-full flex items-center"><AiOutlineCompass size={25} className="mr-2" />Explore Topics</li>
           <li className="border py-3 px-4 rounded-full">Technology</li>
           <li className="border py-3 px-4 rounded-full">Cryptocurrency</li>
@@ -61,7 +62,7 @@ export default function Blogs() {
         </ul>
       </div>
       <div className="pt-4 rounded-lg border border-[#CCD1D5] w-full mt-8 mb-5 max-w-screen-lg mx-auto">
-        <div className="border-b-2 px-20">
+        <div className="border-b-2 px-4 md:px-20">
           <h1 className="text-3xl font-medium mb-2">Blog Posts</h1>
           {/* BUTTON SECTION START */}
           <div className="flex items-center space-x-10 pt-4">
@@ -119,7 +120,7 @@ export default function Blogs() {
                 },
                 index
               ) => (
-                <div key={index} className="px-20 py-4 relative border-b">
+                <div key={index} className="px-4 md:px-20 py-4 relative border-b">
                   <div className="flex items-center absolute right-5 top-3">
                     {!checked ? (
                       <AiOutlineHeart
@@ -148,14 +149,14 @@ export default function Blogs() {
                       {userName} &middot; {timePosted}
                     </p>
                   </div>
-                  <div className="flex items-center gap-12">
+                  <div className="flex flex-col md:flex-row items-center gap-3 md:gap-5">
                     <div className="flex-1">
                       <h1 className="text-xl text-[#102638] font-medium">
                         {blogHeading}
                       </h1>
                       <p className="text-sm mt-5">{blogPost}</p>
                     </div>
-                    <div className="w-48 h-48 bg-black overflow-hidden my-5">
+                    <div className="md:w-48 w-full h-48 bg-black overflow-hidden mb-5">
                       {/* input image here */}
                     </div>
                   </div>
@@ -177,6 +178,7 @@ export default function Blogs() {
         <Link href="/" className="text-[#00EF7C]">
           View More...
         </Link>
+      </div>
       </div>
       <section className="py-20 bg-[#00360C]">
         <Footer />

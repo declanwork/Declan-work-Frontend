@@ -18,10 +18,10 @@ import { useRouter } from "next/navigation";
 export default function Home() {
   const router = useRouter();
   return (
-    <main className="">
-      <div className="bg-[#00360C] h-[1000px] flex flex-col overflow-hidden">
+    <main className="overflow-x-hidden">
         <Navbar />
-        <div className="px-3">
+      <div className="bg-[#00360C] px-3 h-[1000px] flex flex-col overflow-hidden">
+        <div className="">
           <h1 className="mt-20 text-5xl md:text-6xl text-center text-[#00EF7C] font-bold tracking-[0.4px] leading-[65px]">
             Hire Crypto & Web3 Talent:
             <br />
@@ -72,7 +72,7 @@ export default function Home() {
         <Logo />
       </div>
       {/* New Div */}
-      <section className="max-w-screen-lg mx-auto flex flex-col md:flex-row items-center justify-center gap-10 px-3 mb-10 lg:px-0">
+      <section className="max-w-screen-lg mx-auto flex flex-col md:flex-row items-center justify-center gap-10 mb-10 px-3 lg:px-0">
         <div className="md:w-1/2 w-full bg-[#F2F7F2] h-[530px] flex justify-center items-center">
           <div className="relative">
             <Image
@@ -375,7 +375,7 @@ export default function Home() {
         </div>
       </section>
       <Skills />
-      <section className="py-20 bg-[#00360C]">
+      <section className="py-20 bg-[#00360C] text-white">
         <Footer />
       </section>
     </main>

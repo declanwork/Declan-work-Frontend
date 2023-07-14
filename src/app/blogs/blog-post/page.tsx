@@ -24,7 +24,7 @@ export default function BlogPost() {
   return (
     <div>
       <NavbarJob />
-      <div className="max-w-screen-md mx-auto">
+      <div className="max-w-screen-md mx-auto px-3 lg:px-0">
         <h1 className="text-3xl font-medium">
           Non-Technical Web3 Jobs in 2022 — here’s all you need to know
         </h1>
@@ -55,11 +55,11 @@ export default function BlogPost() {
           </div>
         </div>
 
-        <div className="w-[90%] mx-auto h-80 rounded-lg bg-black overflow-hidden my-5">
+        <div className="md:w-[90%] w-full mx-auto h-80 rounded-lg bg-black overflow-hidden my-5">
           {/* TODO:input image here */}
         </div>
         <div className="mt-10">
-          <p className="text-xl leading-relaxed">
+          <p className="text-sm md:text-xl leading-relaxed">
             Talk around #Web3 is everywhere! Everyone is excited about how #Web3
             is the future, and we need to gear up towards this exciting
             phenomenon. As per details on Web3.Career, as many as 18,000+ Web3
@@ -94,12 +94,12 @@ export default function BlogPost() {
           </div>
         </div>
 
-        <div className="bg-[#F2F7F2] my-14 py-10 pl-12 rounded-lg">
-          <h1 className="text-2xl text-[#14A800]">
+        <div className="bg-[#F2F7F2] my-14 py-10 px-4 md:pl-12 rounded-lg">
+          <h1 className="text-2xl text-[#14A800] text-center md:text-left mb-2 md:mb-0">
             Your skills are in demand this holiday season
           </h1>
-          <div className="flex items-center">
-            <p className="text-xl text-[#001E00]">
+          <div className="flex flex-col-reverse md:flex-row items-center">
+            <p className="text-xl text-[#001E00] text-center md:text-left mt-5 md:mt-0">
               End-of-year is a great time to refresh your profile meet new
               clients, and turn your skills into long-term work.
             </p>
@@ -111,9 +111,11 @@ export default function BlogPost() {
               className="object-cover block"
             />
           </div>
-          <Link href="/" className="text-[#14A800]">
+         <div className="text-center md:text-left mt-5">
+         <Link href="/" className="text-[#14A800]">
             Find Work
           </Link>
+         </div>
         </div>
       </div>
       <section className="py-20 bg-[#00360C]">
