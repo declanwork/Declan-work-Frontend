@@ -62,8 +62,8 @@ export default function Profile() {
               </div>
             </div>
             <div className="max-w-screen-lg mx-auto border rounded-lg mt-10 pt-10">
-              <div className="border-b px-12 pb-10 flex items-start md:items-center justify-between flex-col space-y-5 md:space-y-0">
-                <div className="flex items-center space-x-7 flex-col space-y-5 md:space-y-0">
+              <div className="border-b px-12 pb-10 flex items-start md:items-center md:flex-row justify-between flex-col space-y-5 md:space-y-0">
+                <div className="flex items-center space-x-7 flex-col md:flex-row space-y-5 md:space-y-0">
                   <div className="relative">
                     <div className="w-40 h-40 bg-black rounded-full overflow-hidden">
                       <Image

@@ -4,7 +4,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { FaPen } from "react-icons/fa";
-import { AiFillHeart, AiOutlineHeart, AiFillStar, AiOutlineSearch } from "react-icons/ai";
+import {
+  AiFillHeart,
+  AiOutlineHeart,
+  AiFillStar,
+  AiOutlineSearch,
+} from "react-icons/ai";
 import Footer from "../components/footer";
 import { BsThreeDotsVertical } from "react-icons/bs";
 
@@ -72,9 +77,9 @@ export default function Dashboard() {
   return (
     <div>
       <NavbarJob />
-      <div className="py-10 mx-auto max-w-[1150px]">
+      <div className="py-10 mx-auto max-w-[1150px] px-3 xl:px-0">
         <div className="bg-[#00360C] h-[250px] w-full rounded-lg relative text-center flex items-center">
-          <div className="w-[150px] h-[100px] absolute top-10 left-28">
+          <div className="w-[150px] h-[100px] hidden lg:block absolute top-10 left-28">
             <div className="relative">
               <Image
                 src="/svg/jobPost.svg"
@@ -92,19 +97,30 @@ export default function Dashboard() {
             </div>
           </div>
           <div className="flex flex-col justify-center items-center mx-auto space-y-8">
-          <div className="mx-auto ">
-            <h1 className="text-5xl font-medium text-white max-w-2xl">&ldquo;Your Skills, Your Rules, Freelancing Unleashed!&rdquo;</h1>
-          </div>
-          <div className=" text-center mx-auto border pl-5 rounded-full  relative flex space-x-3 items-center">
-            <AiOutlineSearch className="absolute left-3 text-white" size={20} />
-            <input type="text" placeholder="Search for Jobs" className="focus:ring-0 outline-none active:outline-none bg-transparent text-sm border-none text-white"/>
-            <button className="bg-[#00EF7C] radius-full text-sm text-black py-3 px-4 rounded-full">Search</button>
-          </div>
+            <div className="mx-auto ">
+              <h1 className="text-3xl md:text-5xl font-medium text-white max-w-2xl">
+                &ldquo;Your Skills, Your Rules, Freelancing Unleashed!&rdquo;
+              </h1>
+            </div>
+            <div className=" text-center mx-auto border pl-5 rounded-full  relative flex space-x-3 items-center">
+              <AiOutlineSearch
+                className="absolute left-3 text-white"
+                size={20}
+              />
+              <input
+                type="text"
+                placeholder="Search for Jobs"
+                className="focus:ring-0 outline-none active:outline-none bg-transparent text-sm border-none text-white"
+              />
+              <button className="bg-[#00EF7C] radius-full text-sm text-black py-3 px-4 rounded-full">
+                Search
+              </button>
+            </div>
           </div>
         </div>
-        <div className="mt-5 flex items-start gap-10">
+        <div className="mt-5 flex md:items-start flex-col md:flex-row gap-10">
           {/* PROFILE */}
-          <div className="border border-[#00EF7C] w-[30%] p-5 rounded-lg">
+          <div className="border border-[#00EF7C] w-full md:w-[30%] p-5 rounded-lg">
             <h1 className="text-center">Profile Dashboard</h1>
             <div className="mx-auto w-56 h-56 rounded-full bg-black flex overflow-hidden my-5">
               <Image
@@ -179,7 +195,7 @@ export default function Dashboard() {
             </div>
           </div>
           {/* MAIN */}
-          <div className="w-[80%] rounded-lg border border-[#CCD1D5] py-4">
+          <div className="md:w-[80%] w-full rounded-lg border border-[#CCD1D5] py-4">
             {/* NAVIGATION DIV */}
             <div className="border-b-2 px-8">
               <h1 className="text-3xl font-medium">Explore Jobs</h1>
@@ -188,7 +204,11 @@ export default function Dashboard() {
                   onClick={() => {
                     setJobsNav("Job Profile");
                   }}
-                  className={`${jobsNav === "Job Profile" ? "font-medium border-b-4 border-black pb-4 -mb-[3px] rounded" : "pb-4"}`}
+                  className={`${
+                    jobsNav === "Job Profile"
+                      ? "font-medium border-b-4 border-black pb-4 -mb-[3px] rounded"
+                      : "pb-4"
+                  }`}
                 >
                   Job Profile
                 </button>
@@ -196,7 +216,11 @@ export default function Dashboard() {
                   onClick={() => {
                     setJobsNav("General");
                   }}
-                  className={`${jobsNav === "General" ? "font-medium border-b-4 border-black pb-4 -mb-[3px] rounded" : "pb-4"}`}
+                  className={`${
+                    jobsNav === "General"
+                      ? "font-medium border-b-4 border-black pb-4 -mb-[3px] rounded"
+                      : "pb-4"
+                  }`}
                 >
                   General
                 </button>
@@ -204,7 +228,11 @@ export default function Dashboard() {
                   onClick={() => {
                     setJobsNav("Saved Job");
                   }}
-                  className={`${jobsNav === "Saved Job" ? "font-medium border-b-4 border-black pb-4 -mb-[3px] rounded" : "pb-4"}`}
+                  className={`${
+                    jobsNav === "Saved Job"
+                      ? "font-medium border-b-4 border-black pb-4 -mb-[3px] rounded"
+                      : "pb-4"
+                  }`}
                 >
                   Saved Job
                 </button>
@@ -229,7 +257,7 @@ export default function Dashboard() {
                   ) => (
                     <div
                       key={index}
-                      className="px-8 border-b py-8 relative mt-3"
+                      className="px-8 border-b last:border-b-0 py-8 relative mt-3"
                     >
                       <div className="flex items-center absolute right-5 top-0">
                         {!checked ? (
@@ -245,8 +273,8 @@ export default function Dashboard() {
                         )}
                         <BsThreeDotsVertical size={20} />
                       </div>
-                      <h1 className="text-[#415361] text-5xl">{heading}</h1>
-                      <div className="my-4 flex items-center space-x-4">
+                      <h1 className="text-[#415361] text-3xl md:text-5xl">{heading}</h1>
+                      <div className="my-4 flex flex-col md:flex-row md:items-center md:space-x-4">
                         <p className="text-sm text-[#777777]">
                           Level Required: {levelRequired}
                         </p>
@@ -257,9 +285,8 @@ export default function Dashboard() {
                           Posted {timePosted} ago
                         </p>
                       </div>
-                      <p>{description}</p>
-                      <div className="flex items-center space-x-4 my-4">
-                        <p className="text-sm text-[#777777]">
+                      <p className="text-sm md:text-base">{description}</p>
+                      <div className="flex items-center flex-wrap gap-2 md:gap-0 md:space-x-4 my-4"> <p className="text-sm text-[#777777]">
                           Skills Required:
                         </p>
                         {skillsRequired.map((skills) => (
@@ -271,8 +298,8 @@ export default function Dashboard() {
                           </div>
                         ))}
                       </div>
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center space-x-2">
+                      <div className="flex md:items-center flex-col space-y-5 md:space-y-0 justify-between">
+                        <div className="flex md:items-center flex-col md:flex-row md:space-x-2">
                           <p className="text-sm text-[#777777]">
                             Payment Method: {paymentMethod}
                           </p>
@@ -298,7 +325,7 @@ export default function Dashboard() {
         </div>
         {/* Blog Section */}
         <div className="pt-4 rounded-lg border border-[#CCD1D5] w-full mt-14">
-          <div className="border-b-2 px-20">
+          <div className="border-b-2 px-8 md:px-20">
             <h1 className="text-3xl font-medium mb-2">Blog Posts</h1>
             {/* BUTTON SECTION START */}
             <div className="flex items-center space-x-10 pt-4">
@@ -306,7 +333,11 @@ export default function Dashboard() {
                 onClick={() => {
                   setBlogsNav("Blog Profile");
                 }}
-                className={`${blogsNav === "Blog Profile" ? "font-medium border-b-4 border-black pb-4 -mb-[3px] rounded" : "pb-4"}`}
+                className={`${
+                  blogsNav === "Blog Profile"
+                    ? "font-medium border-b-4 border-black pb-4 -mb-[3px] rounded"
+                    : "pb-4"
+                }`}
               >
                 Blog Profile
               </button>
@@ -314,7 +345,11 @@ export default function Dashboard() {
                 onClick={() => {
                   setBlogsNav("General");
                 }}
-                className={`${blogsNav === "General" ? "font-medium border-b-4 border-black pb-4 -mb-[3px] rounded" : "pb-4"}`}
+                className={`${
+                  blogsNav === "General"
+                    ? "font-medium border-b-4 border-black pb-4 -mb-[3px] rounded"
+                    : "pb-4"
+                }`}
               >
                 General
               </button>
@@ -322,7 +357,11 @@ export default function Dashboard() {
                 onClick={() => {
                   setBlogsNav("Saved Blogs");
                 }}
-                className={`${blogsNav === "Saved Blogs" ? "font-medium border-b-4 border-black pb-4 -mb-[3px] rounded" : "pb-4"}`}
+                className={`${
+                  blogsNav === "Saved Blogs"
+                    ? "font-medium border-b-4 border-black pb-4 -mb-[3px] rounded"
+                    : "pb-4"
+                }`}
               >
                 Saved Blogs
               </button>
@@ -344,21 +383,21 @@ export default function Dashboard() {
                   },
                   index
                 ) => (
-                  <div key={index} className="px-20 py-4 relative border-b">
+                  <div key={index} className="md:px-20 px-8 py-4 relative border-b last:border-b-0">
                     <div className="flex items-center absolute right-5 top-3">
-                        {!checked ? (
-                          <AiOutlineHeart
-                            size={25}
-                            onClick={() => setChecked(true)}
-                          />
-                        ) : (
-                          <AiFillHeart
-                            size={25}
-                            onClick={() => setChecked(false)}
-                          />
-                        )}
-                        <BsThreeDotsVertical size={20} />
-                      </div>
+                      {!checked ? (
+                        <AiOutlineHeart
+                          size={25}
+                          onClick={() => setChecked(true)}
+                        />
+                      ) : (
+                        <AiFillHeart
+                          size={25}
+                          onClick={() => setChecked(false)}
+                        />
+                      )}
+                      <BsThreeDotsVertical size={20} />
+                    </div>
                     <div className=" flex items-center space-x-4 mt-5">
                       <div className="w-10 h-10 rounded-full bg-black overflow-hidden">
                         <Image
@@ -373,14 +412,14 @@ export default function Dashboard() {
                         {userName} &middot; {timePosted}
                       </p>
                     </div>
-                    <div className="flex items-center gap-12">
+                    <div className="flex items-center flex-col md:flex-row md:gap-12 gap-2">
                       <div className="flex-1">
                         <h1 className="text-xl text-[#102638] font-medium">
                           {blogHeading}
                         </h1>
                         <p className="text-sm font-medium mt-5">{blogPost}</p>
                       </div>
-                      <div className="w-48 h-48 bg-black overflow-hidden my-5">
+                      <div className="md:w-48 w-full h-48 bg-black overflow-hidden my-5">
                         {/* TODO:input image here */}
                       </div>
                     </div>
@@ -401,19 +440,19 @@ export default function Dashboard() {
       </div>
       <section className="bg-[#ECEFEB] py-20 px-3 xl:px-0">
         <div className="max-w-screen-lg mx-auto">
-        <h1 className="text-4xl font-medium">
-        Community Forum
-        </h1>
-        <p className="text-[#102638] font-medium text-2xl my-8">Join thousands of web3 talents and discusses issues bordering the Web 3 space and make
- some useful contributions to your teammate</p>
+          <h1 className="text-4xl font-medium">Community Forum</h1>
+          <p className="text-[#102638] font-medium text-xl md:text-2xl my-8">
+            Join thousands of web3 talents and discusses issues bordering the
+            Web 3 space and make some useful contributions to your teammate
+          </p>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 max-w-screen-lg mx-auto mb-10">
           {/* item */}
-          <div className="bg-white py-5 px-10 rounded">
+          <div className="bg-white py-5 px-10 rounded h-[150px] relative">
             <h1 className="text-2xl font-medium text-[#001E00]">
               Development & IT
             </h1>
-            <div className="flex items-center mt-5 relative md:-bottom-8">
+            <div className="flex items-center mt-5 absolute bottom-5">
               <div className="flex items-center justify-center mr-8">
                 <AiFillStar className="text-[#14A800]" size={25} />
                 <p className="text-[#5E6D55] text-xl">4.8/5</p>
@@ -422,11 +461,11 @@ export default function Dashboard() {
             </div>
           </div>
           {/* item */}
-          <div className="bg-white py-5 px-10 rounded">
+          <div className="bg-white py-5 px-10 rounded h-[150px] relative">
             <h1 className="text-2xl font-medium text-[#001E00]">
               Writing & Translation
             </h1>
-            <div className="flex items-center mt-5">
+            <div className="flex items-center mt-5 absolute bottom-5">
               <div className="flex items-center justify-center mr-8">
                 <AiFillStar className="text-[#14A800]" size={25} />
                 <p className="text-[#5E6D55] text-xl">4.8/5</p>
@@ -435,11 +474,11 @@ export default function Dashboard() {
             </div>
           </div>
           {/* item */}
-          <div className="bg-white py-5 px-10 rounded">
+          <div className="bg-white py-5 px-10 rounded h-[150px] relative">
             <h1 className="text-2xl font-medium text-[#001E00]">
               Design & Creative
             </h1>
-            <div className="flex items-center mt-5 relative md:-bottom-8">
+            <div className="flex items-center mt-5 absolute bottom-5">
               <div className="flex items-center justify-center mr-8">
                 <AiFillStar className="text-[#14A800]" size={25} />
                 <p className="text-[#5E6D55] text-xl">4.8/5</p>
@@ -448,9 +487,9 @@ export default function Dashboard() {
             </div>
           </div>
           {/* item */}
-          <div className="bg-white py-5 px-10 rounded">
+          <div className="bg-white py-5 px-10 rounded h-[150px] relative">
             <h1 className="text-2xl font-medium text-[#001E00]">AI Services</h1>
-            <div className="flex items-center mt-5 relative md:-bottom-8">
+            <div className="flex items-center mt-5 absolute bottom-5">
               <div className="flex items-center justify-center mr-8">
                 <AiFillStar className="text-[#14A800]" size={25} />
                 <p className="text-[#5E6D55] text-xl">4.8/5</p>
@@ -459,11 +498,11 @@ export default function Dashboard() {
             </div>
           </div>
           {/* item */}
-          <div className="bg-white py-5 px-10 rounded">
+          <div className="bg-white py-5 px-10 rounded h-[150px] relative">
             <h1 className="text-2xl font-medium text-[#001E00]">
               Finance & Accounting
             </h1>
-            <div className="flex items-center mt-5">
+            <div className="flex items-center mt-5 absolute bottom-5">
               <div className="flex items-center justify-center mr-8">
                 <AiFillStar className="text-[#14A800]" size={25} />
                 <p className="text-[#5E6D55] text-xl">4.8/5</p>
@@ -472,11 +511,11 @@ export default function Dashboard() {
             </div>
           </div>
           {/* item */}
-          <div className="bg-white py-5 px-10 rounded">
+          <div className="bg-white py-5 px-10 rounded h-[150px] relative">
             <h1 className="text-2xl font-medium text-[#001E00]">
               Development & IT
             </h1>
-            <div className="flex items-center mt-5 relative md:-bottom-8">
+            <div className="flex items-center mt-5 bsolute bottom-5">
               <div className="flex items-center justify-center mr-8">
                 <AiFillStar className="text-[#14A800]" size={25} />
                 <p className="text-[#5E6D55] text-xl">4.8/5</p>
@@ -487,7 +526,7 @@ export default function Dashboard() {
         </div>
       </section>
       <section className="py-20 bg-[#00360C]">
-      <Footer />
+        <Footer />
       </section>
     </div>
   );

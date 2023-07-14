@@ -169,7 +169,7 @@ export default function Footer() {
         </div>
         <div className="text-white">
           <ul>
-            <h5 className="mb-3 font-medium md:mt-0">Resources</h5>
+            <h5 className="mb-3 font-medium md:mt-0 ">Resources</h5>
             {resources.map((resource, index) => (
               <li key={index} className="text-sm mb-2">
                 <Link href={resource.href}>{resource.text}</Link>
@@ -179,7 +179,7 @@ export default function Footer() {
         </div>
         <div className="text-white">
           <ul>
-            <h5 className="mb-3 sm:mt-0 -mt-48">Company</h5>
+            <h5 className="mb-3 sm:mt-0 -mt-40 font-medium">Company</h5>
             {company.map((company, index) => (
               <li key={index} className="text-sm mb-2">
                 <Link href={company.href}>{company.text}</Link>
