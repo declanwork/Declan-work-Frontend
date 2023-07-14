@@ -5,16 +5,23 @@ import NavbarJob from "../components/NavbarJob";
 import Link from "next/link";
 import { BiSolidPencil } from 'react-icons/bi';
 import { PiCaretDownBold } from 'react-icons/pi';
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Form from "../components/Form";
-import { CreateGig } from "@/app/flow/transaction";
+import { CreateGig } from "@/app/flow/transactions";
 import Image from "next/image";
 import * as fcl from "@onflow/fcl";
 import "../flow/config";
 
+import { Context } from "../context";
+
+
+import { toast } from 'react-toastify';
+
+
 export default function NewJob() {
-  const [noOfFreelancers, setNoOfFreelancers] = useState(9); //queryblockchain
-  const [user, setUser] = useState("Nobody")
+  const { user} = useContext(Context)
+  console.log(user)
+  const [transactionStatus, setTransactionStatus] = useState(0)
   const router = useRouter();
   const [isChecked, setIsChecked] = useState(false);
   const [page, setPage] = useState("page-1");
@@ -67,10 +74,42 @@ export default function NewJob() {
   // }
 
   const handleGig = async () => {
-    var txId = await CreateGig(formData.jobTitle, formData.description, formData.jobValue, formData.jobDuration, "Not fixed", false , "open", false, 0.0)
-    await fcl.tx(txId).onceSealed();
-    router.push("/newJob/detail/verify");
-  }
+    try {
+      const txId = await CreateGig(user.addr, formData.email, formData.jobTitle, formData.description, formData.jobDuration, formData.jobValue);
+      toast('User authenticated', { hideProgressBar: true, autoClose: 2000, type: 'success' });
+  
+      fcl.tx(txId).subscribe(res => setTransactionStatus(res.status));
+      try {
+        if (transactionStatus === 0) {
+          toast('Transaction status loading', { hideProgressBar: true, autoClose: 2000, type: 'info' });
+        } else if (transactionStatus === 1) {
+          toast('Transaction pending - Awaiting Finalization', { hideProgressBar: true, autoClose: 2000, type: 'info' });
+        } else if (transactionStatus === 2) {
+          toast('Transaction finalized - Awaiting Execution', { hideProgressBar: true, autoClose: 2000, type: 'info' });
+        } else if (transactionStatus === 3) {
+          toast('Transaction executed - Awaiting Sealing', { hideProgressBar: true, autoClose: 2000, type: 'success' });
+        } else if (transactionStatus === 4) {
+          toast('Transaction Sealed - Transaction Complete!', { hideProgressBar: true, autoClose: 2000, type: 'success' });
+          router.push('/newJob/detail/verify');
+        } else if (transactionStatus === 5) {
+          toast('Transaction Expired', { hideProgressBar: true, autoClose: 2000, type: 'error' });
+        } else {
+          toast('Transaction status unknown', { hideProgressBar: true, autoClose: 2000, type: 'info' });
+        }
+        
+        await fcl.tx(txId).onceSealed();
+        router.push('/newJob/detail/verify');
+      } catch (error) {
+        toast('Failed to create gig', { hideProgressBar: true, autoClose: 2000, type: 'error' });
+        console.error(error);
+
+      }
+    } catch (error) {
+      toast('Failed to create gig', { hideProgressBar: true, autoClose: 2000, type: 'error' });
+      console.error(error);
+    }
+  };
+  
  
     
   function onChange(e: any) {
@@ -78,7 +117,7 @@ export default function NewJob() {
       ...prevState,
       [e.target.id]: e.target.value,
     }));
-    
+    console.log(user)
     console.log("formData", formData)
   }
 
@@ -199,7 +238,7 @@ export default function NewJob() {
                       id="jobValue"
                       value={jobValue}
                       onChange={onChange}
-                      placeholder="0.00 FLOW"
+                      placeholder="0 FLOW"
                       step="0.01"
                       className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-[#00EF7C] sm:text-sm sm:leading-6"
                     />
@@ -232,7 +271,7 @@ export default function NewJob() {
                     htmlFor="jobDuration"
                     className="block text-sm font-medium leading-6 text-gray-900"
                   >
-                    Duration
+                    Duration(in days)
                   </label>
                   <div className="mt-2">
                     <input
@@ -458,8 +497,8 @@ export default function NewJob() {
                   type="text"
                   name="walletName"
                   id="walletName"
-                  value={walletName}
-                  onChange={onChange}
+                  value={email}
+                  // onChange={onChange}
                   placeholder="Input Wallet Name"
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
@@ -478,8 +517,8 @@ export default function NewJob() {
                   type="text"
                   name="walletAddress"
                   id="walletAddress"
-                  value={walletAddress}
-                  onChange={onChange}
+                  value={user.addr}
+                  // onChange={onChange}
                   placeholder="Wallet Address"
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
@@ -519,8 +558,11 @@ export default function NewJob() {
             subtitle="3/3"
             />
             <Link
-                href="/newJob/detail/verify"
-                className="rounded-full bg-[#00EF7C] px-4 flex items-center justify-center py-3 h-9 text-sm font-semibold shadow-sm"
+                onClick={() => {
+                  handleGig();
+                }}
+                href="#"
+                className="rounded-full bg-[#00EF7C] px-4 py-2 h-9 text-sm font-semibold shadow-sm"
             >
             Post This Job
             </Link>
@@ -571,6 +613,7 @@ export default function NewJob() {
                 <div className="w-[85%] ">
                     <h1 className="font-bold">Budget</h1>
                     <p className="text-sm">{formData.jobValue} Flow/ hr</p>
+                    <p>{transactionStatus}</p>
                 </div>
                 <div className="text-[#00EF7C] w-10 h-10 rounded-full flex justify-center items-center border border-[#E0E0E0]"><BiSolidPencil /></div>
             </div>

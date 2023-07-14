@@ -2,10 +2,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import NavbarJob from "@/app/components/NavbarJob";
+import { useRouter } from "next/navigation";
 
 
 export default function EmailVerification() {
-
+  const router = useRouter();
   return (
     <div className="overflow-hidden">
     <NavbarJob />
@@ -29,7 +30,17 @@ export default function EmailVerification() {
           </div>
         </div>
         <div className="text-black text-center mt-20">
+<<<<<<< HEAD
+          <h1 className="text-3xl font-bold mb-5">Congratulations!<br></br> Please proceed to your dashboard </h1>
+          <button className="rounded-full bg-[#00EF7C] px-4 py-2 text-sm font-semibold shadow-sm"
+              onClick={() => {
+                router.push('/dashboard')
+              }}>
+            Go to dashboard
+          </button>
+=======
           <h1 className="text-2xl md:text-3xl font-bold mb-5">Congratulations! Please Verify your Email to submit your job post </h1>
+>>>>>>> e70e3e81a2da1ce25e26ff2e2f2436f0f44f7d7d
         </div>
       </div>
     </section>

@@ -1,4 +1,5 @@
-"use client";
+"use client"
+
 import Image from "next/image";
 import Toggle from "./components/headerToggle";
 import Logo from "./components/logoCloud";
@@ -9,11 +10,11 @@ import { BsBriefcase } from "react-icons/bs";
 import { BiSupport } from "react-icons/bi";
 import { FaTrademark } from "react-icons/fa";
 import { BsArrowRight } from "react-icons/bs";
+
 import Navbar from "./components/Navbar";
 import Footer from "./components/footer";
 import Skills from "./components/skills";
 import { useRouter } from "next/navigation";
-// import { toast } from 'react-toastify';
 
 export default function Home() {
   const router = useRouter();

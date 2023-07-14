@@ -6,7 +6,12 @@ import "react-phone-number-input/style.css";
 // import ReactQuill from "react-quill";
 // import "react-quill/dist/quill.snow.css";
 import { AiOutlineSearch, AiFillDollarCircle } from "react-icons/ai";
-import { FaUpload, FaLinkedinIn } from "react-icons/fa";
+import { FaUpload } from "react-icons/fa";
+import Link from "next/link";
+// import Nav from "../components/Nav";
+import NavbarJob from "../components/NavbarJob";
+import * as fcl from "@onflow/fcl";
+import "../flow/config";
 import { useRouter } from "next/navigation";
 import Nav from "../components/Nav";
 import { countries, jobCategories, jobRoles } from "@/constants";
@@ -54,6 +59,8 @@ export default function Profile() {
       ...prevState,
       [e.target.id]: e.target.value,
     }));
+    
+    console.log("formData", formData)
   }
   function onSubmit(){
     // Function for submitting form fields
@@ -77,7 +84,7 @@ export default function Profile() {
 
   return (
     <>
-      <Nav />
+      <NavbarJob />
       {next === "page-1" && (
         <div className="max-w-5xl mx-auto px-3 pb-10">
           <h1 className="text-5xl font-medium text-black mb-5">

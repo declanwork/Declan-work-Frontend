@@ -17,7 +17,7 @@ export const fclConfig =() => config({
   // Alias for the Domains Contract
 
   // UPDATE THIS to be the address of YOUR contract account address
-  "0xDeclanWork": "0xf88f3b6f4c595384",
+  "0xDeclan": "0xf88f3b6f4c595384",
 
   
 
