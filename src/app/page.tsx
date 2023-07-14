@@ -19,10 +19,10 @@ export default function Home() {
   const router = useRouter();
   return (
     <main className="">
-      <div className="bg-[#00360C] h-[1040px] md:h-[1000px] flex flex-col overflow-hidden">
+      <div className="bg-[#00360C] h-[1000px] flex flex-col overflow-hidden">
         <Navbar />
         <div className="px-3">
-          <h1 className="mt-20 text-6xl text-center text-[#00EF7C] font-bold tracking-[0.4px] leading-[65px]">
+          <h1 className="mt-20 text-5xl md:text-6xl text-center text-[#00EF7C] font-bold tracking-[0.4px] leading-[65px]">
             Hire Crypto & Web3 Talent:
             <br />
             Unlocking the Power of Blockchain Expertise
@@ -182,7 +182,7 @@ export default function Home() {
             This is how good companies find good company.
           </p>
           <p>
-            Access the top 1% of talent on Declan Work, and a full suite of
+            Access the top 1% of talent on DeclanWork, and a full suite of
             hybrid workforce management tools. This is how innovation works now.
           </p>
           <ul className="mt-5 space-y-2">
@@ -201,7 +201,7 @@ export default function Home() {
             <li className="flex items-center space-x-2">
               <BiSupport size={21} className="text-[#00EF7C]" />
               <p className="text-[#001E00]">
-                Partner with Declan Work for end-to-end support
+                Partner with DeclanWork for end-to-end support
               </p>
             </li>
           </ul>
@@ -213,15 +213,15 @@ export default function Home() {
 
       <section className="bg-[#ECEFEB] py-20 px-3 xl:px-0">
         <h1 className="text-5xl text-center font-medium mt-9 mb-20 max-w-2xl mx-auto">
-          Hire vetted engineering, product, and design talent
+          Hire Vetted Engineering, Product, and Design Talent
         </h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 max-w-screen-lg mx-auto mb-10">
           {/* item */}
-          <div className="bg-white py-5 px-10 rounded">
+          <div className="bg-white py-5 px-10 rounded h-[150px] relative">
             <h1 className="text-2xl font-medium text-[#001E00]">
               Development & IT
             </h1>
-            <div className="flex items-center mt-5 relative">
+            <div className="flex items-center mt-5 absolute bottom-5">
               <div className="flex items-center justify-center mr-8">
                 <AiFillStar className="text-[#14A800]" size={25} />
                 <p className="text-[#5E6D55] text-xl">4.8/5</p>
@@ -230,11 +230,11 @@ export default function Home() {
             </div>
           </div>
           {/* item */}
-          <div className="bg-white py-5 px-10 rounded">
+          <div className="bg-white py-5 px-10 rounded  h-[150px] relative">
             <h1 className="text-2xl font-medium text-[#001E00]">
               Writing & Translation
             </h1>
-            <div className="flex items-center mt-5">
+            <div className="flex items-center mt-5 absolute bottom-5">
               <div className="flex items-center justify-center mr-8">
                 <AiFillStar className="text-[#14A800]" size={25} />
                 <p className="text-[#5E6D55] text-xl">4.8/5</p>
@@ -243,11 +243,11 @@ export default function Home() {
             </div>
           </div>
           {/* item */}
-          <div className="bg-white py-5 px-10 rounded">
+          <div className="bg-white py-5 px-10 rounded  h-[150px] relative">
             <h1 className="text-2xl font-medium text-[#001E00]">
               Design & Creative
             </h1>
-            <div className="flex items-center mt-5 relative">
+            <div className="flex items-center mt-5 absolute bottom-5">
               <div className="flex items-center justify-center mr-8">
                 <AiFillStar className="text-[#14A800]" size={25} />
                 <p className="text-[#5E6D55] text-xl">4.8/5</p>
@@ -256,9 +256,9 @@ export default function Home() {
             </div>
           </div>
           {/* item */}
-          <div className="bg-white py-5 px-10 rounded">
+          <div className="bg-white py-5 px-10 rounded h-[150px] relative">
             <h1 className="text-2xl font-medium text-[#001E00]">AI Services</h1>
-            <div className="flex items-center mt-5 relative ">
+            <div className="flex items-center mt-5 absolute bottom-5">
               <div className="flex items-center justify-center mr-8">
                 <AiFillStar className="text-[#14A800]" size={25} />
                 <p className="text-[#5E6D55] text-xl">4.8/5</p>
@@ -267,11 +267,11 @@ export default function Home() {
             </div>
           </div>
           {/* item */}
-          <div className="bg-white py-5 px-10 rounded">
+          <div className="bg-white py-5 px-10 rounded  h-[150px] relative">
             <h1 className="text-2xl font-medium text-[#001E00]">
               Finance & Accounting
             </h1>
-            <div className="flex items-center mt-5">
+            <div className="flex items-center mt-5 absolute bottom-5">
               <div className="flex items-center justify-center mr-8">
                 <AiFillStar className="text-[#14A800]" size={25} />
                 <p className="text-[#5E6D55] text-xl">4.8/5</p>
@@ -280,11 +280,11 @@ export default function Home() {
             </div>
           </div>
           {/* item */}
-          <div className="bg-white py-5 px-10 rounded">
+          <div className="bg-white py-5 px-10 rounded h-[150px] relative">
             <h1 className="text-2xl font-medium text-[#001E00]">
               Development & IT
             </h1>
-            <div className="flex items-center mt-5 relative sm:-bottom-8 md:bottom-0">
+            <div className="flex items-center mt-5 absolute bottom-5">
               <div className="flex items-center justify-center mr-8">
                 <AiFillStar className="text-[#14A800]" size={25} />
                 <p className="text-[#5E6D55] text-xl">4.8/5</p>
@@ -297,7 +297,7 @@ export default function Home() {
       {/* Do More with Declan Work */}
       <section className="py-20 px-3">
         <h1 className="text-5xl text-center text-[#001E00] font-bold">
-          Do more with declan work
+          Do More With DeclanWork
         </h1>
         <div className="max-w-screen-lg mx-auto mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
           {/* item */}
