@@ -8,7 +8,8 @@ import { useEffect, useState } from "react";
 import { AiOutlineSearch, AiFillDollarCircle } from "react-icons/ai";
 import { FaUpload } from "react-icons/fa";
 import Link from "next/link";
-import Nav from "../components/Nav";
+// import Nav from "../components/Nav";
+import NavbarJob from "../components/NavbarJob";
 import * as fcl from "@onflow/fcl";
 import "../flow/config";
 import { countries, jobCategories, jobRoles } from "@/constants";
@@ -75,7 +76,7 @@ export default function Profile() {
 
   return (
     <>
-      <Nav />
+      <NavbarJob />
       {!next && (
         <div className="max-w-4xl mx-auto">
           <SubText title="Let's Get Started " subtitle="1/2" />
