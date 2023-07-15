@@ -27,7 +27,7 @@ const CurrentUser = () => {
       console.log(stuff);
       toast('User authenticated', { hideProgressBar: true, autoClose: 2000, type: 'success' })
     });
-  }, []);
+  }, [setUser]);
 
   const signInOrOut = async () => {
     if (user?.loggedIn) {
