@@ -25,15 +25,16 @@ const CurrentUser = () => {
     fcl.currentUser.subscribe((stuff) => {
       setUser(stuff);
       console.log(stuff);
-      toast('User authenticated', { hideProgressBar: true, autoClose: 2000, type: 'success' })
     });
   }, []);
 
   const signInOrOut = async () => {
     if (user?.loggedIn) {
       await fcl.unauthenticate();
+      toast('User Logged Out', { hideProgressBar: true, autoClose: 2000, type: 'success' })
     } else {
       await fcl.authenticate();
+      toast('User Logged In', { hideProgressBar: true, autoClose: 2000, type: 'success' })
     }
   };
 
