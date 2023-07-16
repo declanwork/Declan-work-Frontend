@@ -46,6 +46,7 @@ export default function Navbar() {
                     src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
                     alt="Your Company"
                   /> */}
+                  <Link href="/">
                   <Image
                     className="hidden h-8 w-auto lg:block"
                     src="/images/declan.png"
@@ -53,6 +54,7 @@ export default function Navbar() {
                     width={158}
                     height={48}
                   />
+                  </Link>
                 </div>
                 <div className="hidden sm:ml-6 sm:block">
                   <div className="flex space-x-4">

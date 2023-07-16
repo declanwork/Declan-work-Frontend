@@ -3,6 +3,7 @@ import Navbar from "@/app/components/Navbar";
 import jobsIcon from "../../../../public/images/jobs-icon.png";
 import Image from "next/image";
 import Footer from "@/app/components/footer";
+import Link from "next/link";
 
 export default function MyJobs() {
 return<>
@@ -19,10 +20,11 @@ return<>
           done in no time
         </p>
 
+        <Link href="/newJob" className="text-black no-underline">
         <button className="bg-lightGreen text-darkGreen mt-4 text-center w-10/12 md:w-2/5 py-2 rounded-full text-sm md:text-base font-normal">
           Post your first job
         </button>
-
+        </Link>
         <Image
           src={jobsIcon}
           alt="Picture for jobs"

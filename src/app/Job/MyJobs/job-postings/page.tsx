@@ -80,6 +80,7 @@ export default function JobPostings() {
             </Link>
           </Box>
 
+     
           <Box
             sx={{
               backgroundColor: "#00EF7C",
@@ -90,7 +91,9 @@ export default function JobPostings() {
               cursor: "pointer",
             }}
           >
+            <Link href="/newJob" className="text-black no-underline">
             Post a new Job
+            </Link>
           </Box>
         </TopTextDiv>
         <br />
@@ -226,7 +229,9 @@ export default function JobPostings() {
                   cursor: "pointer",
                 }}
               >
-                <Typography variant="body2">View Proposals</Typography>
+                <Link href="/Job/MyJobs/proposals" className="text-black no-underline">
+                  <Typography variant="body2" className="text-black">View Proposals</Typography>
+                </Link>
               </Box>
             </Box>
           </PaperBox>
