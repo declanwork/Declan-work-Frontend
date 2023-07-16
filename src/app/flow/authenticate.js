@@ -26,7 +26,7 @@ const CurrentUser = () => {
       setUser(stuff);
       console.log(stuff);
     });
-  }, []);
+  }, [setUser]);
 
   const signInOrOut = async () => {
     if (user?.loggedIn) {

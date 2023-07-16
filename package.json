@@ -10,8 +10,12 @@
   },
   "dependencies": {
     "@blocto/fcl": "^1.4.0",
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
     "@headlessui/react": "^1.7.15",
     "@heroicons/react": "^2.0.18",
+    "@mui/icons-material": "^5.14.0",
+    "@mui/material": "^5.14.0",
     "@onflow/fcl": "^1.4.1",
     "@tailwindcss/forms": "^0.5.3",
     "@types/node": "20.3.2",
