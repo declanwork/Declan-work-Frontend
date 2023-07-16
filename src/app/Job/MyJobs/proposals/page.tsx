@@ -115,6 +115,9 @@ export default function Proposals() {
                     })}
                 </div>
                 <p className="text-[#415361] my-4 md:my-3 md:w-5/6"><span className="font-bold">Cover Letter</span> {proposal.coverLetter}</p>
+                <button className="bg-[#00360C] rounded-[27px] h-[54px] w-[200px] px-[16px] text-white my-5">
+                  Hire
+                </button>
               </div>
               
             </div>
