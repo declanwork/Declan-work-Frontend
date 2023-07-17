@@ -74,7 +74,7 @@ export default function NewJob() {
   // }
 
   const handleGig = async () => {
-    try {
+    // try {
       const txId = await CreateGig(user.addr, formData.email, formData.jobTitle, formData.description, formData.jobDuration, formData.jobValue);
       toast('User authenticated', { hideProgressBar: true, autoClose: 2000, type: 'success' });
   
@@ -97,17 +97,17 @@ export default function NewJob() {
           toast('Transaction status unknown', { hideProgressBar: true, autoClose: 2000, type: 'info' });
         }
         
-        await fcl.tx(txId).onceSealed();
+        fcl.tx(txId).onceSealed();
         router.push('/newJob/detail/verify');
       } catch (error) {
         toast('Failed to create gig', { hideProgressBar: true, autoClose: 2000, type: 'error' });
         console.error(error);
 
       }
-    } catch (error) {
-      toast('Failed to create gig', { hideProgressBar: true, autoClose: 2000, type: 'error' });
-      console.error(error);
-    }
+    // } catch (error) {
+    //   toast('Failed to create gig', { hideProgressBar: true, autoClose: 2000, type: 'error' });
+    //   console.error(error);
+    // }
   };
   
  
@@ -613,7 +613,7 @@ export default function NewJob() {
                 <div className="w-[85%] ">
                     <h1 className="font-bold">Budget</h1>
                     <p className="text-sm">{formData.jobValue} Flow/ hr</p>
-                    <p>{transactionStatus}</p>
+                    {/* <p>{transactionStatus}</p> */}
                 </div>
                 <div className="text-[#00EF7C] w-10 h-10 rounded-full flex justify-center items-center border border-[#E0E0E0]"><BiSolidPencil /></div>
             </div>

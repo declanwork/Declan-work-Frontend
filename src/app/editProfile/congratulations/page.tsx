@@ -3,8 +3,12 @@ import Nav from "@/app/components/Nav";
 import Image from "next/image";
 import Link from "next/link";
 
+import { useContext } from "react";
+import { Context } from "@/app/context";
+
 export default function Congratulations() {
 
+  const { freelancer } = useContext(Context)
   return (
     <section className="px-3">
         <Nav />
@@ -28,7 +32,7 @@ export default function Congratulations() {
         </div>
         <div className="text-black text-center mt-20">
           <h1 className="text-2xl md:text-4xl font-bold mb-5">
-            Amazing effort, Morgan!
+            Amazing effort, {freelancer.name} !
           </h1>
           <h1 className="text-xl md:text-4xl font-bold mb-5">
             Your profile is ready.
