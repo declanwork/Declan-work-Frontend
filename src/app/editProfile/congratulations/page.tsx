@@ -31,9 +31,9 @@ export default function Congratulations() {
           </div>
         </div>
         <div className="text-black text-center mt-20">
-          <h1 className="text-2xl md:text-4xl font-bold mb-5">
+          {/* <h1 className="text-2xl md:text-4xl font-bold mb-5">
             Amazing effort, {freelancer.name} !
-          </h1>
+          </h1> */}
           <h1 className="text-xl md:text-4xl font-bold mb-5">
             Your profile is ready.
           </h1>

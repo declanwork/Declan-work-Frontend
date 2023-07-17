@@ -298,7 +298,7 @@ export default function Dashboard() {
                           </div>
                         ))}
                       </div>
-                      <div className="flex md:items-center flex-col space-y-5 md:space-y-0 justify-between">
+                      <div className="flex md:items-center flex-col md:flex-row space-y-5 md:space-y-0 justify-between">
                         <div className="flex md:items-center flex-col md:flex-row md:space-x-2">
                           <p className="text-sm text-[#777777]">
                             Payment Method: {paymentMethod}
@@ -319,7 +319,7 @@ export default function Dashboard() {
           </div>
         </div>
         <div className="text-right mt-2">
-          <Link href="/" className="text-[#00EF7C]">
+          <Link href="/Job" className="text-[#00EF7C]">
             Explore More Jobs...
           </Link>
         </div>

@@ -8,7 +8,7 @@ import Link from 'next/link';
 import Authenticate from '../flow/authenticate'
 
 const navigation = [
-  { name: 'Jobs', href: '#', current: false },
+  { name: 'Jobs', href: '/Job', current: false },
   { name: 'Talents', href: '/talents', current: false },
   { name: 'Message', href: '#', current: false },
 //   { name: 'Calendar', href: '#', current: false },

@@ -21,7 +21,7 @@ export default function Home() {
   return (
     <main className="overflow-x-hidden">
       <Navbar />
-      <div className="bg-[#00360C] px-3 h-[1000px] flex flex-col overflow-hidden">
+      <div className="bg-[#00360C] px-3 h-[880px] md:h-[900px] flex flex-col overflow-hidden">
         <div className="">
           <h1 className="mt-20 text-5xl md:text-6xl text-center text-[#00EF7C] font-bold tracking-[0.4px] leading-[65px]">
             Welcome to DeclanWork -<br />
@@ -80,8 +80,8 @@ export default function Home() {
         <Logo />
       </div>
       {/* New Div */}
-      <section className="max-w-screen-lg mx-auto flex flex-col md:flex-row items-center justify-center gap-10 mb-10 px-3 lg:px-0">
-        <div className="md:w-1/2 w-full bg-[#F2F7F2] h-[530px] flex justify-center items-center">
+      <section className="max-w-screen-lg mx-auto flex flex-col lg:flex-row items-center justify-center gap-10 px-3 xl:px-0">
+        <div className="lg:w-1/2 w-full bg-[#F2F7F2] h-[530px] flex justify-center items-center">
           <div className="relative">
             <Image
               src="/svg/clipgroup.svg"
@@ -94,7 +94,7 @@ export default function Home() {
               alt="thumbs-up"
               width={300}
               height={300}
-              className="absolute -bottom-10 -right-32"
+              className="absolute -bottom-10 -right-28"
             />
           </div>
         </div>
@@ -161,7 +161,7 @@ export default function Home() {
                 </div>
               </li>
             </ul>
-            <div className="flex flex-col space-y-5 md:flex-row md:space-x-5 md:items-center md:space-y-0">
+            <div className="flex flex-col mb-10 lg:mb-0 space-y-5 md:flex-row md:space-x-5 md:items-center md:space-y-0">
               <button className="bg-[#00EF7C] border border-[#00EF7C] text-[#00360C] font-medium py-3 px-4 rounded-full">
                 Sign up for free
               </button>
