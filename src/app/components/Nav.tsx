@@ -5,7 +5,7 @@ import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import Link from 'next/link';
 
 const navigation = [
-  { name: 'Find Talent', href: '#', current: false },
+  { name: 'Find Talent', href: '/talents', current: false },
   { name: 'Find Work', href: '#', current: false },
   { name: 'Why Declan Work', href: '#', current: false },
 //   { name: 'Calendar', href: '#', current: false },

@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import Image from "next/image";
 import Toggle from "./components/headerToggle";
@@ -20,22 +20,29 @@ export default function Home() {
   const router = useRouter();
   return (
     <main className="overflow-x-hidden">
-        <Navbar />
+      <Navbar />
       <div className="bg-[#00360C] px-3 h-[1000px] flex flex-col overflow-hidden">
         <div className="">
           <h1 className="mt-20 text-5xl md:text-6xl text-center text-[#00EF7C] font-bold tracking-[0.4px] leading-[65px]">
-            Hire Crypto & Web3 Talent:
-            <br />
-            Unlocking the Power of Blockchain Expertise
+            Welcome to DeclanWork -<br />
+            Empowering the Future of Freelancing
           </h1>
           <p className="text-[#ADFFC8] text-center mt-9 max-w-md mx-auto tracking-[0.4px] leading-[22px]">
-            How to hire Cryptocurrency Talent? Glad you asked! Hire them directly on Crypto Jobs List.
+            Hire Tech and Web3 Talents
+            <br />
+            Unlocking the Power of Blockchain Expertise{" "}
           </p>
           <div className="text-center mt-9 flex flex-col md:block space-y-5 mb-5">
-            <button onClick={() => router.push("/newJob")} className="border border-[#00EF7C] bg-[#00EF7C] text-[#163300] font-semibold py-3 px-4 rounded-full sm:mr-4">
+            <button
+              onClick={() => router.push("/newJob")}
+              className="border border-[#00EF7C] bg-[#00EF7C] text-[#163300] font-semibold py-3 px-4 rounded-full sm:mr-4"
+            >
               Hire Freelancers
             </button>
-            <button onClick={() => router.push("/editProfile")} className="border border-[#00EF7C] text-[#00EF7C] font-semibold py-3 px-4 rounded-full">
+            <button
+              onClick={() => router.push("/editProfile")}
+              className="border border-[#00EF7C] text-[#00EF7C] font-semibold py-3 px-4 rounded-full"
+            >
               I&#39;m a Freelancer
             </button>
           </div>
@@ -93,7 +100,7 @@ export default function Home() {
         </div>
         <div>
           <h2 className="font-bold capitalize text-4xl text-[#001E00]">
-            Up your work game, it’s free
+          Why Choose DeclanWork?
           </h2>
           <div className="">
             <ul>
@@ -108,8 +115,7 @@ export default function Home() {
                 </div>
                 <div className="">
                   <h5 className="text-[#001E00] font-medium">
-                    No cost to join
-                  </h5>
+                  Tech and Web3 Expertise                  </h5>
                   <p className="text-[#001E00] text-sm">
                     Register and browse professionals, explore projects, or even
                     book a consultation.
@@ -156,12 +162,12 @@ export default function Home() {
               </li>
             </ul>
             <div className="flex flex-col space-y-5 md:flex-row md:space-x-5 md:items-center md:space-y-0">
-            <button className="bg-[#00EF7C] border border-[#00EF7C] text-[#00360C] font-medium py-3 px-4 rounded-full">
-              Sign up for free
-            </button>
-            <button className="border border-[#00360C] text-[#00360C] font-medium py-3 px-4 rounded-full">
-              Learn how to hire
-            </button>
+              <button className="bg-[#00EF7C] border border-[#00EF7C] text-[#00360C] font-medium py-3 px-4 rounded-full">
+                Sign up for free
+              </button>
+              <button className="border border-[#00360C] text-[#00360C] font-medium py-3 px-4 rounded-full">
+                Learn how to hire
+              </button>
             </div>
           </div>
         </div>

@@ -10,7 +10,7 @@ import Link from 'next/link';
 import Authenticate from '../flow/authenticate'
 
 const navigation = [
-  { name: 'Find Talent', href: '#', current: false },
+  { name: 'Find Talent', href: '/talents', current: false },
   { name: 'Find Work', href: '#', current: false },
   { name: 'Why Declan Work', href: '#', current: false },
 //   { name: 'Calendar', href: '#', current: false },
