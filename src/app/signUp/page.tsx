@@ -1,7 +1,7 @@
 "use client";
-import GoogleAuth from "../../components/googleOAuth";
-import AppleAuth from "../../components/appleOAuth";
-import Nav from "../../components/Nav";
+import GoogleAuth from "../components/googleOAuth";
+import AppleAuth from "../components/appleOAuth";
+import Nav from "../components/Nav";
 import { useState } from "react";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 import Link from "next/link";
@@ -9,6 +9,7 @@ import { countries } from "@/constants";
 
 export default function SignUp() {
   const [isChecked, setIsChecked] = useState(false);
+  const [isChecked2, setIsChecked2] = useState(false);
   const [showPassword, setShowPassWord] = useState(false);
   const [formData, setFormData] = useState({
     firstName: "",
@@ -29,9 +30,9 @@ export default function SignUp() {
   async function onSubmit() {}
 
   return (
-    <div className="pb-20">
+    <div className="pb-20 px-3 lg:px-0">
       <Nav />
-      <div className="border border-[#001E005E] rounded-lg py-20 px-14 max-w-2xl mx-auto">
+      <div className="border border-[#001E005E] rounded-lg py-20 px-2 md:px-14 max-w-2xl mx-auto">
         <h1 className="text-black text-3xl md:text-4xl">
           Start your Career right here.
         </h1>
@@ -112,7 +113,7 @@ export default function SignUp() {
                 type="checkbox"
                 checked={isChecked}
                 onChange={() => setIsChecked((prev) => !prev)}
-                className="px-4 py-2 bg-white text-xl text-gray-700 border border-[#D9D9D9]  rounded transition ease-in-out mr-3"
+                className=" bg-white md:text-xl text-gray-700 border border-[#D9D9D9] rounded transition ease-in-out mr-3 ring-0 focus:ring-0 active:ring-0"
               />
               <span className="text-sm text-black">
                 Send me helpful messages about jobs that match my portfolio
@@ -123,9 +124,9 @@ export default function SignUp() {
             <label>
               <input
                 type="checkbox"
-                checked={isChecked}
-                onChange={() => setIsChecked((prev) => !prev)}
-                className="px-4 py-2 bg-white text-xl text-gray-700 border border-[#D9D9D9]  rounded transition ease-in-out mr-3"
+                checked={isChecked2}
+                onChange={() => setIsChecked2((prev) => !prev)}
+                className=" bg-white md:text-xl text-gray-700 border border-[#D9D9D9] rounded transition ease-in-out mr-3 ring-0 focus:ring-0 active:ring-0"
               />
               <span className="text-sm text-black">
                 Yes, I understand and agree to{" "}
@@ -157,7 +158,7 @@ export default function SignUp() {
           <p className="mb-6">
             Already have an account?{" "}
             <Link
-              href="/signIn"
+              href="/sign-in"
               className="text-[#00EF7C] transition duration-200 ease-in-out"
             >
               Login

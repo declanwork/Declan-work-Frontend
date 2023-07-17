@@ -1,12 +1,12 @@
 "use client";
-import GoogleAuth from "../../components/googleOAuth";
-import AppleAuth from "../../components/appleOAuth";
-import Nav from "../../components/Nav";
+import GoogleAuth from "../components/googleOAuth";
+import AppleAuth from "../components/appleOAuth";
+import Nav from "../components/Nav";
 import { useState } from "react";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 import Link from "next/link";
 
-export default function SignUp() {
+export default function SignIn() {
   const [showPassword, setShowPassWord] = useState(false);
   const [formData, setFormData] = useState({
     email: "",
@@ -24,9 +24,9 @@ export default function SignUp() {
   async function onSubmit() {}
 
   return (
-    <div className="pb-20">
+    <div className="pb-20 px-3 lg:px-0">
       <Nav />
-      <div className="border border-[#001E005E] rounded-lg py-20 px-14 max-w-2xl mx-auto">
+      <div className="border border-[#001E005E] rounded-lg py-20 px-2 md:px-14 max-w-2xl mx-auto">
         <h1 className="text-black text-3xl md:text-4xl">Welcome Back.</h1>
         <AppleAuth />
         <GoogleAuth />

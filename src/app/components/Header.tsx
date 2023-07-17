@@ -8,12 +8,12 @@ interface HeaderProps {
 
   const Header: React.FC<HeaderProps> = ({ title, subtitle, nextTitle, nextSubtitle }) => {
     return (
-      <div className="m-3">
+      <div className="my-3">
         <h2 className="text-4xl font-bold">{title}</h2>
         <h5 className="text-sm mt-2">{subtitle}</h5>
 
         <h2 className="text-3xl font-bold mt-5 mb-3">{nextTitle}</h2>
-        <h5 className="text-sm w-96">{nextSubtitle}</h5>
+        <h5 className="text-sm md:w-96">{nextSubtitle}</h5>
       </div>
     );
   };

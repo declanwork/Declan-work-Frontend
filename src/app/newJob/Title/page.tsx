@@ -1,8 +1,8 @@
 "use client";
-import GoogleAuth from "../../../components/googleOAuth";
-import AppleAuth from "../../../components/appleOAuth";
-import NavbarJob from "../../../components/NavbarJob";
-import Header from "../../../components/Header";
+import GoogleAuth from "../../components/googleOAuth";
+import AppleAuth from "../../components/appleOAuth";
+import NavbarJob from "../../components/NavbarJob";
+import Header from "../../components/Header";
 import { useState } from "react";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 import Link from "next/link";

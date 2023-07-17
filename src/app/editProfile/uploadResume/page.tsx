@@ -1,5 +1,5 @@
 "use client";
-import Nav from "@/components/Nav";
+import Nav from "@/app/components/Nav";
 import Link from "next/link";
 import { FaUpload, FaLinkedinIn } from "react-icons/fa";
 
@@ -38,7 +38,7 @@ export default function uploadResume() {
           </label>
             <input type="file" name="" id="resume" className="hidden mx-auto" />
         </div>
-        <Link href="/editProfile/basicInfo" className="py-4 px-[118px] rounded font-medium bg-[#00EF7C]">Fill Out Manually [15 Min]</Link>
+        <Link href="/editProfile" className="py-4 px-[118px] rounded font-medium bg-[#00EF7C]">Fill Out Manually [15 Min]</Link>
       </div>
     </div>
   );

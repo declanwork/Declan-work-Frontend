@@ -1,13 +1,11 @@
 import { Fragment } from 'react'
 import Image from 'next/image';
-import { Disclosure, Menu, Transition } from '@headlessui/react'
+import { Disclosure, Menu } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
-import SearchBar from './searchBar';
-import { PiCaretDownBold } from "react-icons/pi"
 import Link from 'next/link';
 
 const navigation = [
-  { name: 'Find Talent', href: '#', current: false },
+  { name: 'Find Talent', href: '/talents', current: false },
   { name: 'Find Work', href: '#', current: false },
   { name: 'Why Declan Work', href: '#', current: false },
 //   { name: 'Calendar', href: '#', current: false },
@@ -18,12 +16,12 @@ function classNames(...classes: string[]) {
   }
   
 
-export default function Navbar() {
+export default function Nav() {
   return (
-    <Disclosure as="nav" className="bg-[#00360C]">
+    <Disclosure as="nav" className="bg-transparent mb-16">
       {({ open }) => (
         <>
-          <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-20">
             <div className="relative flex h-16 items-center justify-between">
               <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
                 {/* Mobile menu button*/}
@@ -43,43 +41,29 @@ export default function Navbar() {
                     src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
                     alt="Your Company"
                   /> */}
-                  <Image
-                    className="hidden h-8 w-auto lg:block"
-                    src="/images/declan.png"
-                    alt="Your Company"
-                    width={158}
-                    height={48}
-                  />
+                  <Link href="/">
+                    <Image
+                      className="hidden h-8 w-auto lg:block"
+                      src="/images/navLogo.png"
+                      alt="Your Company"
+                      width={178}
+                      height={68}
+                    />
+                  </Link>
+                  
                 </div>
-                <div className="hidden sm:ml-6 sm:block">
-                  <div className="flex space-x-4">
-                    {navigation.map((item) => (
-                      <a
-                        key={item.name}
-                        href={item.href}
-                        className={classNames(
-                          item.current ? 'bg-gray-900 text-[#ADFFC8]' : 'text-[#ADFFC8] hover:bg-gray-700 hover:text-white',
-                          'rounded-md px-3 py-2 text-sm font-medium'
-                        )}
-                        aria-current={item.current ? 'page' : undefined}
-                      >
-                        {item.name}
-                      </a>
-                    ))}
-                  </div>
-                </div>
+                
               </div>
-              <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                <SearchBar />
+              <div className="absolute space-x-3 inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 <Link
-                  href="/signIn"
-                  className="text-[#ADFFC8] text-sm p-1 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                  href="/sign-in"
+                  className="text-[#001E00] text-sm p-1 font-medium focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
                 >
                   Log In
                 </Link>
                 <Link
                   href="/signUp"
-                  className="rounded-full font-semibold text-sm bg-[#ADFFC8] p-2 text-[#00360C]  focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#ADFFC8]"
+                  className="rounded-full text-sm font-semibold bg-[#00EF7C] p-2 px-5 text-[#00360C]  focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#ADFFC8]"
                 >
                   Sign Up
                 </Link>

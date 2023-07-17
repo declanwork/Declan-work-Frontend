@@ -5,10 +5,11 @@ import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { PiNotificationBold } from "react-icons/pi"
 import SearchBar from './searchBar';
 import Link from 'next/link';
+import Authenticate from '../flow/authenticate'
 
 const navigation = [
   { name: 'Jobs', href: '#', current: false },
-  { name: 'Talents', href: '#', current: false },
+  { name: 'Talents', href: '/talents', current: false },
   { name: 'Message', href: '#', current: false },
 //   { name: 'Calendar', href: '#', current: false },
 ]
@@ -159,8 +160,8 @@ export default function NavbarJob() {
               </div>
                 
               <div className="absolute space-x-3 inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                <Link
-                  href="/signIn"
+                {/* <Link
+                  href="/sign-in"
                   className="text-[#001E00] text-sm p-1 font-medium focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
                 >
                   Log In
@@ -170,7 +171,8 @@ export default function NavbarJob() {
                   className="rounded-full text-sm font-semibold bg-[#00EF7C] p-2 px-5 text-[#00360C]  focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#ADFFC8]"
                 >
                   Sign Up
-                </Link>
+                </Link> */}
+                <Authenticate />
               </div>
             </div>
           </div>
