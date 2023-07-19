@@ -198,7 +198,9 @@ export const countries = [
 
 export const jobCategories = [
   "Web Development",
+  "Blockchain Development",
   "Mobile Development",
+  "Web3",
   "Data Science",
   "DevOps",
   "UI/UX Design",
@@ -209,6 +211,9 @@ export const jobCategories = [
 export const jobRoles = [
   "Front-end Developer",
   "Back-end Developer",
+  "Dapp Developer",
+  "Smart Contract Developer",
+  "Web3 Developer",
   "Full Stack Developer",
   "Software Engineer",
   "DevOps Engineer",

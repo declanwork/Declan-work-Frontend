@@ -2,8 +2,12 @@
 import NavbarJob from "@/app/components/NavbarJob";
 import Image from "next/image";
 import Link from "next/link";
+import { useContext } from "react";
+import { Context } from "@/app/context";
 
 export default function Congratulations() {
+  const { freelancer } = useContext(Context)
+
   return (
     <section className="pb-20 px-3">
         <NavbarJob />
@@ -27,7 +31,7 @@ export default function Congratulations() {
         </div>
         <div className="text-black text-center mt-20">
           <h1 className="text-2xl md:text-4xl font-bold mb-5">
-            Congratulations, Morgan!
+            Congratulations, {freelancer.name} !
           </h1>
           <h1 className="text-xl md:text-4xl font-bold mb-5">
             Your proposal has been submitted !!!
@@ -40,15 +44,15 @@ export default function Congratulations() {
           {/* PREV/NEXT BUTTONS */}
           <div className="mt-10 flex justify-between flex-col md:flex-row items-center max-w-2xl mx-auto space-y-5 md:space-y-0">
             <Link
-              href=""
+              href="/profile"
               scroll={false}
               className="border w-full md:w-auto border-[#00EF7C] text-[#001E00] font-medium py-3 px-20 rounded-full"
             >
               View My Profile
             </Link>
             <Link
-              href="/editProfile/payments"
-              className="bg-[#00EF7C] w-full md:w-auto text-[#001E00] py-3 px-20 rounded-full border border-[#00EF7C] font-medium"
+              href="/dashboard"
+              className="bg-[#00EF7C] text-[#001E00] py-3 px-20 rounded-full border border-[#00EF7C] font-medium"
             >
               Browse Jobs
             </Link>

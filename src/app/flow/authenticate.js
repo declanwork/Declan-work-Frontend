@@ -25,6 +25,7 @@ const CurrentUser = () => {
     fcl.currentUser.subscribe((stuff) => {
       setUser(stuff);
       console.log(stuff);
+      // toast('Fetching User Date', { hideProgressBar: true, autoClose: 2000, type: 'success' })
     });
   }, [setUser]);
 

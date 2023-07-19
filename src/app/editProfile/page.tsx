@@ -1,27 +1,36 @@
 "use client";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import { createFreelancerAccount } from "@/app/flow/transactions";
 import PhoneInput from "react-phone-number-input";
+import Link from "next/link";
 import "react-phone-number-input/style.css";
 // import ReactQuill from "react-quill";
 // import "react-quill/dist/quill.snow.css";
 import { AiOutlineSearch, AiFillDollarCircle } from "react-icons/ai";
-import { FaUpload } from "react-icons/fa";
-import Link from "next/link";
-// import Nav from "../components/Nav";
-import NavbarJob from "../components/NavbarJob";
-import * as fcl from "@onflow/fcl";
-import "../flow/config";
+import { FaUpload, FaLinkedinIn } from "react-icons/fa";
 import { useRouter } from "next/navigation";
-import Nav from "../components/Nav";
+import NavbarJob from "../components/NavbarJob";
 import { countries, jobCategories, jobRoles } from "@/constants";
 import { SubText } from "../components/Header";
+import * as fcl from "@onflow/fcl";
+import "../flow/config";
+
+import { Context } from "../context";
+
+
+import { toast } from 'react-toastify';
 
 export default function Profile() {
+  const { user, setFreelancer} = useContext(Context)
+  // console.log(user)
+  const [transactionStatus, setTransactionStatus] = useState(0)
   const router = useRouter();
   const [selectedImage, setSelectedImage] = useState(null);
   const [next, setNext] = useState("page-1");
   const [formData, setFormData] = useState({
+    name: "",
+    email: "",
     jobRole: "",
     jobCategory: "",
     country: "",
@@ -38,6 +47,8 @@ export default function Profile() {
     portfolioLink: "",
   });
   const {
+    name,
+    email,
     jobRole,
     jobCategory,
     city,
@@ -59,13 +70,57 @@ export default function Profile() {
       ...prevState,
       [e.target.id]: e.target.value,
     }));
-    
+    console.log(user)
     console.log("formData", formData)
   }
-  function onSubmit(){
-    // Function for submitting form fields
-    router.push("/editProfile/congratulations")
-  }
+
+  const createFreelancer = async () => {
+    
+      const txId = await createFreelancerAccount(formData.name,formData.walletAddress,formData.portfolioLink, formData.jobRole, formData.jobCategory,  false, 0, formData.email, formData.country, 0);
+      toast('User authenticated', { hideProgressBar: true, autoClose: 2000, type: 'success' });
+  
+      fcl.tx(txId).subscribe(res => setTransactionStatus(res.status));
+
+      
+      try {
+        if (transactionStatus === 0) {
+          toast('Transaction status loading', { hideProgressBar: true, autoClose: 2000, type: 'info' });
+        } else if (transactionStatus === 1) {
+          toast('Transaction pending - Awaiting Finalization', { hideProgressBar: true, autoClose: 2000, type: 'info' });
+        } else if (transactionStatus === 2) {
+          toast('Transaction finalized - Awaiting Execution', { hideProgressBar: true, autoClose: 2000, type: 'info' });
+        } else if (transactionStatus === 3) {
+          toast('Transaction executed - Awaiting Sealing', { hideProgressBar: true, autoClose: 2000, type: 'success' });
+        } else if (transactionStatus === 4) {
+          toast('Transaction Sealed - Transaction Complete!', { hideProgressBar: true, autoClose: 2000, type: 'success' });
+
+          setFreelancer(formData);
+          setNext("page-4");
+          window.scroll(0, 0);
+        } else if (transactionStatus === 5) {
+          toast('Transaction Expired', { hideProgressBar: true, autoClose: 2000, type: 'error' });
+        } else {
+          toast('Transaction status unknown', { hideProgressBar: true, autoClose: 2000, type: 'info' });
+        }
+        
+        fcl.tx(txId).onceSealed();
+        setFreelancer(formData);
+        setNext("page-4");
+        window.scroll(0, 0);
+        
+      } catch (error) {
+        toast('Failed to create freelancer profile', { hideProgressBar: true, autoClose: 2000, type: 'error' });
+        console.error(error);
+
+      }
+     
+  };
+  
+  // function onSubmit(){
+  //   // Function for submitting form fields
+  //   router.push("/editProfile/congratulations")
+  // }
+
   useEffect(() => {
     window.scroll(0, 0);
   }, []);
@@ -86,7 +141,7 @@ export default function Profile() {
     <>
       <NavbarJob />
       {next === "page-1" && (
-        <div className="max-w-5xl mx-auto px-3 pb-10">
+        <div className="max-w-5xl min-w-[300px] md:ml-20 mt-1 md:mt-10 mx-auto px-5 md:px-10 py-12">
           <h1 className="text-5xl font-medium text-black mb-5">
             Land your dream job
           </h1>
@@ -99,7 +154,7 @@ export default function Profile() {
           </p>
           <div className="mt-16 mb-5">
             <label htmlFor="resume" className="">
-              Portfolio Link
+              Portfolio Link (Hosted CV/resume on Google Drive preferrably)
               {/* <div className="flex items-center border rounded border-[#001E00] justify-start w-[30vw] p-3">
                 <div className="mx-auto flex items-center">
                 <FaUpload className="text-[#00EF7C] bg-black p-2 rounded-full" size={30} /> <span className="ml-2 font-medium">Upload Your Resume</span>
@@ -111,7 +166,7 @@ export default function Profile() {
               id="portfolioLink"
               value={portfolioLink}
               onChange={onChange}
-              className="block w-full md:w-[31.5vw]"
+              className="block w-[90%] mt-3 md:w-[31.5vw]"
             />
             {/* <input type="file" name="" id="resume" className="hidden mx-auto" /> */}
           </div>
@@ -131,9 +186,9 @@ export default function Profile() {
               setNext("page-2");
               window.scroll(0, 0);
             }}
-            className="py-4 w-full md:w-auto px-[118px] rounded font-medium bg-[#00EF7C]"
+            className="py-4 w-[90%] md:w-[31.5vw] px-[118px] rounded font-medium bg-[#00EF7C]"
           >
-            Fill Out Manually [15 Min]
+            Submit
           </button>
         </div>
       )}
@@ -200,6 +255,37 @@ export default function Profile() {
             </div>
             {/* Personal Info section */}
             <div className="lg:-ml-48 pb-10">
+              {/* Row 0 */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-5">
+                <div className="">
+                  <label htmlFor="name" className="text-[#0D0D22]">
+                    Name
+                  </label>
+                  <div className="relative">
+                    <input
+                      type="text"
+                      id="name"
+                      value={name}
+                      onChange={onChange}
+                      placeholder="Full name or Nickname"
+                      className="block w-full py-3 pr-4 pl-9 bg-transparent border border-[#D0D2D6] text-sm"
+                    />
+                  </div>
+                </div>
+                <div className="">
+                  <label htmlFor="email" className="text-[#0D0D22]">
+                    Email
+                  </label>
+                  <input
+                    type="text"
+                    id="email"
+                    value={email}
+                    onChange={onChange}
+                    placeholder="Email address"
+                    className="block w-full py-3 px-4 bg-transparent border border-[#D0D2D6] text-sm"
+                  />
+                </div>
+              </div>
               {/* Row 1 */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                 <div>
@@ -277,7 +363,7 @@ export default function Profile() {
                 </div>
                 <div className="">
                   <label htmlFor="city" className="text-[#0D0D22]">
-                    City
+                    City (Optional)
                   </label>
                   <div className="relative">
                     <AiOutlineSearch
@@ -298,7 +384,7 @@ export default function Profile() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-5">
                 <div className="">
                   <label htmlFor="address" className="text-[#0D0D22]">
-                    Street Address
+                    Street Address (Optional)
                   </label>
                   <div className="relative">
                     <AiOutlineSearch
@@ -317,7 +403,7 @@ export default function Profile() {
                 </div>
                 <div className="">
                   <label htmlFor="postalCode" className="text-[#0D0D22]">
-                    Zip Postal Code
+                    Zip Postal Code (Optional)
                   </label>
                   <input
                     type="text"
@@ -328,8 +414,8 @@ export default function Profile() {
                   />
                 </div>
               </div>
-              {/* Row 4 */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-5">
+              {/* Row 4 - fix phone number fetching */}
+              {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-5">
                 <div className="">
                   <label htmlFor="phoneNumber" className="text-[#0D0D22]">
                     Phone Number
@@ -343,12 +429,22 @@ export default function Profile() {
                     className="block w-full py-3 px-4 bg-transparent border border-[#D0D2D6] text-sm"
                   />
                 </div>
-              </div>
+              </div> */}
               {/* Text Editor */}
               <div className="mt-10">
                 <label htmlFor="bio" className="text-[#0D0D22]">
                   Bio
                 </label>
+                <textarea
+                  name="Bio"
+                  id="bio"
+                  value={bio}
+                  onChange={onChange}
+                  rows={6}
+                  placeholder=" Tell us why we should hire you and not the next guy."
+                  // cols={30}
+                  className="px-4 min-h-[auto] w-full py-4 bg-white text-lg text-gray-700 border border-[#D9D9D9] rounded transition ease-in-out resize-none"
+                />
                 {/* <ReactQuill
                 theme="snow"
                 id="bio"
@@ -357,7 +453,8 @@ export default function Profile() {
                 className="h-[300px]"
               /> */}
               </div>
-              <div className="mt-20">
+              
+              {/* <div className="mt-20">
                 <label htmlFor="portfolio">Upload your portfolio</label>
                 <input type="file" name="" id="portfolio" className="hidden" />
                 <label htmlFor="portfolio">
@@ -368,7 +465,7 @@ export default function Profile() {
                     </span>
                   </div>
                 </label>
-              </div>
+              </div> */}
               {/* PREV/NEXT BUTTONS */}
               <div className="mt-10 space-y-5 md:space-y-0 flex justify-between items-center flex-col md:flex-row">
                 <button
@@ -542,7 +639,7 @@ export default function Profile() {
                 <input
                   type="text"
                   id="walletName"
-                  value={walletName}
+                  value={formData.email}
                   onChange={onChange}
                   placeholder="Input Wallet name"
                   className="block w-full py-3 px-4 bg-transparent border border-[#D0D2D6] text-sm"
@@ -553,7 +650,7 @@ export default function Profile() {
                 <input
                   type="text"
                   id="walletAddress"
-                  value={walletAddress}
+                  value={user.addr}
                   onChange={onChange}
                   placeholder="Wallet Address"
                   className="block w-full py-3 px-4 bg-transparent border border-[#D0D2D6] text-sm"
@@ -574,14 +671,64 @@ export default function Profile() {
               </button>
               <button
                 type="button"
-                onClick={onSubmit}
+                onClick={createFreelancer}
                 className="bg-[#00EF7C] w-full md:w-auto text-[#001E00] py-3 px-8 rounded-full border border-[#00EF7C] font-medium"
               >
-                Get Started
+                Submit Profile
               </button>
             </div>
           </div>
         </div>
+      )}
+      {next === "page-4" && (
+        <div className="rounded-lg py-20 px-10 max-w-4xl mx-auto">
+        <div className="w-full h-[200px] flex justify-center items-center">
+          <div className="relative">
+            <Image
+              src="/svg/jobPost.svg"
+              alt="svg"
+              width={200}
+              height={200}
+            />
+            <Image
+              src="/svg/thumbs.svg"
+              alt="thumbs-up"
+              width={300}
+              height={300}
+              className="absolute -bottom-10 -right-32"
+            />
+          </div>
+        </div>
+        <div className="text-black text-center mt-20">
+          <h1 className="text-2xl md:text-4xl font-bold mb-5">
+            Amazing effort, {formData.name}!
+          </h1>
+          <h1 className="text-xl md:text-4xl font-bold mb-5">
+            Your profile is being reviewed.
+          </h1>
+          <p className="mb-5">
+            Congratulations, with thousands of jobs to pick from, it is time for
+            you to make your first pick and start your bidding on roles that
+            best fit your portfolio
+          </p>
+          {/* PREV/NEXT BUTTONS */}
+          <div className="mt-10 flex justify-between items-center flex-col md:flex-row space-y-5 md:space-y-0 max-w-2xl mx-auto">
+            <Link
+              href="/profile"
+              scroll={false}
+              className="border w-full md:w-auto border-[#00EF7C] text-[#001E00] font-medium py-3 px-20 rounded-full"
+            >
+              View My Profile
+            </Link>
+            <Link
+              href="/dashboard"
+              className="bg-[#00EF7C] w-full md:w-auto text-[#001E00] py-3 px-20 rounded-full border border-[#00EF7C] font-medium"
+            >
+              Browse Jobs
+            </Link>
+          </div>
+        </div>
+      </div>
       )}
     </>
   );
