@@ -164,12 +164,12 @@ export default function Proposals() {
                 Message <HiMail className="text-[#001E00]" />
               </span>
             </div>
-            <p className="leading-[1.5] p-1">
+            <p className="leading-[1.5] p-1 text-[#272727]">
               Certainly! Creating videos on Instagram can be a great way to
               showcase your design skills, share your enthusiasm for technology,
               and promote your startup. Here&quote;s a content direction and a
               one-month content calendar to get you started: Content Direction:
-              <ul className="list-decimal">
+              <ul className="list-decimal text-[#272727]">
                 {proposalItems.map((items, index) => {
                   return <li key={index}>{items}</li>;
                 })}
