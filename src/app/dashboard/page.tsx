@@ -289,7 +289,7 @@ export default function Dashboard() {
                         </p>
                       </div>
                       <p className="text-sm md:text-base">{description}</p>
-                      <div className="flex items-center flex-wrap gap-2 md:gap-0 md:space-x-4 my-4"> <p className="text-sm text-[#777777]">
+                      {/* <div className="flex items-center flex-wrap gap-2 md:gap-0 md:space-x-4 my-4"> <p className="text-sm text-[#777777]">
                           Skills Required:
                         </p>
                         {skillsRequired.map((skills: boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | PromiseLikeOfReactNode | Key | null | undefined) => (
@@ -300,7 +300,7 @@ export default function Dashboard() {
                             <p className="text-sm text-[#102638]">{skills}</p>
                           </div>
                         ))}
-                      </div>
+                      </div> */}
                       <div className="flex md:items-center flex-col md:flex-row space-y-5 md:space-y-0 justify-between">
                         <div className="flex md:items-center flex-col md:flex-row md:space-x-2">
                           <p className="text-sm text-[#777777]">
